@@ -1,4 +1,5 @@
 import React from 'react';
+import SignupForm from './SignupForm.jsx';
 
 class Signup extends React.Component {
   constructor(props){
@@ -15,7 +16,7 @@ class Signup extends React.Component {
         <div>Sign Up</div>
         <div>____</div>
         <div>
-          <div>Sign up form placeholder</div>
+          <SignupForm />
         </div>
         <div>By registering you confirm you accept the <span><a href="placeholder">Terms and Conditions</a></span> and <span><a href="placeholder">Privacy Policy</a></span></div>
         <div>____</div>
