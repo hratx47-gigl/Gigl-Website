@@ -12,7 +12,10 @@
     "testServer": "mocha 'server/test/**/*.js'",
     "testClientGig": "jest ./clientGig",
     "testClientPerformer": "jest ./clientPerformer",
-    "launch": "nodemon server/bin/www & webpack --config webpack_gig.config.js --mode development --watch & webpack --config webpack_performer.config.js --mode development --watch"
+    "launch:server": "nodemon server/bin/www",
+    "launch:clientGig": "webpack --config webpack_gig.config.js --mode development --watch",
+    "launch:clientPerformer": "webpack --config webpack_performer.config.js --mode development --watch",
+    "launch:client": "npm-run-all --parallel launch:clientGig launch:clientPerformer"
   },
   "repository": {
     "type": "git",
@@ -66,6 +69,7 @@
     "jest": "^25.3.0",
     "mocha": "^7.1.1",
     "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
     "react-router-dom": "^5.1.2",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
