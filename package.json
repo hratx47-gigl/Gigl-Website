@@ -11,8 +11,10 @@
     "lint:server": "cd ./server && ../node_modules/.bin/eslint \"routes/**/*.js\" 2>/dev/null && echo 'Your code has passed the linting guidelines' || echo 'Please fix the errors listed above'",
     "testServer": "mocha 'server/test/**/*.js'",
     "testClientGig": "jest ./clientGig",
+    "webpack-perf": "npx webpack --config webpack_performer.config.js --mode development --watch",
+    "webpack-gig": "npx webpack --config webpack_gig.config.js --mode development --watch",
     "testClientPerformer": "jest ./clientPerformer",
-    "launch": "nodemon server/bin/www & webpack --config webpack_gig.config.js --mode development --watch & webpack --config webpack_performer.config.js --mode development --watch"
+    "launch": "npx nodemon server/bin/www && npx webpack --config webpack_gig.config.js --mode development --watch && npx webpack --config webpack_performer.config.js --mode development --watch"
   },
   "repository": {
     "type": "git",
