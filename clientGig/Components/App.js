@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-import axios from "axios";
-import Test from "../../clientShared/test";
+import Navbar from "./ClientDashboard/ClientNavbar";
+// import axios from "axios";
+// import Test from "../../clientShared/test";
+import ActiveGigs from "./ClientDashboard/ClientActiveGigs";
+import ClientGigModal from "./ClientDashboard/ClientGigModal";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: "Something here",
+      tabs: ["Home", "Messages", "Logout"],
       currentGigs: [],
     };
     this.api = `http://localhost:8000/api/example`;
@@ -22,14 +27,15 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <h1>Client Username</h1>
-        <Test text={"prop from giger"} />
+        <div className="container">
+          <Navbar />
 
-        <ul>
-          {this.state.currentGigs.map((creature, index) => (
-            <li key={index}>{creature}</li>
-          ))}
-        </ul>
+          <h1 style={{ paddingTop: "60px" }}>Client Username</h1>
+
+          <ActiveGigs />
+          <ClientGigModal />
+          
+        </div>
       </>
     );
   }
