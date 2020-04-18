@@ -16,14 +16,14 @@ module.exports = {
         loader: 'eslint-loader'
       },
       {
-        test : /\.js?/,
+        test : /\.(js|mjs|jsx)$/,
         include : [SRC_DIR, SHARED_DIR],
         loader : 'babel-loader'
       },
       {
         test: /\.css$/,
         include: [SRC_DIR, SHARED_DIR],
-        loader: 'css-loader'
+        use: ['style-loader','css-loader'],
       }
     ]
   }
