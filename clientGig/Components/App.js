@@ -48,7 +48,10 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <div className="container">
+        <div
+          className="container"
+          style={{ backgroundColor: " rgba(100, 100, 100)" }}
+        >
           <Navbar />
 
           <h1 style={{ paddingTop: "60px" }}>Client Username</h1>
