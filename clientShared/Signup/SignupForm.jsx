@@ -54,26 +54,26 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="text-center">
         {this.renderRedirect()}
       <form onSubmit={this.handleSubmit}>
         <label>
-          <input name="email" type="text" value={this.state.email} onChange={this.handleChange} placeholder="email" required></input>
+          <input name="email" type="text" className="form-control" value={this.state.email} onChange={this.handleChange} placeholder="email" required></input>
         </label>
         <br />
         <label>
-          <input name="username" type="text" value={this.state.username} onChange={this.handleChange} placeholder="Username" required></input>
+          <input name="username" type="text" className="form-control" value={this.state.username} onChange={this.handleChange} placeholder="Username" required></input>
         </label>
         <br />
         <label>
-          <input name="password" type="password" value={this.state.password} onChange={this.handleChange} placeholder="Password" required></input>
+          <input name="password" type="password" className="form-control" value={this.state.password} onChange={this.handleChange} placeholder="Password" required></input>
         </label>
         <br />
         <label>
-          <input name="confirmPassword" type="password" value={this.state.confirmPassword} onChange={this.handleChange} placeholder="Confirm Password" required></input>
+          <input name="confirmPassword" type="password" className="form-control" value={this.state.confirmPassword} onChange={this.handleChange} placeholder="Confirm Password" required></input>
         </label>
         <br />
-        <input className="shiny joinButton" type="submit" value="Join Gigl" />
+        <input className="btn btn-outline-secondary shiny joinButton" type="submit" value="Join Gigl" />
       </form>
       </div>
     )
