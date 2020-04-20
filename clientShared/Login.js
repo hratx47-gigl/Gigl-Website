@@ -15,7 +15,7 @@ class Login extends Component {
               <div className="row">
               <div className="offset-md-2"></div>
                 <div className="col-md-4 d-flex align-items-center">
-                  <img src="https://files.slack.com/files-pri/T2SVC7RB3-F0123HXL2LS/gigl_logo_unicolor.png" alt="" className="img-fluid"/>
+                  <img src="https://i.imgur.com/JWCVUEL.png" alt="" className="img-fluid"/>
                 </div>
                 <div className="col-md-4 d-flex align-items-center">
                   <h3>Gigl</h3>
