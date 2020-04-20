@@ -1,4 +1,5 @@
 import React from "react";
+import PerformerView from "../Performers/PerformerView";
 
 class GigItem extends React.Component {
   constructor(props) {
@@ -48,7 +49,9 @@ class GigItem extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-md-2"> applicants here </div>
+          <div className="col-md-2">
+            <PerformerView />
+          </div>
         </div>
       </li>
     );
