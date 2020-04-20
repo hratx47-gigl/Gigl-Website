@@ -14,10 +14,10 @@ class Login extends Component {
             <div className="container">
               <div className="row">
               <div className="offset-md-2"></div>
-                <div className="col-md-4 d-flex align-items-center">
+                <div className="col-4 d-flex align-items-center">
                   <img src="https://i.imgur.com/JWCVUEL.png" alt="" className="img-fluid"/>
                 </div>
-                <div className="col-md-4 d-flex align-items-center">
+                <div className="col-4 d-flex align-items-center">
                   <h3>Gigl</h3>
                 </div>
                 <div className="offset-md-2"></div>
@@ -53,6 +53,7 @@ class Login extends Component {
                 </button>
               </div>
               <div className="mt-2 text-center">
+              <div className="dropdown-divider w-100"></div>
                 <p>Don't have an Account? 
                   <a href="/signup" alt=""> Sign Up</a>
                   </p>
