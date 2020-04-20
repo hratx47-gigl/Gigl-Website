@@ -10,10 +10,6 @@ class ActiveGigs extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({ gigArray: this.props.gigs });
-  // }
-
   render() {
     return (
       <div>

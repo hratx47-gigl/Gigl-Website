@@ -5,7 +5,12 @@ class PerformerSelect extends React.Component {
     super(props);
 
     this.state = {
-      performersList: [],
+      performersList: [
+        "Matt Co",
+        "Nick Lingrel",
+        "Sean Spiesman",
+        "Alex Garcia",
+      ],
     };
   }
 
@@ -19,7 +24,7 @@ class PerformerSelect extends React.Component {
             data-toggle="modal"
             data-target="#performerModal"
           >
-            Create New Gig
+            Show Applicants
           </button>
         </div>
         <div
@@ -34,7 +39,7 @@ class PerformerSelect extends React.Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="performerModalLabel">
-                  New Gig
+                  Performers
                 </h5>
                 <button
                   type="button"
@@ -46,7 +51,22 @@ class PerformerSelect extends React.Component {
                 </button>
               </div>
               <div className="modal-body">
-                <ul className="list-group performer-list"></ul>
+                <ul className="list-group performer-list">
+                  {this.state.performersList.map((item, index) => {
+                    return (
+                      <>
+                        <li className="list-group-item" key={index}>
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            id="exampleCheck1"
+                          />
+                          {item}
+                        </li>
+                      </>
+                    );
+                  })}
+                </ul>
               </div>
               <div className="modal-footer">
                 <button

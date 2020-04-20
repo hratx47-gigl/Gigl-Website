@@ -9,7 +9,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "Something here",
+      username: "Jaeson",
       currentGigs: [
         {
           name: "Matt",
@@ -54,7 +54,9 @@ export default class App extends React.Component {
         >
           <Navbar />
 
-          <h1 style={{ paddingTop: "60px" }}>Client Username</h1>
+          <h1 style={{ paddingTop: "60px" }}>
+            {this.state.username + "'s Gigs"}
+          </h1>
 
           <ActiveGigs gigs={this.state.currentGigs} />
           <ClientGigModal button={this.newGigSubmit.bind(this)} />
