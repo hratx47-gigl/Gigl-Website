@@ -52,6 +52,11 @@ class Login extends Component {
                   Login
                 </button>
               </div>
+              <div className="mt-2 text-center">
+                <p>Don't have an Account? 
+                  <a href="/signup" alt=""> Sign Up</a>
+                  </p>
+              </div>
             </form>
           </div>
         </div>
