@@ -1,13 +1,13 @@
 
 .accordion {
-  background-color: rgb(231, 231, 231);
+  /* background-color: rgb(231, 231, 231);
   color: #444;
   cursor: pointer;
   padding: 18px;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 20px;
+  font-size: 20px; */
   transition: 0.4s;
   box-shadow: 6px 6px 10px grey !important;
 }
@@ -25,7 +25,7 @@
   padding: 0px 35px 10px 70px;
 }
 
-.active, .accordion:hover {
+/* .active, .accordion:hover {
   background-color: #ccc;
 }
 
@@ -35,7 +35,7 @@
   float: right !important;
   margin-left: 5px;
   box-shadow: 6px 6px 10px grey !important;
-}
+} */
 
 .panel {
   padding: 0 18px;

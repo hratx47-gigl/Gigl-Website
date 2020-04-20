@@ -3,7 +3,7 @@ import GigBar from './gigbar/GigBar'
 
 const GigList = ({ gigs }) => (
   <>
-    {gigs.map((gig, index) => (<GigBar key={ index } gig={ gig } />))}
+    {gigs.map((gig, index) => (<GigBar key={ index } index={ index } gig={ gig } />))}
   </>
 )
 
