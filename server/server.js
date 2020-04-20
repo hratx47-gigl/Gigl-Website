@@ -1,8 +1,10 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const logger = require('morgan');
 const express = require('express');
 const app = express();
 const path = require('path');
+require('./database');
 
 
 // open up CORS 
@@ -18,7 +20,7 @@ app.use(express.static(path.join(__dirname, "../public/assets")));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
-})
+});
 
 app.get('/giger*', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/indexGig.html"));
