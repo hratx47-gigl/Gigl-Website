@@ -15,7 +15,8 @@
     "launch:server": "nodemon server/bin/www",
     "launch:clientGig": "webpack --config webpack_gig.config.js --mode development --watch",
     "launch:clientPerformer": "webpack --config webpack_performer.config.js --mode development --watch",
-    "launch:client": "npm-run-all --parallel launch:clientGig launch:clientPerformer"
+    "launch:client": "npm-run-all --parallel launch:clientGig launch:clientPerformer",
+    "start": "npm-run-all --parallel launch:server launch:client"
   },
   "repository": {
     "type": "git",

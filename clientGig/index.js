@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import App from './Components/App.js';
 import Signup from '../clientShared/Signup/Signup.jsx'
+import Login from '../clientShared/Login';
 
 ReactDOM.render((<BrowserRouter basename="/giger">
     <Switch>
         <Route path="/login">
-            <h1>Login</h1>
+            <Login/>
         </Route>
         <Route path="/signup">
             <Signup />
