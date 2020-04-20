@@ -2,11 +2,126 @@
 <html>
   <head>
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/index.css"/>
   </head>
   <body>
-    <h1>Landing page</h1>
-    <a href="/giger">Giger</a>
-    <a href="/performer">Performer</a>
+    <div>
+    <!-- navigation bar -->
+    <div class="bg-dark fixed-top">
+      <nav class="container navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">
+          <img src="https://i.imgur.com/JWCVUEL.png" width="30" height="30" alt="">
+          Gigl
+        </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/giger">Hire a Gigger<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/performer">Make Money Gigging</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Post a Gig</button>
+            </form>
+          </div>
+      </nav>
+    </div>
+    <!-- navigation bar -->
+    <!-- Carousel -->
+    <div>
+        <div id="carouselExampleIndicators" class="carousel slide" style="margin-top: 56px;" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="embed-responsive embed-responsive-21by9">
+                <img src="https://images.unsplash.com/photo-1526480450270-7fe59f99fcad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" class="d-block w-100 embed-responsive-item h-auto" alt="...">
+              </div>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+              <div class="embed-responsive embed-responsive-21by9">
+                <img src="https://images.unsplash.com/photo-1542600176-4f7f2cba84d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" class="d-block w-100 embed-responsive-item h-auto" alt="...">
+              </div>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+              <div class="embed-responsive embed-responsive-21by9">
+                <img src="https://images.unsplash.com/photo-1457551859869-d4b7ab27184c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" class="d-block w-100 embed-responsive-item h-auto" alt="...">
+              </div>
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <!-- carousel  -->
+      <div>
+        <h2 class="text-center my-4" style="font-size: 45; font-weight: bold;">How it Works</h2>
+      </div>
+      <!-- container -->
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-lg-4 d-flex justify-content-center align-items-center flex-column">
+            <div class="embed-responsive embed-responsive-1by1 w-50">
+              <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="rounded-circle embed-responsive-item">
+            </div>
+            <div style="margin-bottom: 10px; margin-top: 20px; font-weight: bold; font-size: 30px;">Post a Gig</div>
+            <div class="px-4 mt-1 mb-5">
+              <p>
+                Have an event coming up and need performers? Gigl is here to help. It's easy, just post a gig and we'll do the rest! 
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 d-flex justify-content-center align-items-center flex-column">
+            <div class="embed-responsive embed-responsive-1by1 w-50">
+              <img src="https://images.unsplash.com/photo-1556974065-52eeca9b8f68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="rounded-circle embed-responsive-item">
+            </div>
+            <div style="margin-bottom: 10px; margin-top: 20px; font-weight: bold; font-size: 30px;">Hire a Gigger</div>
+            <div class="px-4 mt-1 mb-5">
+              <p>Are you a talented performer looking for gigs? Create a profile and view all of the gigs that you qualify for!</p>
+            </div>
+          </div>
+          <div class="col-lg-4 d-flex justify-content-center align-items-center flex-column">
+            <div class="embed-responsive embed-responsive-1by1 w-50">
+              <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" class="rounded-circle embed-responsive-item">
+            </div>
+            <div style="margin-bottom: 10px; margin-top: 20px; font-weight: bold; font-size: 30px;">Secure Payment</div>
+            <div class="px-4 mt-1 mb-5">
+              <p>When your satisfied with your gigger, use your secure payment portal to pay your performer. It's easy to use, secure, and free!</p>
+            </div>
+          </div>
+            </div>
+        </div>
+      </div>
+      <!-- container -->
+    </div>
+
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
