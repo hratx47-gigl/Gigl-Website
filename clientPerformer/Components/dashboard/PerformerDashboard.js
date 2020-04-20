@@ -3,7 +3,6 @@ import './dashboard.css';
 import Axios from 'axios';
 import Promise from 'bluebird';
 import GigList from './components/giglist/GigList';
-import NavBar from './components/NavBar'
 // import $ from 'jquery';
 
 class PerformerDashboard extends Component {
