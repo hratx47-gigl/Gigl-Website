@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 
 class Login extends Component {
   constructor(props) {
@@ -55,7 +57,7 @@ class Login extends Component {
               <div className="mt-2 text-center">
               <div className="dropdown-divider w-100"></div>
                 <p>Don't have an Account? 
-                  <a href="/signup" alt=""> Sign Up</a>
+                  <Link to="/signup"> Sign Up</Link>
                   </p>
               </div>
             </form>
