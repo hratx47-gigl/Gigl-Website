@@ -48,23 +48,23 @@ class ClientGigModal extends React.Component {
             type="button"
             className="btn btn-primary"
             data-toggle="modal"
-            data-target="#exampleModal"
+            data-target="#clientModal"
           >
             Create New Gig
           </button>
         </div>
         <div
           className="modal fade"
-          id="exampleModal"
+          id="clientModal"
           tabIndex="-1"
           role="dialog"
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="clientModalLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">
+                <h5 className="modal-title" id="clientModalLabel">
                   New Gig
                 </h5>
                 <button

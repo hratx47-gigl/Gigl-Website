@@ -1,7 +1,5 @@
 import React from "react";
 import GigItem from "./ClientGigItem";
-import PerformerView from "../Performers/PerformerView";
-
 class ActiveGigs extends React.Component {
   constructor(props) {
     super(props);

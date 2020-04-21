@@ -1,18 +1,28 @@
 import React from "react";
+import PerformerView from "./PerformerView";
 
 class PerformerSelect extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      performersList: [
-        "Matt Co",
-        "Nick Lingrel",
-        "Sean Spiesman",
-        "Alex Garcia",
-      ],
+      applicants: [],
     };
   }
+
+  componentDidMount() {}
+
+  // onCheckboxChange(item) {
+  //   if (item === document.getElementById(item).id) {
+  //     if (document.getElementById(item).checked === true) {
+  //       document.getElementById(item).setAttribute("checked", false);
+  //     } else {
+  //       document.getElementById(item).setAttribute("checked", true);
+  //     }
+  //   }
+  // }
+
+  onSubmit() {}
 
   render() {
     return (
@@ -52,18 +62,20 @@ class PerformerSelect extends React.Component {
               </div>
               <div className="modal-body">
                 <ul className="list-group performer-list">
-                  {this.state.performersList.map((item, index) => {
+                  {this.props.applicants.map((item, index) => {
+                    item = item.name.split(" ").join("");
                     return (
-                      <>
-                        <li className="list-group-item" key={index}>
-                          <input
-                            type="checkbox"
-                            class="form-check-input"
-                            id="exampleCheck1"
-                          />
-                          {item}
-                        </li>
-                      </>
+                      <li className="list-group-item" key={index}>
+                        <input
+                          type="checkbox"
+                          className="form-check-input"
+                          id={item}
+                          onChange={() => {
+                            this.props.checked(item);
+                          }}
+                        />
+                        {item}
+                      </li>
                     );
                   })}
                 </ul>
@@ -71,22 +83,9 @@ class PerformerSelect extends React.Component {
               <div className="modal-footer">
                 <button
                   type="button"
+                  className="btn btn-primary"
                   className="btn btn-secondary"
                   data-dismiss="modal"
-                >
-                  Close
-                </button>
-                <button
-                  onClick={() => {
-                    this.props.button([
-                      this.state.eventName,
-                      this.state.location,
-                      this.state.date,
-                      this.state.description,
-                    ]);
-                  }}
-                  type="button"
-                  className="btn btn-primary"
                 >
                   Save changes
                 </button>
