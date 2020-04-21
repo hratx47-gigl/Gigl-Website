@@ -1,5 +1,6 @@
 import React from 'react';
 import SignupForm from './SignupForm.jsx';
+import {Link} from 'react-router-dom';
 
 class Signup extends React.Component {
   constructor(props){
@@ -35,7 +36,7 @@ class Signup extends React.Component {
             <div className="d-flex align-items-center text-center flex-column">
             <div >By registering you confirm you accept the <span><a href="placeholder">Terms and Conditions</a></span> and <span><a href="placeholder">Privacy Policy</a></span></div>
             <div className="dropdown-divider w-100"></div>
-            <div>Already have an account? <span><a href="redirect to login">Log In</a></span></div>
+            <div>Already have an account? <Link to={'/login'}>Log in</Link></div>
             </div>
           </div>
         </div>
