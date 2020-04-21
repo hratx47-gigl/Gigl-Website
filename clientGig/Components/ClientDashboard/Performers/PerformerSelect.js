@@ -22,8 +22,6 @@ class PerformerSelect extends React.Component {
   //   }
   // }
 
-  onSubmit() {}
-
   render() {
     return (
       <>
@@ -32,14 +30,14 @@ class PerformerSelect extends React.Component {
             type="button"
             className="btn btn-primary"
             data-toggle="modal"
-            data-target="#performerModal"
+            data-target={`#performerModal${this.props.gigIndex}`}
           >
             Show Applicants
           </button>
         </div>
         <div
           className="modal fade"
-          id="performerModal"
+          id={`performerModal${this.props.gigIndex}`}
           tabIndex="-1"
           role="dialog"
           aria-labelledby="performerModalLabel"
@@ -69,9 +67,9 @@ class PerformerSelect extends React.Component {
                         <input
                           type="checkbox"
                           className="form-check-input"
-                          id={item}
+                          id={item + this.props.gigIndex}
                           onChange={() => {
-                            this.props.checked(item);
+                            this.props.checked(item, this.props.gigIndex);
                           }}
                         />
                         {item}

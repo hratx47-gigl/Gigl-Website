@@ -12,7 +12,6 @@ class ActiveGigs extends React.Component {
     return (
       <div>
         <ul className="list-group">
-          <h1>Active Gigs </h1>
           {this.props.gigs.map((item, index) => {
             return (
               <GigItem
