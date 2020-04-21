@@ -53,7 +53,7 @@ class PerformerSelect extends React.Component {
               <div className="modal-body">
                 <ul className="list-group performer-list">
                   {this.props.applicants.map((item, index) => {
-                    name = item.name.split(" ").join("");
+                    var name = item.name.split(" ").join("");
                     return (
                       <li className="list-group-item" key={index}>
                         <input

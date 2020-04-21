@@ -23,6 +23,7 @@ class PerformerView extends React.Component {
   }
 
   onCheckboxChange(item, gigIndex) {
+    console.log(item);
     if (item + gigIndex === document.getElementById(item + gigIndex).id) {
       if (document.getElementById(item + gigIndex).checked === true) {
         document.getElementById(item + gigIndex).setAttribute("checked", false);
