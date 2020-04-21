@@ -4,10 +4,10 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import App from './Components/App.js';
 import Login from '../clientShared/Login';
 
-ReactDOM.render((<BrowserRouter basename="/giger">
+ReactDOM.render((<BrowserRouter basename="/client">
     <Switch>
         <Route path="/login">
-            <Login/>
+            <Login apiUrl="/api/client/login"/>
         </Route>
         <Route path="/signup">
             <h1>Signup</h1>
