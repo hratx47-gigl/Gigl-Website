@@ -9,4 +9,18 @@ async function getActiveGigs(req, res) {
   res.json({ gigs: clientGig });
 }
 
-module.exports = { getActiveGigs };
+async function postGig(req, res) {
+  const user = req.session.userClient;
+  const newClientGig = new Gig({
+    name: name,
+    location: location,
+    date: date,
+    price: price,
+    description: description,
+    applicants: [{ type: Schema.Types.ObjectId, ref: "UserPerformer" }],
+    owner: { type: Schema.Types.ObjectId, ref: "UserClient" },
+  });
+  res.json({ newGig: newClientGig });
+}
+
+module.exports = { getActiveGigs, postGig };

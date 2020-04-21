@@ -2,10 +2,9 @@ const router = require("express").Router();
 const AuthController = require("../controllers/AuthController");
 const { check, validationResult, body } = require("express-validator");
 const ClientDashboardController = require("../controllers/ClientDashboardController");
+const { Gig, UserClient, UserPerformer } = require("../database");
 
-router.get("/", (req, res) => {
-  res.json({ data: ["dolphins", "manatees", "sea turles"] });
-});
+
 
 router.post(
   "/login",
@@ -22,6 +21,8 @@ router.post(
   ],
   AuthController.postClientSignup
 );
+
+// router.post("/addgig", [{}]);
 
 router.get("/client", ClientDashboardController.getActiveGigs);
 
