@@ -37,9 +37,21 @@ class PerformerDashboard extends Component {
         price: 1000,
       }],
     };
-
     // this.getAllCountyData = this.getAllCountyData.bind(this);
     // this.addAccordianCss = this.test.bind(this)
+  }
+
+  componentDidMount(){
+    Axios.get('http:localhost:8000/api/performer/gigs')
+    .then(res => {
+      console.log('response data from server for all gigs', res.data)
+      // this.setState({
+      //   gig: res.data
+      // })
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   // getAllCountyData(callback){

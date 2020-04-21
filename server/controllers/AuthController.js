@@ -17,4 +17,10 @@ function postPerformerSignup(req, res) {
 
 }
 
-module.exports = {postGigerLogin, postGigerSignup, postPerformerLogin, postPerformerSignup};
+function getPerformerGigs(req, res){
+  console.log(req)
+  res.status(200).send('response from get gigs')
+    //Gig.find()
+}
+
+module.exports = {postGigerLogin, postGigerSignup, postPerformerLogin, postPerformerSignup, getPerformerGigs};
