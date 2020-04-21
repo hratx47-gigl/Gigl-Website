@@ -12,7 +12,7 @@ var gig = new Schema({
     owner: {username : String, _id : String}
 });
 
-const GigSeed = mongoose.model('GigSeed', gig)
+let Gig = mongoose.model('Gig', gig)
 
 // const mongodbHost = process.env.MONGO_HOST;
 // const mongodbPort = process.env.MONGO_PORT;
@@ -60,7 +60,7 @@ db.once('open', ()=>{
               if (err) console.log("error trying to delete gigs collection");
             })
           }
-          GigSeed.insertMany(seedGigs)
+          Gig.insertMany(seedGigs)
           .then(() => {
                console.log('inserting documents')
           })
