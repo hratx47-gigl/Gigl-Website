@@ -58,19 +58,19 @@ class SignupForm extends React.Component {
         {this.renderRedirect()}
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label>E-mail</label>
+          {/* <label className="form-control">E-mail</label> */}
           <input name="email" type="text" className="form-control" value={this.state.email} onChange={this.handleChange} placeholder="john.doe@gmail.com" required></input>
         </div>
         <div className="form-group">
-        <label>Username</label>
+        {/* <label className="form-control">Username</label> */}
           <input name="username" type="text" className="form-control" value={this.state.username} onChange={this.handleChange} placeholder="johndoe47" required></input>
         </div>
         <div className="form-group">
-        <label>Password</label>
+        {/* <label className="form-control">Password</label> */}
           <input name="password" type="password" className="form-control" value={this.state.password} onChange={this.handleChange} placeholder="••••••••" required></input>
         </div>
         <div className="form-group">
-        <label>Confirm Password</label>
+        {/* <label className="form-control">Confirm Password</label> */}
           <input name="confirmPassword" type="password" className="form-control" value={this.state.confirmPassword} onChange={this.handleChange} placeholder="Confirm Password" required></input>
         </div>
         <input className="btn btn-outline-secondary shiny joinButton" type="submit" value="Join Gigl" />
