@@ -9,7 +9,7 @@ var GigSchema = new Schema({
     price : Number,
     description : String,
     applicants: Array,
-    owner : String
+    owner : Object
 });
 
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
 
-class TestComponent extends Component {
+class GigBar extends Component {
 
   constructor(props){
     super(props);
@@ -30,13 +30,16 @@ class TestComponent extends Component {
 
   render(){
     const { gig, index } = this.props;
+    const owner = this.props.gig.owner;
+    let bidCount = this.props.gig.applicants.length; 
+    
     return (
         <div className="accordion container p-0 mt-3" id="accordionExample">
           <div className="card">
             <div className="card-header" id="headingOne">
               <div className="row">
                 <div className="col-6">
-                  <b>{gig.title}</b>
+                  <b>{gig.name}</b>
                   <div>{gig.location} | {this.formatter.format(gig.price)}</div>
                 </div>
                 <div className="col-6 d-flex align-items-center justify-content-end">
@@ -54,8 +57,8 @@ class TestComponent extends Component {
   
             <div id={`gigCollapse${index}`} className={"collapse" + (this.state.isExpanded ? ' show' : '')} aria-labelledby="headingOne" data-parent="#accordionExample">
               <div className="card-body">
-                <div id={gig.client.id}>Client: {gig.client.name}  </div>
-                <div>Number of Applicants: {gig.bidCount} </div>
+                <div id={owner._id}>Client: {gig.owner.name}  </div>
+                <div>Number of Applicants: {bidCount} </div>
                 <div>Description: {gig.description}</div>
               </div>
             </div>
@@ -65,4 +68,4 @@ class TestComponent extends Component {
   }
 }
 
-export default TestComponent;
+export default GigBar;

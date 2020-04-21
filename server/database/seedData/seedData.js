@@ -6,8 +6,9 @@ for(let i = 0; i < 20; i++){
     gig.dat = new Date(),
     gig.price = Math.ceil( Math.random() * 200)
     gig.description = 'Description for ' + gig.name
-    gig.applicants = [],
-    gig.owner = 'GigOwner' + i
+    gig.applicants = [i],
+    gig.owner = {name : ('Owner' + i), _id: i},
+    gig.bidcount = i, 
     seedGigs.push(gig)
 }
 

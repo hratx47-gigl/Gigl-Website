@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './dashboard.css';
-import Axios from 'axios';
+import axios from 'axios';
 import Promise from 'bluebird';
 import GigList from './components/giglist/GigList';
 // import $ from 'jquery';
@@ -12,42 +12,19 @@ class PerformerDashboard extends Component {
       search_criteria: {
         
       },
-      gigs: [{
-        title: 'Big Clown Party Down',
-        description: 'clown party', 
-        location: 'Round Rock', 
-        date: '4/18/2020', 
-        client: {
-          id: 1,
-          name: 'Nick'
-        },
-        bidCount: 10, 
-        price: 100,
-      },
-      {
-        title: 'Bigger Clown Party Down',
-        description: `A place to clown people ;)`, 
-        location: 'Round Rock', 
-        date: '4/18/2020', 
-        client: {
-          id: 1,
-          name: 'Nick'
-        },
-        bidCount: 1, 
-        price: 1000,
-      }],
+      gigs: []
     };
     // this.getAllCountyData = this.getAllCountyData.bind(this);
     // this.addAccordianCss = this.test.bind(this)
   }
 
   componentDidMount(){
-    Axios.get('http:localhost:8000/api/performer/gigs')
-    .then(res => {
+    axios.get('http://localhost:8000/api/performer/gigs')
+    .then(res =>{
       console.log('response data from server for all gigs', res.data)
-      // this.setState({
-      //   gig: res.data
-      // })
+      this.setState({
+        gigs: res.data
+      })
     })
     .catch(err => {
       console.log(err)
