@@ -1,4 +1,4 @@
-const {UserGiger, UserPerformer} = require('../database');
+const {UserClient, UserPerformer, Gig} = require('../database');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -6,7 +6,7 @@ async function postClientLogin(req, res) {
     //email, passwprd
     const email = req.body.email;
     const password = req.body.password;
-    const user = await UserGiger.findOne({email: email}).exec();
+    const user = await UserClient.findOne({email: email}).exec();
     if (!user) {
         res.json({successful: false, error: "Invalid email/password combination"});
     }
@@ -24,18 +24,19 @@ async function postClientSignup(req, res) {
     const email = req.body.email;
     const username = req.body.username;
     const password = req.body.password;
-    const existingUser = await UserGiger.findOne({email: email});
+    const existingUser = await UserClient.findOne({email: email});
     if (existingUser) {
         res.json({successful: false, error: "User already exists"});
         return;
     }
     const passwordHash = await bcrypt.hash(password, saltRounds);
-    const newUser = new UserGiger({
+    const newUser = new UserClient({
         username: username,
         email: email,
         passwordHash: passwordHash
     });
     await newUser.save();
+    
     req.session.userClient = newUser;
     res.json({successful: true});
 }
