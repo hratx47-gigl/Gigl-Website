@@ -1,11 +1,33 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoading: false
+    };
+    this.attemptLogin = this.attemptLogin.bind(this);
+    this.apiUrl = props.apiUrl || "";
+    this.emailRef = React.createRef();
+    this.passwordRef = React.createRef();
+  }
+
+  attemptLogin(event) {
+    event.preventDefault();
+    this.setState({isLoading: true});
+    const email = this.emailRef.current.value;
+    const password = this.passwordRef.current.value;
+    console.log(email, password);
+    axios.post(this.apiUrl, {email: email, password: password}).then((resp) => {
+      console.log("resp: ", resp);
+    }).catch((e) => {
+      console.log("error: ", e);
+    }).finally(() => {
+      this.setState({isLoading: false});
+    });
   }
 
   render() {
@@ -26,7 +48,7 @@ class Login extends Component {
               </div>
             </div>
             <h5 className="card-title text-center">Login to your Account</h5>
-            <form>
+            <form onSubmit={this.attemptLogin}>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Email address</label>
                 <input
@@ -35,6 +57,8 @@ class Login extends Component {
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="john.doe@gmail.com"
+                  required={true}
+                  ref={this.emailRef}
                 />
                 <small id="emailHelp" className="form-text text-muted">
                   We'll never share your email with anyone else.
@@ -47,11 +71,16 @@ class Login extends Component {
                   className="form-control"
                   id="exampleInputPassword1"
                   placeholder="••••••••"
+                  required={true}
+                  ref={this.passwordRef}
                 />
               </div>
               <div className="text-center">
                 <button className="btn btn-block btn-outline-secondary">
-                  Login
+                {this.state.isLoading ? (<>
+                  <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Logging in...
+                </>) : "Login"}
                 </button>
               </div>
               <div className="mt-2 text-center">

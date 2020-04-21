@@ -20,6 +20,7 @@ mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodb
 })
 .catch((e) => console.log("Error connecting to MongoDB", e));
 
+<<<<<<< HEAD
 const db = mongoose.connection
 
 db.once('open', ()=>{
@@ -43,6 +44,10 @@ db.once('open', ()=>{
 })
 
 const UserGiger = require('./models/UserGiger');
+=======
+const UserClient = require('./models/UserClient');
+>>>>>>> 2c654a4e45870af8d2583258112fb90181eaa678
 const UserPerformer = require('./models/UserPerformer');
+const Gig = require('./models/Gig');
 
-module.exports = {UserGiger, UserPerformer};
+module.exports = {UserClient, UserPerformer, Gig};

@@ -1,17 +1,16 @@
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var GigSchema = new Schema({
-    //insert schema here
-    name : String,
-    location : String,
-    date : Date,
-    price : Number,
-    description : String,
-    applicants: Array,
-    owner : Object
+var Gig = new Schema({
+    name: String,
+    location: String,
+    date: Date,
+    price: Number,
+    description: String,
+    applicants: [{type: Schema.Types.ObjectId, ref: 'UserPerformer'}],
+    owner: {type: Schema.Types.ObjectId, ref: 'UserClient'}
 });
 
+module.exports = mongoose.model('Gig', Gig)
 
-    
-module.exports = mongoose.model('Gig', GigSchema)
