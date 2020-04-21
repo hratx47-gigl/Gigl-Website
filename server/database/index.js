@@ -17,7 +17,8 @@ mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodb
 .then(() => console.log("Successfully connected to MongoDB"))
 .catch((e) => console.log("Error connecting to MongoDB", e));
 
-const UserGiger = require('./models/UserGiger');
+const UserClient = require('./models/UserClient');
 const UserPerformer = require('./models/UserPerformer');
+const Gig = require('./models/Gig');
 
-module.exports = {UserGiger, UserPerformer};
+module.exports = {UserClient, UserPerformer, Gig};
