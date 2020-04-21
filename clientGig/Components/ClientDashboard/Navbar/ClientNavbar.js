@@ -5,10 +5,10 @@ const Navbar = (props) => {
   return (
     <>
       <nav className="navbar navbar-dark bg-dark">
-        <div className="container-fluid">
+        <div className="container">
           <div className="navbar-header">
             <a style={{ fontSize: "30px" }} className="navbar-brand" href="#">
-              NavBar
+              Gigl
             </a>
           </div>
           <ul className="navbar-nav">

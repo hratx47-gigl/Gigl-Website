@@ -75,12 +75,11 @@ export default class App extends React.Component {
   render() {
     return (
       <>
+        <Navbar />
         <div
           className="container"
           style={{ backgroundColor: " rgba(100, 100, 100)" }}
         >
-          <Navbar />
-
           <h1 style={{ paddingTop: "60px" }}>
             {this.state.username + "'s Gigs"}
           </h1>
