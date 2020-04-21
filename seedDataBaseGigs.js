@@ -1,18 +1,32 @@
 const mongoose = require('mongoose')
 
-const mongodbHost = process.env.MONGO_HOST;
-const mongodbPort = process.env.MONGO_PORT;
-const mongodbDatabase = process.env.MONGO_DB;
+var Schema = mongoose.Schema;
 
-const mongodbUser = process.env.MONGO_USER || "";
-const mongodbPass = process.env.MONGO_PASS || ""
+var gig = new Schema({
+    name: String,
+    location: String,
+    date: Date,
+    price: Number,
+    description: String,
+    applicants: Array,
+    owner: {username : String, _id : String}
+});
 
-let authString = "";
+const GigSeed = mongoose.model('GigSeed', gig)
 
-if (mongodbUser.length > 0 && mongodbPass.length > 0) {
-    authString = `${mongodbUser}:${mongodbPass}@`;
-}
-mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodbDatabase}`, {useNewUrlParser: true})
+// const mongodbHost = process.env.MONGO_HOST;
+// const mongodbPort = process.env.MONGO_PORT;
+// const mongodbDatabase = process.env.MONGO_DB;
+
+// const mongodbUser = process.env.MONGO_USER || "";
+// const mongodbPass = process.env.MONGO_PASS || "";
+
+// let authString = "";
+
+// if (mongodbUser.length > 0 && mongodbPass.length > 0) {
+//     authString = `${mongodbUser}:${mongodbPass}@`;
+// }
+mongoose.connect(`mongodb://localhost:27017/gigl`, {useNewUrlParser: true})
 .then(() => {
     console.log("Successfully connected to MongoDB")
 })
@@ -30,7 +44,7 @@ for(let i = 0; i < 20; i++){
     gig.price = Math.ceil( Math.random() * 200)
     gig.description = 'Description for ' + gig.name
     gig.applicants = [i],
-    gig.owner = {username : ('Owner' + i), _id: i},
+    gig.owner = {username : ('Owner' + i), _id : i},
     seedGigs.push(gig)
 }
 
@@ -46,7 +60,7 @@ db.once('open', ()=>{
               if (err) console.log("error trying to delete gigs collection");
             })
           }
-          Gig.insertMany(seedGigs)
+          GigSeed.insertMany(seedGigs)
           .then(() => {
                console.log('inserting documents')
           })

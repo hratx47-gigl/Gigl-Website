@@ -1,4 +1,4 @@
-const Gig = require('./models/Gig')
+
 var mongoose = require('mongoose');
 
 const mongodbHost = process.env.MONGO_HOST;
