@@ -66,8 +66,8 @@ describe('login page tests', () => {
           <Login/>
       </Router>
     );
-    const email = john.doe@gmail.com;
-    const password = catzz;
+    const email = "john.doe@gmail.com";
+    const password = "catzz";
     const resp = {data: {authenticated: false}}
     const testResponse = axios.post.mockResolvedValue(resp); 
     fireEvent.click(getByRole("button"))
