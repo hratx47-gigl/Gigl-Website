@@ -57,7 +57,7 @@ class GigBar extends Component {
   
             <div id={`gigCollapse${index}`} className={"collapse" + (this.state.isExpanded ? ' show' : '')} aria-labelledby="headingOne" data-parent="#accordionExample">
               <div className="card-body">
-                <div id={owner._id}>Client: {gig.owner.name}  </div>
+                <div id={owner._id}>Client: {gig.owner.username} </div>
                 <div>Number of Applicants: {bidCount} </div>
                 <div>Description: {gig.description}</div>
               </div>
