@@ -22,6 +22,7 @@ class ActiveGigs extends React.Component {
                 date={item.date}
                 location={item.location}
                 description={item.description}
+                applicants={item.applicants}
               />
             );
           })}

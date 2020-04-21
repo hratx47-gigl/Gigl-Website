@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 
 const Navbar = (props) => {
   return (
@@ -12,7 +13,20 @@ const Navbar = (props) => {
           </div>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a
+                className="nav-link"
+                href="#"
+                onClick={() => {
+                  axios
+                    .post("/api/client/signout")
+                    .then((results) => {
+                      console.log(results);
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                    }); //may need to redirect
+                }}
+              >
                 Sign Out
               </a>
             </li>

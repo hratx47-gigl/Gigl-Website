@@ -12,16 +12,6 @@ class PerformerSelect extends React.Component {
 
   componentDidMount() {}
 
-  // onCheckboxChange(item) {
-  //   if (item === document.getElementById(item).id) {
-  //     if (document.getElementById(item).checked === true) {
-  //       document.getElementById(item).setAttribute("checked", false);
-  //     } else {
-  //       document.getElementById(item).setAttribute("checked", true);
-  //     }
-  //   }
-  // }
-
   render() {
     return (
       <>
@@ -42,6 +32,8 @@ class PerformerSelect extends React.Component {
           role="dialog"
           aria-labelledby="performerModalLabel"
           aria-hidden="true"
+          data-backdrop="static"
+          data-keyboard="false"
         >
           <div className="modal-dialog" role="document">
             <div className="modal-content">
@@ -61,18 +53,19 @@ class PerformerSelect extends React.Component {
               <div className="modal-body">
                 <ul className="list-group performer-list">
                   {this.props.applicants.map((item, index) => {
-                    item = item.name.split(" ").join("");
+                    name = item.name.split(" ").join("");
                     return (
                       <li className="list-group-item" key={index}>
                         <input
+                          checked={item.checked}
                           type="checkbox"
                           className="form-check-input"
-                          id={item + this.props.gigIndex}
+                          id={name + this.props.gigIndex}
                           onChange={() => {
-                            this.props.checked(item, this.props.gigIndex);
+                            this.props.checked(name, this.props.gigIndex);
                           }}
                         />
-                        {item}
+                        {name}
                       </li>
                     );
                   })}
@@ -82,7 +75,6 @@ class PerformerSelect extends React.Component {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  className="btn btn-secondary"
                   data-dismiss="modal"
                 >
                   Save changes

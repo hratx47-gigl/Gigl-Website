@@ -7,24 +7,22 @@ class PerformerView extends React.Component {
     super(props);
     this.state = {
       applicants: [
-        { name: "Spies Seanman", checked: false },
-        { name: "Matt", checked: false },
-        { name: "Jaeson", checked: false },
-        { name: "Nick", checked: false },
-        { name: "Roy", checked: false },
-        { name: "Tyler", checked: false },
-        { name: "David", checked: false },
+        // { name: "Spies Seanman", checked: false },
+        // { name: "Matt", checked: false },
+        // { name: "Jaeson", checked: false },
+        // { name: "Nick", checked: false },
+        // { name: "Roy", checked: false },
+        // { name: "Tyler", checked: false },
+        // { name: "David", checked: false },
       ],
-      // index: 0,
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({ index: this.props.index });
-  // }
+  componentDidMount() {
+    this.setState({ applicants: this.props.applicants });
+  }
 
   onCheckboxChange(item, gigIndex) {
-    console.log("this is gigindex", gigIndex);
     if (item + gigIndex === document.getElementById(item + gigIndex).id) {
       if (document.getElementById(item + gigIndex).checked === true) {
         document.getElementById(item + gigIndex).setAttribute("checked", false);
@@ -32,7 +30,7 @@ class PerformerView extends React.Component {
           if (this.state.applicants[i].name.split(" ").join("") === item) {
             let apps = [...this.state.applicants];
             apps[i].checked = true;
-            this.setState({ applicants: apps }, () => {});
+            this.setState({ applicants: apps });
           }
         }
       } else {
@@ -42,7 +40,7 @@ class PerformerView extends React.Component {
             let apps = [...this.state.applicants];
             apps[i].checked = false;
 
-            this.setState({ applicants: apps }, () => {});
+            this.setState({ applicants: apps });
           }
         }
       }
@@ -50,7 +48,6 @@ class PerformerView extends React.Component {
   }
 
   render() {
-    console.log('index', this.props.index);
     return (
       <div>
         <p>Selected Applicants</p>

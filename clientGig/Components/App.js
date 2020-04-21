@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./ClientDashboard/Navbar/ClientNavbar";
-// import axios from "axios";
+import axios from "axios";
 // import Test from "../../clientShared/test";
 import ActiveGigs from "./ClientDashboard/ActiveGigs/ClientActiveGigs";
 import ClientGigModal from "./ClientDashboard/AddGigs/ClientGigModal";
@@ -18,6 +18,15 @@ export default class App extends React.Component {
           location: "Your Moms Basement",
           description:
             "A super cool really long raid that's like totally hard and not even worth it sometimes but yeah it's fun let's do it",
+          applicants: [
+            { name: "Spies Seanman", checked: false },
+            { name: "Matt", checked: false },
+            { name: "Jaeson", checked: false },
+            { name: "Nick", checked: true },
+            { name: "Roy", checked: false },
+            { name: "Tyler", checked: false },
+            { name: "David", checked: false },
+          ],
         },
         {
           name: "Stuff",
@@ -25,12 +34,30 @@ export default class App extends React.Component {
           date: "04/20/2020",
           location: "Hell",
           description: "A poopity poppity",
+          applicants: [
+            { name: "Spies Seanman", checked: false },
+            { name: "Matt", checked: false },
+            { name: "Jaeson", checked: false },
+            { name: "Nick", checked: false },
+            { name: "Roy", checked: false },
+            { name: "Tyler", checked: false },
+            { name: "David", checked: false },
+          ],
         },
       ],
     };
     this.api = `http://localhost:8000/api/example`;
   }
-  componentDidMount() {}
+  componentDidMount() {
+    axios
+      .get("/client")
+      .then((data) => {
+        // console.log(data);
+      })
+      .catch((err) => {
+        // console.log(err);
+      });
+  }
 
   newGigSubmit(newGig) {
     var newObject = {

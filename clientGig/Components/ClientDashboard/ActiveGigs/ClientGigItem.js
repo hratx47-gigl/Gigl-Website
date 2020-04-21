@@ -7,7 +7,6 @@ class GigItem extends React.Component {
     this.state = {};
   }
   render() {
-    console.log("gigItem Index", this.props.index);
     return (
       <li
         style={{
@@ -51,7 +50,10 @@ class GigItem extends React.Component {
             </div>
           </div>
           <div className="col-md-2">
-            <PerformerView index={this.props.index} />
+            <PerformerView
+              index={this.props.index}
+              applicants={this.props.applicants}
+            />
           </div>
         </div>
       </li>
