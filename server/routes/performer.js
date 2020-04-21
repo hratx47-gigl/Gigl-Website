@@ -1,10 +1,7 @@
 const router = require('express').Router();
 const AuthController = require('../controllers/AuthController');
-<<<<<<< HEAD
 const PerformerController = require('../controllers/PerformerController');
-=======
 const { check, validationResult, body } = require('express-validator');
->>>>>>> 2c654a4e45870af8d2583258112fb90181eaa678
 
 
 router.post('/login', [
