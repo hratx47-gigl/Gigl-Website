@@ -89,10 +89,4 @@ function postPerformerSignout(req, res) {
     res.json({successful: true});
 }
 
-<<<<<<< HEAD
-
-
-module.exports = {postGigerLogin, postGigerSignup, postPerformerLogin, postPerformerSignup};
-=======
 module.exports = {postClientLogin, postClientSignup, postPerformerLogin, postPerformerSignup};
->>>>>>> 2c654a4e45870af8d2583258112fb90181eaa678
