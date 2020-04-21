@@ -5,10 +5,10 @@ import App from './Components/App.js';
 import Signup from '../clientShared/Signup/Signup.jsx'
 import Login from '../clientShared/Login';
 
-ReactDOM.render((<BrowserRouter basename="/giger">
+ReactDOM.render((<BrowserRouter basename="/client">
     <Switch>
         <Route path="/login">
-            <Login/>
+            <Login apiUrl="/api/client/login"/>
         </Route>
         <Route path="/signup">
             <Signup />

@@ -5,7 +5,15 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const session = require("express-session");
+const {isAuthClient, isAuthPerformer} = require("./middleware/AuthMiddleware");
+const bodyParser = require('body-parser')
 require("./database");
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json())
 
 // setup session
 app.use(
@@ -35,12 +43,12 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-app.get("/giger*", (req, res) => {
+app.get("/client*", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/indexGig.html"));
 });
 
-const gigerRouter = require("./routes/giger");
-app.use("/api/giger", gigerRouter);
+const clientRouter = require("./routes/client");
+app.use("/api/client", clientRouter);
 
 app.get("/performer*", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/indexPerformer.html"));

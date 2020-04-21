@@ -9,13 +9,13 @@ router.get('/', (req, res) => {
 router.post('/login', [
     body("email").isEmail(),
     body("password").isLength({min: 5}),
-], AuthController.postPerformerLogin);
+], AuthController.postClientLogin);
 
 router.post('/signup', [
     body("email").isEmail(),
     body("username").isLength({min: 4}),
     body("password").isLength({min: 5}),
 
-], AuthController.postPerformerSignup);
+], AuthController.postClientSignup);
 
 module.exports = router;

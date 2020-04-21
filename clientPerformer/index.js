@@ -8,7 +8,7 @@ import Login from '../clientShared/Login'
 ReactDOM.render(<BrowserRouter basename="/performer">
 <Switch>
     <Route path="/login">
-        <Login/>
+        <Login apiUrl="/api/performer/login"/>
     </Route>
     <Route path="/signup">
         <Signup />
