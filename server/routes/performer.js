@@ -2,9 +2,6 @@ const router = require('express').Router();
 const AuthController = require('../controllers/AuthController');
 const { check, validationResult, body } = require('express-validator');
 
-router.get('/', (req, res) => {
-    res.json({data:['dolphins', 'manatees', 'sea turles']})
-});
 
 router.post('/login', [
     body("email").isEmail(),

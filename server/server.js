@@ -43,18 +43,22 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
+app.use("/client*", isAuthClient);
 app.get("/client*", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/indexGig.html"));
 });
 
 const clientRouter = require("./routes/client");
+app.use("/api/client", isAuthClient);
 app.use("/api/client", clientRouter);
 
+app.use("/performer*", isAuthPerformer);
 app.get("/performer*", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/indexPerformer.html"));
 });
 
 const performerRouter = require("./routes/performer");
+app.use("/api/performer", isAuthPerformer);
 app.use("/api/performer", performerRouter);
 
 // You can place your routes here, feel free to refactor:
