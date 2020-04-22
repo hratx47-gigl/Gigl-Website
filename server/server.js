@@ -7,7 +7,8 @@ const path = require("path");
 const session = require("express-session");
 const {isAuthClient, isAuthPerformer} = require("./middleware/AuthMiddleware");
 const bodyParser = require('body-parser')
-require("./database");
+const {db} = require("./database");
+const MongoStore = require('connect-mongo')(session);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -22,6 +23,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false },
+    store: new MongoStore({ mongooseConnection: db })
   })
 );
 
