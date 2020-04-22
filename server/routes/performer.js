@@ -16,7 +16,7 @@ router.post('/signup', [
 
 ], AuthController.postPerformerSignup);
 
-router.get('/gigs', PerformerController.getPerformerGigs);
+router.get('/gigs', PerformerController.getAllGigs);
 
 router.get('/', (req, res) => {
     res.json({data:['dolphins', 'manatees', 'sea turles']})

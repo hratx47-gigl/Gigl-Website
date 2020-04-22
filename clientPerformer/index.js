@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import App from './Components/App.js';
-import PerformerDashboard from './Components/dashboard/PerformerDashboard';
+// import App from './Components/App.js';
+// import PerformerDashboard from './Components/dashboard/PerformerDashboard';
 import Signup from '../clientShared/Signup/Signup.jsx'
 import Login from '../clientShared/Login'
+import PerformerDashboard from './Components/performer_dashboard/PerformerDashboard'
 
 ReactDOM.render(<BrowserRouter basename="/performer">
 <Switch>
@@ -15,12 +16,12 @@ ReactDOM.render(<BrowserRouter basename="/performer">
         <Signup />
     </Route>
     <Route exact={true} path="/gigdashboard">
-        <PerformerDashboard/>
+        <h1>Page has bugs</h1>
     </Route>
 
     {/* keep at bottom */}
     <Route path="/">
-        <App />
+        <PerformerDashboard />
     </Route>
     
 </Switch>
