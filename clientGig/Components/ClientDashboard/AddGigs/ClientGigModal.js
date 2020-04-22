@@ -1,4 +1,5 @@
 import React from "react";
+import ImageUpload from "./ImageUpload.js";
 
 class ClientGigModal extends React.Component {
   constructor(props) {
@@ -91,9 +92,9 @@ class ClientGigModal extends React.Component {
                     onChange={this.descriptionInput}
                     placeholder="here"
                   />
+                  <li className="list-group-item"></li>
+                  Upload Image <ImageUpload />
                 </ul>
-
-                {/* <textarea> </textarea> */}
               </div>
               <div className="modal-footer">
                 <button
