@@ -48,13 +48,18 @@ class ImageUpload extends React.Component {
 
   render() {
     return (
-      <form>
+      <div className="custom-file">
         <input
+          id="gig-file-upload"
+          className="custom-file-input"
           type="file"
           name="gigImage"
           onChange={this.handleImageSelection}
         />
-      </form>
+        <label htmlFor="gig-file-upload" className="custom-file-label">
+          Upload Image
+        </label>
+      </div>
     );
   }
 }

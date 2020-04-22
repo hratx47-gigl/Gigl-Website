@@ -34,7 +34,6 @@ class ClientGigModal extends React.Component {
       event.target.value.length !== 0
     ) {
       alert("Price must be a numerical value");
-      event.targe;
     } else {
       this.setState({ price: event.target.value });
     }
@@ -92,34 +91,60 @@ class ClientGigModal extends React.Component {
                 </button> */}
               </div>
               <div className="modal-body">
-                <ul className="list-group">
-                  <li className="list-group-item">
-                    <input onChange={this.eventInput} placeholder="Name..." />
-                  </li>
-                  <li className="list-group-item">
-                    <input
-                      onChange={this.locationInput}
-                      placeholder="Location..."
-                    />
-                  </li>
-                  <li className="list-group-item">
-                    <input onChange={this.dateInput} placeholder="Date..." />
-                  </li>
-                  <li className="list-group-item">
-                    <input
-                      value={this.state.price}
-                      onChange={this.priceInput}
-                      placeholder="Price..."
-                    />
-                  </li>
-                  <li className="list-group-item">
-                    <textarea
-                      onChange={this.descriptionInput}
-                      placeholder="Describe Your Event..."
-                    />
-                  </li>
-                  Upload Image <ImageUpload />
-                </ul>
+                <div className="form-group">
+                  {/* <div className="row"> */}
+                  {/* <div className='col-sm-3'></div> */}
+                  <label htmlFor="gig-name-input">Name</label>
+                  <input
+                    id="gig-name-input"
+                    className="form-control"
+                    onChange={this.eventInput}
+                    placeholder="Name..."
+                  />
+                  {/* </div> */}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="gig-location-input">Location</label>
+                  <input
+                    id="gig-location-input"
+                    className="form-control"
+                    onChange={this.locationInput}
+                    placeholder="Location..."
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="gig-date-input">Date</label>
+                  <input
+                    id="gig-date-input"
+                    className="form-control"
+                    onChange={this.dateInput}
+                    placeholder="MM/DD/YYYY"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="gig-price-input">Price</label>
+                  <input
+                    id="gig-price-input"
+                    value={this.state.price}
+                    className="form-control"
+                    onChange={this.priceInput}
+                    placeholder="Price..."
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="gig-description-input">
+                    Event Description
+                  </label>
+                  <textarea
+                    id="gig-description-input"
+                    className="form-control"
+                    onChange={this.descriptionInput}
+                    placeholder="Describe Your Event..."
+                  />
+                </div>
+                <div className="form-group">
+                  <ImageUpload />
+                </div>
               </div>
               <div className="modal-footer">
                 <button

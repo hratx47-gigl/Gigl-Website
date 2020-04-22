@@ -6,15 +6,7 @@ class PerformerView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      applicants: [
-        // { name: "Spies Seanman", checked: false },
-        // { name: "Matt", checked: false },
-        // { name: "Jaeson", checked: false },
-        // { name: "Nick", checked: false },
-        // { name: "Roy", checked: false },
-        // { name: "Tyler", checked: false },
-        // { name: "David", checked: false },
-      ],
+      applicants: [],
     };
   }
 
