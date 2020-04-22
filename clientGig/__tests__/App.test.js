@@ -52,7 +52,7 @@ describe('login page tests', () => {
       </Router>
     );
     //redirect should only happen after succesful authentication
-    const resp = {data: {authenticated: true}}
+    const resp = {successful: true}
     const testResponse = axios.post.mockResolvedValue(resp); 
     fireEvent.click(getByRole("button"))
     expect(history.location.pathname).toBe("/client")
@@ -68,7 +68,7 @@ describe('login page tests', () => {
     );
     const email = "john.doe@gmail.com";
     const password = "catzz";
-    const resp = {data: {authenticated: false}}
+    const resp = {successful: false}
     const testResponse = axios.post.mockResolvedValue(resp); 
     fireEvent.click(getByRole("button"))
 
@@ -79,9 +79,9 @@ describe('login page tests', () => {
 
 
   test('an authenticated axios post responds with true on the authentication object', () => {
-    const resp = {data: {authenticated: true}}
+    const resp = {authenticated: true}
     const testResponse = axios.post.mockResolvedValue(resp);  
-    expect(testResponse.data.authenticated).toBe(true)
+    expect(testResponse.authenticated).toBe(true)
   })
 })
 
