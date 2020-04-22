@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const AuthController = require('../controllers/AuthController');
+const PerformerController = require('../controllers/PerformerController');
 const { check, validationResult, body } = require('express-validator');
 
 
@@ -16,5 +17,7 @@ router.post('/signup', [
 ], AuthController.postPerformerSignup);
 
 router.post("/signout", AuthController.postPerformerSignout);
+
+router.get('/gigs', PerformerController.getPerformerGigs);
 
 module.exports = router;

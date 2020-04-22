@@ -1,3 +1,4 @@
+
 var mongoose = require('mongoose');
 
 const mongodbHost = process.env.MONGO_HOST;
@@ -12,9 +13,10 @@ let authString = "";
 if (mongodbUser.length > 0 && mongodbPass.length > 0) {
     authString = `${mongodbUser}:${mongodbPass}@`;
 }
-
 mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodbDatabase}`, {useNewUrlParser: true})
-.then(() => console.log("Successfully connected to MongoDB"))
+.then(() => {
+    console.log("Successfully connected to MongoDB")
+})
 .catch((e) => console.log("Error connecting to MongoDB", e));
 
 const UserClient = require('./models/UserClient');

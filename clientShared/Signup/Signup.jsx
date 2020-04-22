@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import axios from 'axios';
-
+import axios from "axios";
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +21,7 @@ class Signup extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ isLoading: true , error: ""});
+    this.setState({ isLoading: true, error: "" });
     const email = this.emailRef.current.value;
     const username = this.usernameRef.current.value;
     const password = this.passwordRef.current.value;
@@ -40,7 +39,7 @@ class Signup extends React.Component {
       .then((resp) => {
         console.log("resp: ", resp);
 
-        this.setState({error: "", redirect: true, isLoading: false});
+        this.setState({ error: "", redirect: true, isLoading: false });
       })
       .catch((e) => {
         //display message in pop up(modal? alert?)
@@ -102,66 +101,66 @@ class Signup extends React.Component {
               <h5 className="card-title text-center">Sign Up</h5>
               <div className="dropdown-divider w-100"></div>
               {this.renderRedirect()}
-                  <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                      <label>E-mail</label>
-                      <input
-                        ref={this.emailRef}
-                        name="email"
-                        type="text"
-                        className="form-control"
-                        placeholder="john.doe@gmail.com"
-                        required
-                      ></input>
-                    </div>
-                    <div className="form-group">
-                      <label>Username</label>
-                      <input
-                        ref={this.usernameRef}
-                        name="username"
-                        type="text"
-                        className="form-control"
-                        placeholder="johndoe47"
-                        required
-                      ></input>
-                    </div>
-                    <div className="form-group">
-                      <label>Password</label>
-                      <input
-                        ref={this.passwordRef}
-                        name="password"
-                        type="password"
-                        className="form-control"
-                        placeholder="••••••••"
-                        required
-                      ></input>
-                    </div>
-                    <div className="form-group">
-                      <label>Confirm Password</label>
-                      <input
-                        ref={this.confirmPasswordRef}
-                        name="confirmPassword"
-                        type="password"
-                        className="form-control"
-                        placeholder="••••••••"
-                        required
-                      ></input>
-                    </div>
-                    <button className="btn btn-outline-secondary btn-block shiny joinButton">
-                      {this.state.isLoading ? (
-                        <>
-                          <span
-                            className="spinner-border spinner-border-sm"
-                            role="status"
-                            aria-hidden="true"
-                          ></span>
-                          Joining...
-                        </>
-                      ) : (
-                        "Join Gigl"
-                      )}
-                    </button>
-                  </form>
+              <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                  <label>E-mail</label>
+                  <input
+                    ref={this.emailRef}
+                    name="email"
+                    type="text"
+                    className="form-control"
+                    placeholder="john.doe@gmail.com"
+                    required
+                  ></input>
+                </div>
+                <div className="form-group">
+                  <label>Username</label>
+                  <input
+                    ref={this.usernameRef}
+                    name="username"
+                    type="text"
+                    className="form-control"
+                    placeholder="johndoe47"
+                    required
+                  ></input>
+                </div>
+                <div className="form-group">
+                  <label>Password</label>
+                  <input
+                    ref={this.passwordRef}
+                    name="password"
+                    type="password"
+                    className="form-control"
+                    placeholder="••••••••"
+                    required
+                  ></input>
+                </div>
+                <div className="form-group">
+                  <label>Confirm Password</label>
+                  <input
+                    ref={this.confirmPasswordRef}
+                    name="confirmPassword"
+                    type="password"
+                    className="form-control"
+                    placeholder="••••••••"
+                    required
+                  ></input>
+                </div>
+                <button className="btn btn-outline-secondary btn-block shiny joinButton">
+                  {this.state.isLoading ? (
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Joining...
+                    </>
+                  ) : (
+                    "Join Gigl"
+                  )}
+                </button>
+              </form>
               <div className="d-flex align-items-center text-center flex-column">
                 <div>
                   By registering you confirm you accept the{" "}
@@ -175,10 +174,7 @@ class Signup extends React.Component {
                 </div>
                 <div className="dropdown-divider w-100"></div>
                 <div>
-                  Already have an account?{" "}
-                  <span>
-                    <a href="redirect to login">Log In</a>
-                  </span>
+                  Already have an account? <Link to={"/login"}>Log in</Link>
                 </div>
               </div>
             </div>
