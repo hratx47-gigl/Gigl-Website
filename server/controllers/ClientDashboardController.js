@@ -18,7 +18,7 @@ async function postGig(req, res) {
     owner: user._id,
   });
   await newClientGig.save();
-  res.send("post request received");
+  res.json({ success: true });
 }
 
 module.exports = { getActiveGigs, postGig };

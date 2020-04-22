@@ -18,12 +18,9 @@ class PerformerView extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({ applicants: this.props.applicants });
-  }
+  componentDidMount() {}
 
   onCheckboxChange(item, gigIndex) {
-    console.log(item);
     if (item + gigIndex === document.getElementById(item + gigIndex).id) {
       if (document.getElementById(item + gigIndex).checked === true) {
         document.getElementById(item + gigIndex).setAttribute("checked", false);
@@ -49,27 +46,31 @@ class PerformerView extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <p>Selected Applicants</p>
-        <ul className={"list-group"}>
-          {this.state.applicants.map((item, index) => {
-            return (
-              <CurPerformers
-                key={index}
-                item={item}
-                gigIndex={this.props.index}
-              />
-            );
-          })}
-        </ul>
-        <PerformerSelect
-          applicants={this.state.applicants}
-          checked={this.onCheckboxChange.bind(this)}
-          gigIndex={this.props.index}
-        />
-      </div>
-    );
+    if (this.state.applicants.length === 0) {
+      return <div>No Applicants yet</div>;
+    } else {
+      return (
+        <div>
+          <p>Selected Applicants</p>
+          <ul className={"list-group"}>
+            {this.state.applicants.map((item, index) => {
+              return (
+                <CurPerformers
+                  key={index}
+                  item={item}
+                  gigIndex={this.props.index}
+                />
+              );
+            })}
+          </ul>
+          <PerformerSelect
+            applicants={this.state.applicants}
+            checked={this.onCheckboxChange.bind(this)}
+            gigIndex={this.props.index}
+          />
+        </div>
+      );
+    }
   }
 }
 
