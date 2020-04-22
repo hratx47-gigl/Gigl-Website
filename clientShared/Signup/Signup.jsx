@@ -28,10 +28,10 @@ class Signup extends React.Component {
                 <div className="offset-md-2"></div>
               </div>
             </div>
-            <h5 className="card-title text-center">Sign Up</h5>
+            <h5 className="card-title text-center">Sign up as {this.props.userType}</h5>
             <div className="dropdown-divider w-100"></div>
             <div className="justify-content-center">
-              <SignupForm />
+              <SignupForm userType={this.props.userType} apiUrl={this.props.apiUrl} />
             </div>
             <div className="d-flex align-items-center text-center flex-column">
             <div >By registering you confirm you accept the <span><a href="placeholder">Terms and Conditions</a></span> and <span><a href="placeholder">Privacy Policy</a></span></div>

@@ -12,7 +12,7 @@ ReactDOM.render(<BrowserRouter basename="/performer">
         <Login apiUrl="/api/performer/login"/>
     </Route>
     <Route path="/signup">
-        <Signup />
+        <Signup userType="performer" apiUrl="/api/performer/signup" />
     </Route>
     <Route exact={true} path="/gigdashboard">
         <PerformerDashboard/>

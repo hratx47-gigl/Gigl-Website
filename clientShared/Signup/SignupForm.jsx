@@ -1,5 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class SignupForm extends React.Component {
       username: '',
       password: '',
       confirmPassword: '',
-      redirect: false
+      redirect: false,
+      error: null
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,13 +30,35 @@ class SignupForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    // axios get request
-      // check username (get request to performers users table in db)
-        // if exists
-          // display message to the user
+    if (this.state.password === this.state.confirmPassword){
       // check password and confirmpassword to ensure they match
-        // if not
-          // display message to user
+       // if not
+         // display message to user
+      this.postSignup(()=>{this.setState({redirect:true})});
+    } else {
+      this.setState({error: "passwords don't match"});
+      // console.log("passwords don't match");
+    }
+    // return setTimeout(()=>{console.log('redirect'); this.setState({redirect:true}) }, 3000); //placeholder until backend running
+  }
+  
+  postSignup(cb){
+    // axios request
+    axios.post(this.props.apiUrl,
+      {
+        email:this.state.email,
+        username:this.state.username,
+        password:this.state.password 
+      }
+      ).then(response=>{
+        console.log(response);
+        if(response.data.successful){
+          cb();
+        } else {
+          // console.log(response.data.error);
+          this.setState({error:response.data.error})
+        }
+      })
       // if both above functions return true
         // POST request using axios
           // params
@@ -44,8 +68,8 @@ class SignupForm extends React.Component {
         // then - display message in pop up(modal? alert?) 
           // when confirmed by user - redirect to landing page
         // handle error if error
-        console.log('submitted');
-  return setTimeout(()=>{console.log('redirect'); this.setState({redirect:true}) }, 3000); //placeholder until backend running
+        // console.log('submitted');
+
   }
 
   renderRedirect(){
@@ -72,6 +96,9 @@ class SignupForm extends React.Component {
         <div className="form-group">
         {/* <label className="form-control">Confirm Password</label> */}
           <input name="confirmPassword" type="password" className="form-control" value={this.state.confirmPassword} onChange={this.handleChange} placeholder="Confirm Password" required></input>
+        </div>
+        <div className="d-flex align-items-center red">
+          {this.state.error}
         </div>
         <input className="btn btn-outline-secondary shiny joinButton" type="submit" value="Join Gigl" />
       </form>
