@@ -1,13 +1,16 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
+import GiglImage from './gigl_image/GiglImage';
+import ApplyButton from './apply_button/ApplyButton'
 
 class GigBar extends Component {
 
   constructor(props){
     super(props);
-
+   
     this.state = {
       isExpanded: false,
+      applied: false,
     }
 
     this.formatter = new Intl.NumberFormat('en-US', {
@@ -16,6 +19,16 @@ class GigBar extends Component {
     });
 
     this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.defaultImage = "https://i.imgur.com/KCeSIDy.png";
+    this.applyForGig = this.applyForGig.bind(this);
+  }
+
+  applyForGig(){
+    this.setState(
+      {
+        applied: !this.state.applied,
+      }
+    )
   }
 
   toggleCollapse() {
@@ -29,22 +42,22 @@ class GigBar extends Component {
   }
 
   render(){
-    const { gig, index } = this.props;
+    const { gig } = this.props;
     const owner = this.props.gig.owner;
     let bidCount = this.props.gig.applicants.length; 
     
     return (
-      <div className="accordion container p-0 mt-3" id="accordionExample">
+      <div className="accordion container p-0 mt-3" id={`accordion_${gig.id}`}>
         <div className="card">
-          <div className="card-header" id="headingOne">
-            <div className="row">
+          <div className="card-header gig_header" id="headingOne">
+            <div className="row ">
               <div className="col-6">
                 <b>{gig.name}</b>
                 <div>{gig.location} | {this.formatter.format(gig.price)}</div>
               </div>
               <div className="col-6 d-flex align-items-center justify-content-end">
-              <div className="float-right">{gig.date}</div>
-                <button className={"btn btn-link float-right" + (this.state.isExpanded ? ' change' : '')} type="button" aria-expanded="true" onClick={this.toggleCollapse}>
+                <div className="float-right">{gig.date}</div>
+                <button onclick={this.applyForGig} className={"btn btn-link float-right" + (this.state.isExpanded ? ' change' : '')} type="button" aria-expanded="true" onClick={this.toggleCollapse}>
                   <div className="hamburger">
                     <div className="bar1"></div>
                     <div className="bar2"></div>
@@ -55,15 +68,14 @@ class GigBar extends Component {
             </div>
           </div>
 
-          <div id={`gigCollapse${index}`} className={"collapse" + (this.state.isExpanded ? ' show' : '')} aria-labelledby="headingOne" data-parent="#accordionExample">
-            <div className="card-body">
+          <div id={`gigCollapse${gig.id}`} className={"collapse" + (this.state.isExpanded ? ' show' : '')} aria-labelledby="headingOne" data-parent={`accordion_${gig.id}`}>
+            <div className="card-body gig_body">
               <div className="row">
                 <div className="col-4">
                   <div class="card">
-                    <img src="https://images.unsplash.com/photo-1566927467984-6332be7377d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="Gigl Event Icon" className="card-img-top"/>
-                    <div class="card-body">
-                      {/* <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> */}
-                      <button type="button" class="btn btn-dark btn-lg btn-block">Apply</button>
+                    <img src="https://i.imgur.com/KCeSIDy.png" alt="Gigl Event Icon" className="card-img-top"/>
+                    <div class="card-body gig_body">
+                      <ApplyButton onClick={this.applyForGig} applied={this.state.applied} />
                     </div>
                   </div>
                   
