@@ -21,18 +21,12 @@ class GigItem extends React.Component {
             <div className={"d-flex justify-content-right"}>
               {/* <div className={"p-2"}>{this.props.name}</div> */}
 
-              <div className={"p-2"}>{this.props.date}</div>
+              <div className={"p-2"}>{dateFormat(this.props.date)}</div>
             </div>
 
             <h3 className={"d-flex justify-content-center"}>
               {this.props.event}
             </h3>
-            <div className={"d-flex justify-content-center"}>
-              <div className={"p-2 justify-content-center"}></div>
-            </div>
-            <div className={"d-flex justify-content-center"}>
-              <div className={"p-2"}>{this.props.description}</div>
-            </div>
 
             <div>
               <a
@@ -46,8 +40,9 @@ class GigItem extends React.Component {
               </a>
               <div className="collapse" id={`gig${this.props.index}`}>
                 <div className="card card-body">
-                  {this.props.location} <br />
-                  Price:{" " + this.props.price}
+                  Location: {this.props.location} <br />
+                  Price:{" $" + this.props.price} <br />
+                  Details: {this.props.description}
                 </div>
               </div>
             </div>
@@ -65,3 +60,11 @@ class GigItem extends React.Component {
 }
 
 export default GigItem;
+
+const dateFormat = (mongoDate) => {
+  var year, month, day;
+  year = mongoDate.slice(0, 4);
+  month = mongoDate.slice(5, 7);
+  day = mongoDate.slice(8, 10);
+  return month + "/" + day + "/" + year;
+};

@@ -7,7 +7,11 @@ const Navbar = (props) => {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container">
           <div className="navbar-header">
-            <a style={{ fontSize: "30px" }} className="navbar-brand" href="#logo">
+            <a
+              style={{ fontSize: "30px" }}
+              className="navbar-brand"
+              href="#logo"
+            >
               Gigl
             </a>
           </div>
@@ -20,7 +24,8 @@ const Navbar = (props) => {
                   axios
                     .post("/api/client/signout")
                     .then((results) => {
-                      console.log(results);
+                      // console.log(results);
+                      props.logOut();
                     })
                     .catch((error) => {
                       console.log(error);

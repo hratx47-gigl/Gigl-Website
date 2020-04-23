@@ -4,56 +4,28 @@ import axios from "axios";
 // import Test from "../../clientShared/test";
 import ActiveGigs from "./ClientDashboard/ActiveGigs/ClientActiveGigs";
 import ClientGigModal from "./ClientDashboard/AddGigs/ClientGigModal";
+import { Redirect, Link } from "react-router-dom";
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      redirect: false,
       username: "Jaeson",
-      currentGigs: [
-        // {
-        //   name: "Matt",
-        //   eventName: "Last Wish Raid",
-        //   date: "04/25/2020",
-        //   location: "Your Moms Basement",
-        //   description:
-        //     "A super cool really long raid that's like totally hard and not even worth it sometimes but yeah it's fun let's do it",
-        //   applicants: [
-        //     { name: "Spies Seanman", checked: false },
-        //     { name: "Matt", checked: false },
-        //     { name: "Jaeson", checked: false },
-        //     { name: "Nick", checked: true },
-        //     { name: "Roy", checked: true },
-        //     { name: "Tyler", checked: false },
-        //     { name: "David", checked: false },
-        //   ],
-        // },
-        // {
-        //   name: "Stuff",
-        //   eventName: "cool",
-        //   date: "04/20/2020",
-        //   location: "Hell",
-        //   description: "A poopity poppity",
-        //   applicants: [
-        //     { name: "Spies Seanman", checked: false },
-        //     { name: "Matt", checked: false },
-        //     { name: "Jaeson", checked: false },
-        //     { name: "Nick", checked: false },
-        //     { name: "Roy", checked: false },
-        //     { name: "Tyler", checked: false },
-        //     { name: "David", checked: false },
-        //   ],
-        // },
-      ],
+      currentGigs: [],
     };
     this.api = `http://localhost:8000/api/example`;
   }
   componentDidMount() {
+    this.rerender();
+  }
+
+  rerender() {
     axios
       .get("http://localhost:8000/api/client/gigs")
       .then((data) => {
         let activeGigs = data.data.gigs;
-        console.log(activeGigs);
+        // console.log(activeGigs);
         this.setState({ currentGigs: activeGigs });
       })
       .catch((err) => {
@@ -77,10 +49,7 @@ export default class App extends React.Component {
       axios
         .post("http://localhost:8000/api/client/addgig", newObject)
         .then((response) => {
-          console.log(response);
-          this.setState({
-            currentGigs: [...this.state.currentGigs, newObject],
-          });
+          this.rerender();
         })
         .catch((error) => {
           console.log("there was an error" + error);
@@ -88,22 +57,32 @@ export default class App extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <>
-        <Navbar />
-        <div
-          className="container"
-          style={{ backgroundColor: " rgba(100, 100, 100)" }}
-        >
-          <h1 style={{ paddingTop: "60px" }}>
-            {this.state.username + "'s Gigs"}
-          </h1>
+  logOut() {
+    console.log("logout");
+    this.setState({ redirect: true }, () => {
+      window.location.replace("http://localhost:8000/");
+    });
+  }
 
-          <ActiveGigs gigs={this.state.currentGigs} />
-          <ClientGigModal button={this.newGigSubmit.bind(this)} />
-        </div>
-      </>
-    );
+  render() {
+    if (this.state.redirect) return <Redirect to="/" />;
+    else {
+      return (
+        <>
+          <Navbar logOut={this.logOut.bind(this)} />
+          <div
+            className="container"
+            style={{ backgroundColor: " rgba(100, 100, 100)" }}
+          >
+            <h1 style={{ paddingTop: "60px" }}>
+              {this.state.username + "'s Gigs"}
+            </h1>
+
+            <ActiveGigs gigs={this.state.currentGigs} />
+            <ClientGigModal button={this.newGigSubmit.bind(this)} />
+          </div>
+        </>
+      );
+    }
   }
 }
