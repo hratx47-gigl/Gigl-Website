@@ -5,7 +5,11 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 // import PerformerDashboard from './Components/dashboard/PerformerDashboard';
 import Signup from '../clientShared/Signup/Signup.jsx'
 import Login from '../clientShared/Login'
+<<<<<<< HEAD
 import PerformerDashboard from './Components/performer_dashboard/PerformerDashboard'
+=======
+import PerformerProfile from './Components/profile/PerformerProfile.js';
+>>>>>>> 8eb00885f655b25fc30dbdc5323bf315c324d22a
 
 ReactDOM.render(<BrowserRouter basename="/performer">
 <Switch>
@@ -17,6 +21,9 @@ ReactDOM.render(<BrowserRouter basename="/performer">
     </Route>
     <Route exact={true} path="/gigdashboard">
         <h1>Page has bugs</h1>
+    </Route>
+    <Route exact={true} path="/profile" >
+        <PerformerProfile />
     </Route>
 
     {/* keep at bottom */}
