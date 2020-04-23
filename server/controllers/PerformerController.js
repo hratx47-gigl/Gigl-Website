@@ -65,8 +65,9 @@ function getPerformerAcceptedGigs(req, res){
       
       ], (err, results)=>{
         results.forEach(result=>{
-            result.ownerName = result.ownerName[0].username;
+            result.ownerName = result.ownerName[0] ? result.ownerName[0].username : '';
         });
+        console.log(results);
         err ? res.status(500).json({error: err}) : res.send(results);
       });
   }
