@@ -13,7 +13,7 @@ let authString = "";
 if (mongodbUser.length > 0 && mongodbPass.length > 0) {
     authString = `${mongodbUser}:${mongodbPass}@`;
 }
-mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodbDatabase}`, {useNewUrlParser: true})
+mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodbDatabase}`, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log("Successfully connected to MongoDB")
 })
