@@ -4,8 +4,6 @@ const { check, validationResult, body } = require("express-validator");
 const ClientDashboardController = require("../controllers/ClientDashboardController");
 const { Gig, UserClient, UserPerformer } = require("../database");
 
-
-
 router.post(
   "/login",
   [body("email").isEmail(), body("password").isLength({ min: 5 })],
@@ -22,10 +20,8 @@ router.post(
   AuthController.postClientSignup
 );
 
-router.post("/signout", AuthController.postClientSignout);
+router.post("/addgig", ClientDashboardController.postGig);
 
-// router.post("/addgig", [{}]);
-
-router.get("/client", ClientDashboardController.getActiveGigs);
+router.get("/gigs", ClientDashboardController.getActiveGigs);
 
 module.exports = router;

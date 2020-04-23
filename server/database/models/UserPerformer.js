@@ -7,7 +7,6 @@ var UserPerformer = new Schema({
     passwordHash: String,
     location: String,
     venmoName: String,
-    about: String,
 });
 
 module.exports = mongoose.model('UserPerformer', UserPerformer)

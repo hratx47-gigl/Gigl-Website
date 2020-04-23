@@ -18,8 +18,8 @@ class GigItem extends React.Component {
       >
         <div className="row">
           <div className="col-md-10">
-            <div className={"d-flex justify-content-between"}>
-              <div className={"p-2"}>{this.props.name}</div>
+            <div className={"d-flex justify-content-right"}>
+              {/* <div className={"p-2"}>{this.props.name}</div> */}
 
               <div className={"p-2"}>{this.props.date}</div>
             </div>
@@ -45,7 +45,10 @@ class GigItem extends React.Component {
                 See More Details
               </a>
               <div className="collapse" id={`gig${this.props.index}`}>
-                <div className="card card-body">{this.props.location}</div>
+                <div className="card card-body">
+                  {this.props.location} <br />
+                  Price:{" " + this.props.price}
+                </div>
               </div>
             </div>
           </div>
