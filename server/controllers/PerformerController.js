@@ -53,7 +53,6 @@ function getPerformerAcceptedGigs(req, res){
 
   function getPerformerAvailableGigs(req, res){
     const user = req.session.userPerformer;
-    const user = req.session.userPerformer;
     // Gig.find({"applicants": { "$ne": user}})
     Gig.aggregate([
 
