@@ -22,9 +22,11 @@ class PerformerDashboard extends Component {
     axios.get('http://localhost:8000/api/performer/gigs')
     .then(res =>{
       console.log('response data from server for all gigs', res.data)
-      this.setState({
-        gigs: res.data
-      })
+      if(res.data && res.data.length > 0){
+        this.setState({
+          gigs: res.data
+        })
+      }
     })
     .catch(err => {
       console.log(err)

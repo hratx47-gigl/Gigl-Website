@@ -46,6 +46,7 @@ class PerformerSelect extends React.Component {
                   className="close"
                   data-dismiss="modal"
                   aria-label="Close"
+                  onClick={this.props.remove}
                 >
                   <span aria-hidden="true">&times;</span>
                 </button>

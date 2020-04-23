@@ -18,6 +18,7 @@ class ActiveGigs extends React.Component {
                 key={index}
                 index={index}
                 name={item.name}
+                price={item.price}
                 event={item.eventName}
                 date={item.date}
                 location={item.location}

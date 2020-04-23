@@ -11,48 +11,50 @@ export default class App extends React.Component {
     this.state = {
       username: "Jaeson",
       currentGigs: [
-        {
-          name: "Matt",
-          eventName: "Last Wish Raid",
-          date: "04/25/2020",
-          location: "Your Moms Basement",
-          description:
-            "A super cool really long raid that's like totally hard and not even worth it sometimes but yeah it's fun let's do it",
-          applicants: [
-            { name: "Spies Seanman", checked: false },
-            { name: "Matt", checked: false },
-            { name: "Jaeson", checked: false },
-            { name: "Nick", checked: true },
-            { name: "Roy", checked: false },
-            { name: "Tyler", checked: false },
-            { name: "David", checked: false },
-          ],
-        },
-        {
-          name: "Stuff",
-          eventName: "cool",
-          date: "04/20/2020",
-          location: "Hell",
-          description: "A poopity poppity",
-          applicants: [
-            { name: "Spies Seanman", checked: false },
-            { name: "Matt", checked: false },
-            { name: "Jaeson", checked: false },
-            { name: "Nick", checked: false },
-            { name: "Roy", checked: false },
-            { name: "Tyler", checked: false },
-            { name: "David", checked: false },
-          ],
-        },
+        // {
+        //   name: "Matt",
+        //   eventName: "Last Wish Raid",
+        //   date: "04/25/2020",
+        //   location: "Your Moms Basement",
+        //   description:
+        //     "A super cool really long raid that's like totally hard and not even worth it sometimes but yeah it's fun let's do it",
+        //   applicants: [
+        //     { name: "Spies Seanman", checked: false },
+        //     { name: "Matt", checked: false },
+        //     { name: "Jaeson", checked: false },
+        //     { name: "Nick", checked: true },
+        //     { name: "Roy", checked: true },
+        //     { name: "Tyler", checked: false },
+        //     { name: "David", checked: false },
+        //   ],
+        // },
+        // {
+        //   name: "Stuff",
+        //   eventName: "cool",
+        //   date: "04/20/2020",
+        //   location: "Hell",
+        //   description: "A poopity poppity",
+        //   applicants: [
+        //     { name: "Spies Seanman", checked: false },
+        //     { name: "Matt", checked: false },
+        //     { name: "Jaeson", checked: false },
+        //     { name: "Nick", checked: false },
+        //     { name: "Roy", checked: false },
+        //     { name: "Tyler", checked: false },
+        //     { name: "David", checked: false },
+        //   ],
+        // },
       ],
     };
     this.api = `http://localhost:8000/api/example`;
   }
   componentDidMount() {
     axios
-      .get("/client")
+      .get("http://localhost:8000/api/client/gigs")
       .then((data) => {
-        // console.log(data);
+        let activeGigs = data.data.gigs;
+        console.log(activeGigs);
+        this.setState({ currentGigs: activeGigs });
       })
       .catch((err) => {
         // console.log(err);
@@ -60,16 +62,30 @@ export default class App extends React.Component {
   }
 
   newGigSubmit(newGig) {
+    console.log(newGig);
     var newObject = {
-      name: this.state.username,
-      eventName: newGig[0],
+      name: newGig[0],
       location: newGig[1],
       date: newGig[2],
-      description: newGig[3],
+      price: parseInt(newGig[3]),
+      description: newGig[4],
+      // applicants: [],
     };
-    this.setState({
-      currentGigs: [...this.state.currentGigs, newObject],
-    });
+    if (isNaN(parseInt(newObject.price))) {
+      alert("Price must be a number");
+    } else {
+      axios
+        .post("http://localhost:8000/api/client/addgig", newObject)
+        .then((response) => {
+          console.log(response);
+          this.setState({
+            currentGigs: [...this.state.currentGigs, newObject],
+          });
+        })
+        .catch((error) => {
+          console.log("there was an error" + error);
+        });
+    }
   }
 
   render() {
