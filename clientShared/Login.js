@@ -7,7 +7,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false
+      isLoading: false,
+      redirect: false
     };
     this.attemptLogin = this.attemptLogin.bind(this);
     this.apiUrl = props.apiUrl || "";
@@ -28,6 +29,10 @@ class Login extends Component {
     }).finally(() => {
       this.setState({isLoading: false});
     });
+  }
+
+  renderRedirect(){
+    if(this.state.redirect) return <Redirect to={"/"} />
   }
 
   render() {

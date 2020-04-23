@@ -22,6 +22,8 @@ router.post(
   AuthController.postClientSignup
 );
 
+router.post("/signout", AuthController.postClientSignout);
+
 // router.post("/addgig", [{}]);
 
 router.get("/client", ClientDashboardController.getActiveGigs);
