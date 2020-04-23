@@ -24,4 +24,6 @@ router.get('/', (req, res) => {
     res.json({data:['dolphins', 'manatees', 'sea turles']})
 });
 
+router.post("/signout", AuthController.postPerformerSignout);
+
 module.exports = router;
