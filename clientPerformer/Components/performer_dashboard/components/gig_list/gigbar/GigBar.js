@@ -43,8 +43,8 @@ class GigBar extends Component {
 
   render(){
     const { gig } = this.props;
-    const owner = this.props.gig.owner;
-    let bidCount = this.props.gig.applicants.length; 
+    const owner = this.props.gig.ownerName;
+    let bidCount = this.props.gig.applicants ? this.props.gig.applicants.length : this.props.gig.numberOfApplicants || 0; 
     
     return (
       <div className="accordion container p-0 mt-3" id={`accordion_${gig._id}`}>
@@ -68,7 +68,7 @@ class GigBar extends Component {
             </div>
           </div>
 
-          <div id={`gigCollapse${gig.id}`} className={"collapse" + (this.state.isExpanded ? ' show' : '')} aria-labelledby="headingOne" data-parent={`accordion_${gig.id}`}>
+          <div id={`gigCollapse${gig._id}`} className={"collapse" + (this.state.isExpanded ? ' show' : '')} aria-labelledby="headingOne" data-parent={`accordion_${gig._id}`}>
             <div className="card-body gig_body">
               <div className="row">
                 <div className="col-4">
@@ -81,7 +81,7 @@ class GigBar extends Component {
                   
                 </div>
                 <div className="col-8">
-                  <h3>{owner.username}</h3>
+                  <h3>{owner}</h3>
                   <div>Number of Applicants: {bidCount} </div>
                   <div>Description: {gig.description}</div>
                 </div>
