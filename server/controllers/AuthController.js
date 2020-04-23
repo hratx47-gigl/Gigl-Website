@@ -7,7 +7,7 @@ async function postClientLogin(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     const user = await UserClient.findOne({email: email}).exec();
-    if (!user) {
+    if (!user || user === null || user === undefined || user.passwordHash === undefined) {
         res.json({successful: false, error: "Invalid email/password combination"});
     }
     const doesMatch = await bcrypt.compare(password, user.passwordHash);
@@ -52,7 +52,7 @@ async function postPerformerLogin(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     const user = await UserPerformer.findOne({email: email}).exec();
-    if (!user) {
+    if (!user || user === null || user === undefined || user.passwordHash === undefined) {
         res.json({successful: false, error: "Invalid email/password combination"});
     }
     const doesMatch = await bcrypt.compare(password, user.passwordHash);
@@ -90,4 +90,4 @@ function postPerformerSignout(req, res) {
     res.json({successful: true});
 }
 
-module.exports = {postClientLogin, postClientSignup, postPerformerLogin, postPerformerSignup};
+module.exports = {postClientLogin, postClientSignup, postPerformerLogin, postPerformerSignup, postClientSignout, postPerformerSignout};

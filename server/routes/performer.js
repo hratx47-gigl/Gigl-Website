@@ -17,8 +17,6 @@ router.post('/signup', [
 ], AuthController.postPerformerSignup);
 
 router.get('/gigs', PerformerController.getAllGigs);
+router.post("/signout", AuthController.postPerformerSignout);
 
-router.get('/', (req, res) => {
-    res.json({data:['dolphins', 'manatees', 'sea turles']})
-});
 module.exports = router;
