@@ -27,7 +27,10 @@ function getPerformerPendingGigs(req, res){
     
       
       ], (err, results)=>{
-        results[1].ownerName = results[1].ownerName[0].username;
+        results.forEach(result=>{
+            result.ownerName = result.ownerName[0].username;
+        });
+        // results[1].ownerName = results[1].ownerName[0].username;
         err ? res.status(500).json({error: err}) : res.send(results);
       });
 }  
@@ -50,14 +53,23 @@ function getPerformerAcceptedGigs(req, res){
 
   function getPerformerAvailableGigs(req, res){
     const user = req.session.userPerformer;
-    Gig.find({"applicants": { "$ne": user}})
-    .then(docs =>{
+    const user = req.session.userPerformer;
+    // Gig.find({"applicants": { "$ne": user}})
+    Gig.aggregate([
+
+        {$match : {"applicants": { "$ne": user}}},
+      
+        {$lookup:{from: "userclients", localField: "owner", foreignField: "_id", as: "ownerName"}},
         
-      res.send(docs)
-  })
-  .catch(err => {
-      res.status(500).json({error: err})
-  })
+        {$project:{name:1, location:1, date:1, price:1, description:1, image:1, ownerName:1, numberOfApplicants:{$size:"$applicants"}}},
+    
+      
+      ], (err, results)=>{
+        results.forEach(result=>{
+            result.ownerName = result.ownerName[0].username;
+        });
+        err ? res.status(500).json({error: err}) : res.send(results);
+      });
   }
 
   function postApplyToGig(req, res){
