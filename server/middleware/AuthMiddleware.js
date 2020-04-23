@@ -19,7 +19,7 @@ function isAuthClient(req, res, next) {
 }
 
 function isAuthPerformer(req, res, next) {
-    const path = req.baseUrl;
+    const path = req.baseUrl + req.path;
     if (req.session.userClient === undefined) {
         if (path === "/performer/login/" || path === "/performer/signup/" || path === "/login/" || path === "/signup/" || path === "/api/performer/login" || path === "/api/performer/signup") {
             next();
