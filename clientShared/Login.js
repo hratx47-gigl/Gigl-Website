@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -7,7 +7,9 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false
+      isLoading: false,
+      redirect: false,
+      error: null
     };
     this.attemptLogin = this.attemptLogin.bind(this);
     this.apiUrl = props.apiUrl || "";
@@ -20,9 +22,14 @@ class Login extends Component {
     this.setState({isLoading: true});
     const email = this.emailRef.current.value;
     const password = this.passwordRef.current.value;
-    console.log(email, password);
+    // console.log(email, password);
     axios.post(this.apiUrl, {email: email, password: password}).then((resp) => {
-      console.log("resp: ", resp);
+      // console.log("resp: ", resp);
+      if(resp.data.successful){
+        this.setState({redirect:true})
+      } else {
+        this.setState({error:resp.data.error})
+      }
     }).catch((e) => {
       console.log("error: ", e);
     }).finally(() => {
@@ -31,6 +38,7 @@ class Login extends Component {
   }
 
   render() {
+    if(this.state.redirect){return <Redirect to='/'/>}
     return (
       <div className="container-fluid d-flex align-items-center justify-content-center bg-dark" style={{minHeight:"100vh", fontFamily: "optima"}}>
         <div className="card w-50">
@@ -47,7 +55,7 @@ class Login extends Component {
                 <div className="offset-md-2"></div>
               </div>
             </div>
-            <h5 className="card-title text-center">Login to your Account</h5>
+            <h5 className="card-title text-center">Login to your {this.props.userType} account</h5>
             <form onSubmit={this.attemptLogin}>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Email address</label>
@@ -75,6 +83,7 @@ class Login extends Component {
                   ref={this.passwordRef}
                 />
               </div>
+    <div className="login-error">{this.state.error}</div>
               <div className="text-center">
                 <button className="btn btn-block btn-outline-secondary">
                 {this.state.isLoading ? (<>

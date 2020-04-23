@@ -8,7 +8,7 @@ import Login from '../clientShared/Login';
 ReactDOM.render((<BrowserRouter basename="/client">
     <Switch>
         <Route path="/login">
-            <Login apiUrl="/api/client/login"/>
+            <Login apiUrl="/api/client/login" userType ="client"/>
         </Route>
         <Route path="/signup">
             <Signup />

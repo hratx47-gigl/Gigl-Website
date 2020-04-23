@@ -10,7 +10,7 @@ import PerformerProfile from './Components/profile/PerformerProfile.js';
 ReactDOM.render(<BrowserRouter basename="/performer">
 <Switch>
     <Route path="/login">
-        <Login apiUrl="/api/performer/login"/>
+        <Login apiUrl="/api/performer/login" userType="performer"/>
     </Route>
     <Route path="/signup">
         <Signup />
