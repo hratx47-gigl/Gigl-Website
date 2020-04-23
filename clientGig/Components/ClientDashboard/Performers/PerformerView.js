@@ -25,10 +25,10 @@ class PerformerView extends React.Component {
         }
       } else {
         document.getElementById(item + gigIndex).setAttribute("checked", true);
-        for (var i = 0; i < this.state.applicants.length; i++) {
-          if (this.state.applicants[i].name.split(" ").join("") === item) {
+        for (var j = 0; j < this.state.applicants.length; j++) {
+          if (this.state.applicants[j].name.split(" ").join("") === item) {
             let apps = [...this.state.applicants];
-            apps[i].checked = false;
+            apps[j].checked = false;
 
             this.setState({ applicants: apps });
           }

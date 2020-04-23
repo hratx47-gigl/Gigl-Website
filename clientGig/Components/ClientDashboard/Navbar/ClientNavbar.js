@@ -7,7 +7,7 @@ const Navbar = (props) => {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container">
           <div className="navbar-header">
-            <a style={{ fontSize: "30px" }} className="navbar-brand" href="#">
+            <a style={{ fontSize: "30px" }} className="navbar-brand" href="#logo">
               Gigl
             </a>
           </div>
@@ -15,7 +15,7 @@ const Navbar = (props) => {
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="#"
+                href="#signout"
                 onClick={() => {
                   axios
                     .post("/api/client/signout")

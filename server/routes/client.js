@@ -24,4 +24,6 @@ router.post("/addgig", ClientDashboardController.postGig);
 
 router.get("/gigs", ClientDashboardController.getActiveGigs);
 
+router.post("/signout", AuthController.postClientSignout);
+
 module.exports = router;

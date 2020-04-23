@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { get } from 'mongoose';
 import EditField from "./components/EditField"
 
 class PerformerProfile extends Component{
@@ -83,8 +82,8 @@ class PerformerProfile extends Component{
                     <nav className=" container navbar navbar-expand-lg navbar-dark bg-dark">
                         
                         <div className="">
-                        <img style={{maxHeight:40}} src="https://i.imgur.com/JWCVUEL.png" alt="" href="/"/>
-                        <a className="navbar-brand" href="#">Gigl</a>
+                        <img style={{maxHeight:40}} src="https://i.imgur.com/JWCVUEL.png" alt="Logo" href="/"/>
+                        <a className="navbar-brand" href="#home">Gigl</a>
                         </div>
 
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,10 +92,10 @@ class PerformerProfile extends Component{
                             <div className="collapse navbar-collapse" id="navbarNav">
                                 <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                                    <a className="nav-link" href="#home">Home <span className="sr-only">(current)</span></a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Logout</a>
+                                    <a className="nav-link" href="#logout">Logout</a>
                                 </li>
                                 </ul>
                             </div>
@@ -108,7 +107,7 @@ class PerformerProfile extends Component{
             <div className="container">
                 <div style={{height:50, width:"auto"}}></div>
                 <div className="row d-flex align-items-end">
-                    <div className="col-md-3 p-0"><img src={this.state.photo} className="img-fluid " alt="Responsive image" /></div>    
+                    <div className="col-md-3 p-0"><img src={this.state.photo} className="img-fluid " alt="Profile" /></div>    
                     <div className="col-md-4 text-md-center" style={{fontSize:20, fontWeight:"bold"}}> {this.state.username} </div>
                     <div className="col-md-5 text-md-center">
                         <div className="ml-auto" style={{marginRight:10, fontSize:20, fontWeight:"bold"}}> {this.state.location} </div>

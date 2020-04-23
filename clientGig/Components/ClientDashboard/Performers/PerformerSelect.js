@@ -1,5 +1,4 @@
 import React from "react";
-import PerformerView from "./PerformerView";
 
 class PerformerSelect extends React.Component {
   constructor(props) {
