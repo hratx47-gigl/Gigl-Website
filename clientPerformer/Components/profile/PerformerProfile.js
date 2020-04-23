@@ -6,9 +6,9 @@ class PerformerProfile extends Component{
         super(props);
 
         this.state ={
-            username : 'User Name',
+            username : 'Alex Garcia',
             email : 'email address',
-            location : 'Location',
+            location : 'Austin',
             venmoName : 'venmo name',
             about : 'Info about the performer',
             experience : 'This is the performer experience',
@@ -76,7 +76,7 @@ class PerformerProfile extends Component{
     render(){
         return (
             <>
-            <div style={{fontFamily:"optima"}}>
+            <div style={{fontFamily:"lalezar"}}>
             <div>
                 <div className="bg-dark">
                     <nav className=" container navbar navbar-expand-lg navbar-dark bg-dark">
@@ -92,7 +92,7 @@ class PerformerProfile extends Component{
                             <div className="collapse navbar-collapse" id="navbarNav">
                                 <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="#home">Home <span className="sr-only">(current)</span></a>
+                                    <a className="nav-link" href="/dashboard">Dashboard <span className="sr-only">(current)</span></a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="#logout">Logout</a>
@@ -104,15 +104,20 @@ class PerformerProfile extends Component{
             
                
             </div>
-            <div className="container">
+            <div className="bg-dark">
+            <div className="container py-2">
                 <div style={{height:50, width:"auto"}}></div>
                 <div className="row d-flex align-items-end">
-                    <div className="col-md-3 p-0"><img src={this.state.photo} className="img-fluid " alt="Profile" /></div>    
-                    <div className="col-md-4 text-md-center" style={{fontSize:20, fontWeight:"bold"}}> {this.state.username} </div>
+                    <div className="col-md-3 p-0">
+                    <img className="img-fluid img-thumbnail" src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
+                    </div>    
+                    <div className="col-md-4 text-md-center" style={{fontSize:30, color:"white"}}> {this.state.username} </div>
                     <div className="col-md-5 text-md-center">
-                        <div className="ml-auto" style={{marginRight:10, fontSize:20, fontWeight:"bold"}}> {this.state.location} </div>
+                        <div className="ml-auto" style={{marginRight:10, fontSize:30, color:"white"}}> {this.state.location} </div>
                     </div>      
                 </div>
+            </div>
+
             </div>
 
             <div style={{height:50}}></div>
@@ -120,16 +125,16 @@ class PerformerProfile extends Component{
             <div style={{}} className="container">
                 <div >
                     <div className="">
-                        <div>
-                            <h2>About <span></span><button value='0' onClick={this.editField} className="btn btn-outline-secondary">Edit</button></h2>
+                        <div className="my-4">
+                            <h2>About <span></span><button value='0' onClick={this.editField} className="btn btn-outline-secondary btn-sm">Edit</button></h2>
                             {this.state.editAbout === true? <EditField cancel={this.cancel} save={this.saveAbout} onChange={this.handleOnChange} currentText={this.state.currentText}/> : <p> {this.state.about} </p> } 
                         </div>
-                        <div>
-                            <h2>Experience <span></span><button value='1' onClick={this.editField} className="btn btn-outline-secondary">Edit</button></h2>
+                        <div className="mt-4">
+                            <h2>Experience <span></span><button value='1' onClick={this.editField} className="btn btn-outline-secondary btn-sm">Edit</button></h2>
                             {this.state.editExperience === true? <EditField cancel={this.cancel} save={this.saveExperience} onChange={this.handleOnChange} currentText={this.state.currentText}/> : <p> {this.state.experience} </p> } 
                         </div>
-                        <div>
-                            <h2>Education <span></span><button value='2' onClick={this.editField} className="btn btn-outline-secondary">Edit</button></h2>
+                        <div className="mt-4">
+                            <h2>Education <span></span><button value='2' onClick={this.editField} className="btn btn-outline-secondary btn-sm">Edit</button></h2>
                             {this.state.editEducation === true? <EditField cancel={this.cancel} save={this.saveEducation}  onChange={this.handleOnChange} currentText={this.state.currentText}/> : <p> {this.state.education} </p> } 
                         </div>
                     </div>
