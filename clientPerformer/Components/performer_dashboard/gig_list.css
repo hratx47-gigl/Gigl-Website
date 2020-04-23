@@ -1,13 +1,5 @@
 
 .accordion {
-  /* background-color: rgb(231, 231, 231);
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 20px; */
   transition: 0.4s;
   box-shadow: 6px 6px 10px grey !important;
 }
@@ -58,7 +50,7 @@
   height: 5px;
   background-color: #333;
   margin: 6px 0;
-  transition: 0.3s;
+  transition: 0.4s;
 }
 
 .change .bar1 {
