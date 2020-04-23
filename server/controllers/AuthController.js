@@ -12,6 +12,7 @@ async function postClientLogin(req, res) {
       successful: false,
       error: "Invalid email/password combination",
     });
+    return;
   }
   const doesMatch = await bcrypt.compare(password, user.passwordHash);
   if (doesMatch) {
@@ -62,6 +63,7 @@ async function postPerformerLogin(req, res) {
       successful: false,
       error: "Invalid email/password combination",
     });
+    return;
   }
   const doesMatch = await bcrypt.compare(password, user.passwordHash);
   if (doesMatch) {

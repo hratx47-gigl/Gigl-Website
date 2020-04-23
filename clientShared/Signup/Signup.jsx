@@ -104,8 +104,9 @@ class Signup extends React.Component {
               {this.renderRedirect()}
                   <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                      <label>E-mail</label>
+                      <label htmlFor="signup-email">E-mail</label>
                       <input
+                        id="signup-email"
                         ref={this.emailRef}
                         name="email"
                         type="text"
@@ -115,8 +116,9 @@ class Signup extends React.Component {
                       ></input>
                     </div>
                     <div className="form-group">
-                      <label>Username</label>
+                      <label htmlFor="signup-username">Username</label>
                       <input
+                        id="signup-username"
                         ref={this.usernameRef}
                         name="username"
                         type="text"
@@ -126,8 +128,9 @@ class Signup extends React.Component {
                       ></input>
                     </div>
                     <div className="form-group">
-                      <label>Password</label>
+                      <label htmlFor="signup-password">Password</label>
                       <input
+                        id="signup-password"
                         ref={this.passwordRef}
                         name="password"
                         type="password"
@@ -137,8 +140,9 @@ class Signup extends React.Component {
                       ></input>
                     </div>
                     <div className="form-group">
-                      <label>Confirm Password</label>
+                      <label htmlFor="signup-confirm">Confirm Password</label>
                       <input
+                        id="signup-confirm"
                         ref={this.confirmPasswordRef}
                         name="confirmPassword"
                         type="password"
@@ -176,9 +180,7 @@ class Signup extends React.Component {
                 <div className="dropdown-divider w-100"></div>
                 <div>
                   Already have an account?{" "}
-                  <span>
-                    <a href="redirect to login">Log In</a>
-                  </span>
+                  <Link to={"/login"}>Log in</Link>
                 </div>
               </div>
             </div>
