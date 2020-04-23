@@ -2,10 +2,7 @@ const { Gig } = require("../database");
 
 async function getActiveGigs(req, res) {
   const user = req.session.userClient;
-  const clientGig = await Gig.find(
-    { owner: user._id },
-    { projection: { _id: 0 } }
-  );
+  const clientGig = await Gig.find({ owner: user._id });
   res.json({ gigs: clientGig });
 }
 
@@ -21,7 +18,7 @@ async function postGig(req, res) {
     owner: user._id,
   });
   await newClientGig.save();
-  res.send("post request received");
+  res.json({ success: true });
 }
 
 module.exports = { getActiveGigs, postGig };

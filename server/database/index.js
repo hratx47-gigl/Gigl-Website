@@ -22,6 +22,5 @@ mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodb
 const UserClient = require('./models/UserClient');
 const UserPerformer = require('./models/UserPerformer');
 const Gig = require('./models/Gig');
-const db = mongoose.connection;
  
-module.exports = {UserClient, UserPerformer, Gig, db};
+module.exports = {UserClient, UserPerformer, Gig};

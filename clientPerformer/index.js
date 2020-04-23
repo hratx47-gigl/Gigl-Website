@@ -5,17 +5,21 @@ import App from './Components/App.js';
 import PerformerDashboard from './Components/dashboard/PerformerDashboard';
 import Signup from '../clientShared/Signup/Signup.jsx'
 import Login from '../clientShared/Login'
+import PerformerProfile from './Components/profile/PerformerProfile.js';
 
 ReactDOM.render(<BrowserRouter basename="/performer">
 <Switch>
     <Route path="/login">
-        <Login apiUrl="/api/performer/login"/>
+        <Login apiUrl="/api/performer/login" userType="performer"/>
     </Route>
     <Route path="/signup">
-    <Signup apiUrl="/api/performer/signup"/>
+        <Signup />
     </Route>
     <Route exact={true} path="/gigdashboard">
         <PerformerDashboard/>
+    </Route>
+    <Route exact={true} path="/profile" >
+        <PerformerProfile />
     </Route>
 
     {/* keep at bottom */}
