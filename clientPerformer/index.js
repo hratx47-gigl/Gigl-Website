@@ -8,12 +8,12 @@ import PerformerProfile from './Components/profile/PerformerProfile.js';
 
 ReactDOM.render(<BrowserRouter basename="/performer">
 <Switch>
-    {/* <Route path="/login">
+    <Route path="/login">
         <Login apiUrl="/api/performer/login"/>
     </Route>
     <Route path="/signup">
         <Signup apiUrl="/api/performer/signup"/>
-    </Route> */}
+    </Route>
     <Route exact={true} path="/profile" >
         <PerformerProfile />
     </Route>

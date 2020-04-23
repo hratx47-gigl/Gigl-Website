@@ -60,12 +60,14 @@ class PerformerDashboard extends Component {
                 <Navbar/>
                 <Profile/>
                 <div className="gig_info container">
+                    <div style={{height: '5px'}}></div>
                     <Upcoming/>
                     <div className="btn-group btn-group-lg" role="group" aria-label="Your">
                         <button onClick={() => {this.changeGigView('pending')}}>Pending Gigs</button>
                         <button onClick={() => {this.changeGigView('available')}}>Available Gigs</button>
                     </div>
                     <GigList gigs={ (gig_view === 'pending' ? pending : available) } />
+                    <div style={{height: '25px'}}></div>
                 </div>
             </div>
         )
