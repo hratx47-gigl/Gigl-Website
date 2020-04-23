@@ -9,6 +9,7 @@ class PerformerDashboard extends Component {
     constructor(props) {
         super(props)
         this.state ={
+            gig_view: 'pending',
             gigs: {
                 upcoming: [],
                 available: [{
@@ -43,8 +44,17 @@ class PerformerDashboard extends Component {
         }
     }
 
+    changeGigView(pageView){
+        this.setState((oldState) => {
+            if (oldState.gig_view !== pageView){
+                return {gig_view: pageView};
+            } 
+        })
+    }
+
     render() {
         let { available, pending } = this.state.gigs;
+        let { gig_view } = this.state;
         return(
             <div>
                 <Navbar/>
@@ -52,11 +62,10 @@ class PerformerDashboard extends Component {
                 <div className="gig_info container">
                     <Upcoming/>
                     <div className="btn-group btn-group-lg" role="group" aria-label="Your">
-                        <button>Pending Gigs</button>
-                        <button>Available Gigs</button>
+                        <button onClick={() => {this.changeGigView('pending')}}>Pending Gigs</button>
+                        <button onClick={() => {this.changeGigView('available')}}>Available Gigs</button>
                     </div>
-                    <GigList gigs={ available } />
-                    <GigList gigs={ pending } />
+                    <GigList gigs={ (gig_view === 'pending' ? pending : available) } />
                 </div>
             </div>
         )
