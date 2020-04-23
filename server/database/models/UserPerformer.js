@@ -8,6 +8,8 @@ var UserPerformer = new Schema({
     location: String,
     venmoName: String,
     about: String,
+    education: String,
+    experience: String
 });
 
 module.exports = mongoose.model('UserPerformer', UserPerformer)
