@@ -1,7 +1,7 @@
 const Gig = require('../database/models/Gig')
 
 function getPerformerGigs(req, res){
-    console.log('Recieved get gigs request')
+    console.log('Controller handling get gigs request')
     // res.status(200).send('response from get gigs')
     // res.json({data: ['test', 'res', 'data']})
       Gig.find()

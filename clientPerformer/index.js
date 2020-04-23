@@ -5,6 +5,7 @@ import App from './Components/App.js';
 import PerformerDashboard from './Components/dashboard/PerformerDashboard';
 import Signup from '../clientShared/Signup/Signup.jsx'
 import Login from '../clientShared/Login'
+import PerformerProfile from './Components/profile/PerformerProfile.js';
 
 ReactDOM.render(<BrowserRouter basename="/performer">
 <Switch>
@@ -16,6 +17,9 @@ ReactDOM.render(<BrowserRouter basename="/performer">
     </Route>
     <Route exact={true} path="/gigdashboard">
         <PerformerDashboard/>
+    </Route>
+    <Route exact={true} path="/profile" >
+        <PerformerProfile />
     </Route>
 
     {/* keep at bottom */}
