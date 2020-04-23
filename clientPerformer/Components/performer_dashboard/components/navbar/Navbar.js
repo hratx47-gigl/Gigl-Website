@@ -15,10 +15,10 @@ const Navbar = (prop) => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                <a className="nav-link text-white" style={{fontSize:"24px", fonFamily:"Lalezar"}} href="/">Home</a>
+                <a className="nav-link text-white pr-4" style={{fontSize:"24px", fontFamily:"Lalezar"}} href="/">Home</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link text-white" style={{fontSize:"24px", fonFamily:"Lalezar"}} href="/">Log Out</a>
+                <a className="nav-link text-white pl-3" style={{fontSize:"24px", fontFamily:"Lalezar"}} href="/">Log Out</a>
                 </li>
             </ul>
             </div>

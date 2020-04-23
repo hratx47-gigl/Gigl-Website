@@ -69,7 +69,7 @@ class GigBar extends Component {
                   
                 </div>
                 <div className="col-8">
-                  <div id={owner._id}>{owner.username} </div>
+                  <h3 id={owner._id}>{owner.username}</h3>
                   <div>Number of Applicants: {bidCount} </div>
                   <div>Description: {gig.description}</div>
                 </div>

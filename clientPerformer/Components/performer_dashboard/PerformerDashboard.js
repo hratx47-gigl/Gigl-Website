@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Navbar from './components/navbar/Navbar';
 import GigList from './components/gig_list/GigList';
-import Profile from './components/profile/Profile'
+import Profile from './components/profile/Profile';
+import Upcoming from './components/upcoming_gigs/Upcoming'
 import './gig_list.css';
 
 class PerformerDashboard extends Component {
@@ -43,6 +44,14 @@ class PerformerDashboard extends Component {
             <div>
                 <Navbar/>
                 <Profile/>
+                <Upcoming/>
+                <div className="container mt-4">
+                    <h5>Available Gigs</h5>
+                    <div className="btn-group btn-group-lg" role="group" aria-label="Your">
+                        <button>Pending Gigs</button>
+                        <button>Available Gigs</button>
+                    </div>
+                </div>
                 <GigList gigs={ gigs } />
             </div>
         )
