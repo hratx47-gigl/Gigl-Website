@@ -22,6 +22,7 @@ class PerformerProfile extends Component{
             editAbout: false,
             editEducation: false,
             editExperience: false,
+            editLocation: false,
             currentText : ''
             
         }
@@ -30,8 +31,10 @@ class PerformerProfile extends Component{
         this.saveAbout = this.saveAbout.bind(this);
         this.saveExperience = this.saveExperience.bind(this);
         this.saveEducation = this.saveEducation.bind(this);
+        this.saveLocation = this.saveLocation.bind(this);
         this.handleOnChange=this.handleOnChange.bind(this);
         this.cancel = this.cancel.bind(this)
+        this.logout = this.logout.bind(this)
     }
 
     componentDidMount(){
@@ -58,11 +61,11 @@ class PerformerProfile extends Component{
         event.preventDefault();
         console.log(event.target.value)
         let choice = parseInt(event.target.value)
-        let text = choice === 0 ? this.state.about : choice === 1? this.state.experience : this.state.education 
-        if(choice === 0) this.setState({editAbout : true, editEducation : false, editExperience : false, currentText : text})
-        if(choice === 1) this.setState({editExperience : true, editAbout : false, editEducation : false, currentText : text})
-        if(choice === 2) this.setState({editEducation : true, editExperience : false, editAbout : false, currentText : text})
-        
+        let text = choice === 0 ? this.state.about : choice === 1? this.state.experience : choice === 2 ? this.state.education : this.state.location
+        if(choice === 0) this.setState({editAbout : true, editEducation : false, editExperience : false, editLocation: false, currentText : text})
+        if(choice === 1) this.setState({editExperience : true, editAbout : false, editEducation : false, editLocation: false, currentText : text})
+        if(choice === 2) this.setState({editEducation : true, editExperience : false, editAbout : false, editLocation: false, currentText : text})
+        if(choice === 3) this.setState({editLocation: true, editExperience : false, editAbout : false, editEducation: false, currentText : text})
     }
     
     handleOnChange(event){
@@ -115,7 +118,30 @@ class PerformerProfile extends Component{
         })
     }
 
+    saveLocation(event){
+        event.preventDefault();
+        let text = this.state.currentText;
+        axios.put("http://localhost:8000/api/performer/profile", {params: { edit : 'location', location : text}})
+        .then(data =>{
+            this.setState({location: text, editLocation : false})
+        })
+        .catch(err =>{
+            this.setState({editLocation : false})
+        })
+    }
 
+    logout(event){
+      
+      axios.post("http://localhost:8000/api/performer/signout")
+      .then(data => {
+         console.log('Bye')
+      })
+      .catch(err => {
+          console.log(err)
+      })
+    }
+
+   
 
     
 
@@ -130,7 +156,7 @@ class PerformerProfile extends Component{
                         
                         <div className="">
                         <img style={{maxHeight:40}} src="https://i.imgur.com/JWCVUEL.png" alt="Logo" href="/"/>
-                        <a className="navbar-brand" href="#home">Gigl</a>
+                        <a style={{fontSize: 24}} className="navbar-brand" href="#home">Gigl</a>
                         </div>
 
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -139,10 +165,10 @@ class PerformerProfile extends Component{
                             <div className="collapse navbar-collapse" id="navbarNav">
                                 <ul className="navbar-nav ml-auto">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="/performer/dashboard">Dashboard <span className="sr-only">(current)</span></a>
+                                    <a className="nav-link" style={{fontSize: 20}} href="/performer/dashboard">Dashboard <span className="sr-only">(current)</span></a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" href="/">Logout</a>
+                                    <a className="nav-link active" style={{fontSize: 20}} href="/" onClick={this.logout} >Log Out</a>
                                 </li>
                                 </ul>
                             </div>
@@ -161,7 +187,7 @@ class PerformerProfile extends Component{
                     </div>    
                     <div className="col-md-4 text-md-center" style={{fontSize:30, color:"#e4e6eb"}}> {this.state.username} </div>
                     <div className="col-md-5 text-md-center">
-                        <div className="ml-auto" style={{marginRight:10, fontSize:20, color:"#e4e6eb"}}> {this.state.location} </div>
+                        <div className="ml-auto" style={{marginRight:10, color:"#e4e6eb"}}> {this.state.editLocation === true ? <EditField cancel={this.cancel} save={this.saveLocation} onChange={this.handleOnChange} currentText={this.state.currentText}/>  : <button onClick={this.editField} style={{fontSize:20, color:"#e4e6eb"}} value="3" className="btn btn-outline-drk">{this.state.location}</button>} </div>
                     </div>      
                 </div>
             </div>
