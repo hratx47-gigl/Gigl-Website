@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Navbar from './components/navbar/Navbar';
 import GigList from './components/gig_list/GigList';
 import Profile from './components/profile/Profile';
-import Upcoming from './components/upcoming_gigs/Upcoming'
 import './gig_list.css';
 import axios from 'axios';
 

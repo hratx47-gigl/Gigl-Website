@@ -1,4 +1,4 @@
 .backgroundImage {
     background: url("https://i.imgur.com/zPgoYhe.png") no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
