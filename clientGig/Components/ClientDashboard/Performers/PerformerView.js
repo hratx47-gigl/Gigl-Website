@@ -1,6 +1,7 @@
 import React from "react";
 import PerformerSelect from "./PerformerSelect";
 import AttachedPerformers from "./AttachedPerformers";
+import Axios from "axios";
 
 class PerformerView extends React.Component {
   constructor(props) {
@@ -11,6 +12,12 @@ class PerformerView extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.props.applicants[0]);
+    Axios.get(
+      `http://localhost:8000/api/client/performerinfo${this.props.applicants[0]}`
+    ).then((results) => {
+      console.log("results", results);
+    });
     //get user info from userperformers with a get request, and then setState
   }
 

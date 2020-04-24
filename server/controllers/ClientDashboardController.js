@@ -1,4 +1,4 @@
-const { Gig, UserClient } = require("../database");
+const { Gig, UserClient, UserPerformer } = require("../database");
 
 async function getActiveGigs(req, res) {
   const user = req.session.userClient;
@@ -23,19 +23,28 @@ async function postGig(req, res) {
 
 async function getUsername(req, res) {
   const user = req.session.userClient;
+  console.log(user.username);
   const clientUsername = await UserClient.find({ username: user.username });
   res.json({ username: clientUsername });
 }
 
 async function getPerformerDetails(req, res) {
-  const user = req.session.userPerformer;
-  const performerInfo = await UserPerformer.find({
-    username: user.username,
-    email: user.email,
-    location: user.location,
-    about: user.about,
-  });
-  res.json({ performerInfo });
+  console.log("search id = ", req.params);
+  var id = "_.id";
+  const test = await UserPerformer.find({ _id: req.params.id });
+  console.log(test);
+  res.json({ info: "cool" });
 }
+// async function getPerformerDetails(req, res) {
+//   console.log("this is req", req.session);
+//   const user = req.session.userPerformer;
+//   const performerInfo = await userPerformer.find({
+//     username: user.username,
+//     email: user.email,
+//     location: user.location,
+//     about: user.about,
+//   });
+//   res.json({ performerInfo });
+// }
 
 module.exports = { getActiveGigs, postGig, getUsername, getPerformerDetails };
