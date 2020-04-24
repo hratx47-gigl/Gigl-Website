@@ -6,7 +6,7 @@ const Navbar = () => {
         <div>
         <div className="bg-dark">
         <nav className="container navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" style={{fontFamily: "Candara", fontSize:"40px"}} href="/">
+        <a className="navbar-brand" style={{fontSize:"40px"}} href="/">
             <img src="https://i.imgur.com/JWCVUEL.png" className="pr-2" width="50" height="50" alt=""></img>
             Gigl
         </a>
@@ -22,7 +22,7 @@ const Navbar = () => {
                     </a>
                 </li>
                 <li className="nav-item d-flex align-items-center">
-                    <a className="nav-link text-white pr-3" style={{fontSize:"24px", fontFamily:"Lalezar"}} href="/">Home</a>
+                    <a className="nav-link text-white pr-3" style={{fontSize:"24px"}} href="/">Home</a>
                 </li>
                 <li className="nav-item d-flex align-items-center">
                 <a className="nav-link text-white" 
