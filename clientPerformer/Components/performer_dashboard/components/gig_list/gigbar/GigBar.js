@@ -47,10 +47,10 @@ class GigBar extends Component {
     let bidCount = this.props.gig.applicants.length; 
     
     return (
-      <div className="accordion container p-0 mt-3" id={`accordion_${gig._id}`}>
+      <div className="accordion container p-0" id={`accordion_${gig._id}`}>
         <div className="card">
           <div className="card-header gig_header" id="headingOne">
-            <div className="row ">
+            <div className="row">
               <div className="col-6">
                 <b>{gig.name}</b>
                 <div>{gig.location} | {this.formatter.format(gig.price)}</div>
