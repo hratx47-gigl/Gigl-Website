@@ -18,6 +18,11 @@ router.post('/signup', [
 
 // router.get('/gigs', PerformerController.getPerformerGigs);
 router.get('/gigs', PerformerController.getAllGigs);
+router.get('/gigs/pending', PerformerController.getPerformerPendingGigs);
+router.get('/gigs/available', PerformerController.getPerformerAvailableGigs);
+router.post('/gigs/apply', PerformerController.postApplyToGig);
+
+
 // router.post("/signout", AuthController.postPerformerSignout);
 
 router.get('/', (req, res) => {
