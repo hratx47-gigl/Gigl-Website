@@ -32,7 +32,7 @@ export default class App extends React.Component {
       .get("http://localhost:8000/api/client/gigs")
       .then((results) => {
         let activeGigs = results.data.gigs;
-        results.data.gigs[0].applicants = ["5ea25cbca533691b60e42460"];
+        results.data.gigs[0].applicants = ["5ea26524bbe82c239433a1f7"];
         this.setState({ currentGigs: activeGigs });
       })
       .catch((err) => {});

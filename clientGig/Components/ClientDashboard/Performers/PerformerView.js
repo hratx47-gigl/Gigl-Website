@@ -15,10 +15,14 @@ class PerformerView extends React.Component {
     console.log(this.props.applicants[0]);
     Axios.get(
       `http://localhost:8000/api/client/performerinfo/${this.props.applicants[0]}`
-    ).then((results) => {
-      console.log("results", results);
-    });
-    //get user info from userperformers with a get request, and then setState
+    )
+      .then((results) => {
+        console.log("here");
+        console.log("results", results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   onCheckboxChange(item, gigIndex) {

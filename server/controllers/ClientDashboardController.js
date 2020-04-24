@@ -23,29 +23,17 @@ async function postGig(req, res) {
 
 async function getUsername(req, res) {
   const user = req.session.userClient;
-
   console.log(user.username);
   const clientUsername = await UserClient.findById(user._id);
-  console.log(clientUsername);
   res.json({ username: clientUsername.username });
 }
 
 async function getPerformerDetails(req, res) {
   console.log("search id = ", req.params);
-  const test = await UserPerformer.findById(req.params.id);
-  console.log(test);
-  res.json({ info: "cool" });
+  const info = await UserPerformer.findById(req.params.id);
+  console.log(info);
+
+  res.json({ info: info });
 }
-// async function getPerformerDetails(req, res) {
-//   console.log("this is req", req.session);
-//   const user = req.session.userPerformer;
-//   const performerInfo = await userPerformer.find({
-//     username: user.username,
-//     email: user.email,
-//     location: user.location,
-//     about: user.about,
-//   });
-//   res.json({ performerInfo });
-// }
 
 module.exports = { getActiveGigs, postGig, getUsername, getPerformerDetails };
