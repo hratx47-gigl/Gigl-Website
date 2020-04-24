@@ -10,20 +10,22 @@ class PerformerDashboard extends Component {
         super(props)
         this.state ={
             gigView: 'pending',
-            upcomingGigs: [{
-                _id: 3,
-                name: 'Rat Party!!!!',
-                location: 'Austin, Tx',
-                price: 1000.59,
-                date: '4/20/2020',
-                owner: {
-                    _id: 1,
-                    username: 'Danielle Kuhn'
-                },
-                applicants: [1,2,3,4],
-                description: 'Master Splinter needs you to bake pizzas',
-                image: '',
-            }],
+            upcomingGigs: [
+                // {
+                // _id: 3,
+                // name: 'Rat Party!!!!',
+                // location: 'Austin, Tx',
+                // price: 1000.59,
+                // date: '4/20/2020',
+                // owner: {
+                //     _id: 1,
+                //     username: 'Danielle Kuhn'
+                // },
+                // applicants: [1,2,3,4],
+                // description: 'Master Splinter needs you to bake pizzas',
+                // image: '',
+            // }
+            ],
             availableGigs: [
             //     {
             //     _id: 1,
@@ -40,34 +42,36 @@ class PerformerDashboard extends Component {
             //     image: '',
             // }
             ],
-            pendingGigs: [{
-                _id: 1,
-                name: 'Bat Party!',
-                location: 'Austin, Tx',
-                price: 1,
-                date: '4/20/2020',
-                owner: {
-                    _id: 1,
-                    username: 'Jaeson'
-                },
-                applicants: [1,2,3,4],
-                description: 'Come see the bats fly!',
-                image: '',
-            },
-            {
-                _id: 1,
-                name: 'Bat Party!',
-                location: 'Austin, Tx',
-                price: 1,
-                date: '4/20/2020',
-                owner: {
-                    _id: 1,
-                    username: 'Jaeson'
-                },
-                applicants: [1,2,3,4],
-                description: 'Come see the bats fly!',
-                image: '',
-            }],
+            pendingGigs: [
+            //     {
+            //     _id: 1,
+            //     name: 'Bat Party!',
+            //     location: 'Austin, Tx',
+            //     price: 1,
+            //     date: '4/20/2020',
+            //     owner: {
+            //         _id: 1,
+            //         username: 'Jaeson'
+            //     },
+            //     applicants: [1,2,3,4],
+            //     description: 'Come see the bats fly!',
+            //     image: '',
+            // },
+            // {
+            //     _id: 1,
+            //     name: 'Bat Party!',
+            //     location: 'Austin, Tx',
+            //     price: 1,
+            //     date: '4/20/2020',
+            //     owner: {
+            //         _id: 1,
+            //         username: 'Jaeson'
+            //     },
+            //     applicants: [1,2,3,4],
+            //     description: 'Come see the bats fly!',
+            //     image: '',
+            // }
+            ],
             serverResponse: ''
         }
     }
@@ -85,6 +89,22 @@ class PerformerDashboard extends Component {
         .then(response=>{
             console.log('response ', response);
             this.setState({availableGigs: this.state.availableGigs.concat(...response.data)});
+        })
+        .catch(error=>{
+            console.error(error);
+        });
+        axios.get('/api/performer/gigs/accepted')
+        .then(response=>{
+            console.log('response ', response);
+            this.setState({upcomingGigs: this.state.upcomingGigs.concat(...response.data)});
+        })
+        .catch(error=>{
+            console.error(error);
+        });
+        axios.get('/api/performer/gigs/pending')
+        .then(response=>{
+            console.log('response ', response);
+            this.setState({pendingGigs: this.state.pendingGigs.concat(...response.data)});
         })
         .catch(error=>{
             console.error(error);

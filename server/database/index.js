@@ -10,10 +10,21 @@ const mongodbPass = process.env.MONGO_PASS || ""
 
 let authString = "";
 
+let connectionString = "";
+
+const hostIsUrl = process.env.MONGO_HOST_IS_URL || "false";
+
 if (mongodbUser.length > 0 && mongodbPass.length > 0) {
     authString = `${mongodbUser}:${mongodbPass}@`;
 }
-mongoose.connect(`mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodbDatabase}`, {useNewUrlParser: true, useUnifiedTopology: true})
+
+if (hostIsUrl.toLowerCase() === "true") {
+    connectionString = `mongodb+srv://${authString}${mongodbHost}/${mongodbDatabase}`;
+}else {
+    connectionString = `mongodb://${authString}${mongodbHost}:${mongodbPort}/${mongodbDatabase}`;
+}
+
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     console.log("Successfully connected to MongoDB")
 })
