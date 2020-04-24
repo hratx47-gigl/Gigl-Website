@@ -17,14 +17,22 @@ function getAllGigs(req, res){
   // get gigs for which performer has applied but not been accepted
 function getPerformerPendingGigs(req, res){
     const user = req.session.userPerformer;
-    Gig.find({"applicants": user, "accepted": { "$ne": user}})
-    .then(docs =>{
+    Gig.aggregate([
+
+        {$match : {"applicants": user, "accepted": { "$ne": user}}},
+      
+        {$lookup:{from: "userclients", localField: "owner", foreignField: "_id", as: "ownerName"}},
         
-    res.send(docs)
-    })
-    .catch(err => {
-    res.status(500).json({error: err})
-    })
+        {$project:{name:1, location:1, date:1, price:1, description:1, image:1, ownerName:1, numberOfApplicants:{$size:"$applicants"}}},
+    
+      
+      ], (err, results)=>{
+        results.forEach(result=>{
+            result.ownerName = result.ownerName[0].username;
+        });
+        // results[1].ownerName = results[1].ownerName[0].username;
+        err ? res.status(500).json({error: err}) : res.send(results);
+      });
 }  
 
 
@@ -45,14 +53,40 @@ function getPerformerAcceptedGigs(req, res){
 
   function getPerformerAvailableGigs(req, res){
     const user = req.session.userPerformer;
-    Gig.find({"applicants": { "$ne": user}})
-    .then(docs =>{
-        
-      res.send(docs)
-  })
-  .catch(err => {
-      res.status(500).json({error: err})
-  })
-  }   
+    // Gig.find({"applicants": { "$ne": user}})
+    Gig.aggregate([
 
-  module.exports = {getAllGigs, getPerformerAcceptedGigs, getPerformerPendingGigs, getPerformerAvailableGigs}
+        {$match : {"applicants": { "$ne": user}}},
+      
+        {$lookup:{from: "userclients", localField: "owner", foreignField: "_id", as: "ownerName"}},
+        
+        {$project:{name:1, location:1, date:1, price:1, description:1, image:1, ownerName:1, numberOfApplicants:{$size:"$applicants"}}},
+    
+      
+      ], (err, results)=>{
+        results.forEach(result=>{
+            result.ownerName = result.ownerName[0] ? result.ownerName[0].username : '';
+        });
+        console.log(results);
+        err ? res.status(500).json({error: err}) : res.send(results);
+      });
+  }
+
+  function postApplyToGig(req, res){
+    const user = req.session.userPerformer;
+    const gigId = req.body.gigId;
+    Gig.findOneAndUpdate(
+        {_id:gigId},
+        {$push : { applicants: user } }
+        )
+    .then((response)=>{
+        res.send(response)
+    })
+    .catch(err =>{
+        res.status(500).json({error: err})
+    })
+  }
+
+  module.exports = {getAllGigs, getPerformerAcceptedGigs, getPerformerPendingGigs, getPerformerAvailableGigs, postApplyToGig}
+
+

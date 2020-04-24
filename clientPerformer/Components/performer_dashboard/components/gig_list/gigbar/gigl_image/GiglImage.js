@@ -9,7 +9,7 @@ const GiglImage = ({ image }) => {
   image = (xhr.status !== "404") ? image : "https://i.imgur.com/KCeSIDy.png";
 
   return (
-    <img src={image}/>
+    <img src={image} alt=""/>
   )
 }
 

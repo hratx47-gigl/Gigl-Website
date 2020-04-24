@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Navbar from './components/navbar/Navbar';
 import GigList from './components/gig_list/GigList';
 import Profile from './components/profile/Profile';
-import Upcoming from './components/upcoming_gigs/Upcoming'
 import './gig_list.css';
+import axios from 'axios';
 
 class PerformerDashboard extends Component {
     constructor(props) {
@@ -24,20 +24,22 @@ class PerformerDashboard extends Component {
                 description: 'Master Splinter needs you to bake pizzas',
                 image: '',
             }],
-            availableGigs: [{
-                _id: 1,
-                name: 'Cat Party!!!!',
-                location: 'Austin, Tx',
-                price: 1000.59,
-                date: '4/20/2020',
-                owner: {
-                    _id: 1,
-                    username: 'Danielle Kuhn'
-                },
-                applicants: [1,2,3,4],
-                description: 'Looking for a cat rangler. Needs to have 5 yrs of experience dealing with domesticated cats.',
-                image: '',
-            }],
+            availableGigs: [
+            //     {
+            //     _id: 1,
+            //     name: 'Cat Party!!!!',
+            //     location: 'Austin, Tx',
+            //     price: 1000.59,
+            //     date: '4/20/2020',
+            //     owner: {
+            //         _id: 1,
+            //         username: 'Danielle Kuhn'
+            //     },
+            //     applicants: [1,2,3,4],
+            //     description: 'Looking for a cat rangler. Needs to have 5 yrs of experience dealing with domesticated cats.',
+            //     image: '',
+            // }
+            ],
             pendingGigs: [{
                 _id: 1,
                 name: 'Bat Party!',
@@ -65,7 +67,8 @@ class PerformerDashboard extends Component {
                 applicants: [1,2,3,4],
                 description: 'Come see the bats fly!',
                 image: '',
-            }]
+            }],
+            serverResponse: ''
         }
     }
 
@@ -75,6 +78,17 @@ class PerformerDashboard extends Component {
                 return {gigView: pageView};
             } 
         })
+    }
+
+    componentDidMount(){
+        axios.get('/api/performer/gigs/available')
+        .then(response=>{
+            console.log('response ', response);
+            this.setState({availableGigs: this.state.availableGigs.concat(...response.data)});
+        })
+        .catch(error=>{
+            console.error(error);
+        });
     }
 
     render() {

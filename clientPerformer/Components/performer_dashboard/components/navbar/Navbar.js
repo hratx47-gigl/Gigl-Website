@@ -32,13 +32,14 @@ const Navbar = () => {
                         .post("/api/performer/signout")
                         .then((results) => {
                         console.log(results);
+                        window.location.replace("http://localhost:8000")
                         })
                         .catch((error) => {
                         console.log(error);
                         }); //may need to redirect
                     }}
                     style={{fontSize:"24px", fontFamily:"Lalezar"}}>
-                Sign Out</a>
+                Log Out</a>
                 </li>
             </ul>
             </div>
