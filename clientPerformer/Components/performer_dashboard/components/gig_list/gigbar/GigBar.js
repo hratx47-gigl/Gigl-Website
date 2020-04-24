@@ -66,7 +66,7 @@ class GigBar extends Component {
               </div>
               <div className="col-6 d-flex align-items-center justify-content-end">
                 <div className="float-right">{gig.date}</div>
-                <button onClick={()=>{this.applyForGig(gig._id)}} className={"btn btn-link float-right" + (this.state.isExpanded ? ' change' : '')} type="button" aria-expanded="true" onClick={this.toggleCollapse}>
+                <button className={"btn btn-link float-right" + (this.state.isExpanded ? ' change' : '')} type="button" aria-expanded="true" onClick={this.toggleCollapse}>
                   <div className="hamburger">
                     <div className="bar1"></div>
                     <div className="bar2"></div>

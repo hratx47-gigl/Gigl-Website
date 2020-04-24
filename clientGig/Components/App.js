@@ -4,7 +4,6 @@ import axios from "axios";
 // import Test from "../../clientShared/test";
 import ActiveGigs from "./ClientDashboard/ActiveGigs/ClientActiveGigs";
 import ClientGigModal from "./ClientDashboard/AddGigs/ClientGigModal";
-import { Redirect, Link } from "react-router-dom";
 
 export default class App extends React.Component {
   constructor(props) {
