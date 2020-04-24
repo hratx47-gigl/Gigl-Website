@@ -4,7 +4,6 @@ import ApplyButton from './apply_button/ApplyButton';
 import axios from 'axios';
 // import { response } from 'express';
 // import GiglImage from './gigl_image/GiglImage';
-import ApplyButton from './apply_button/ApplyButton'
 
 class GigBar extends Component {
 
