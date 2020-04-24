@@ -3,9 +3,8 @@ import './profile.css'
 
 const Profile = (props)=> {
     return(
-        <div className="backgroundImage image-fluid">
+        <div className="backgroundImage image-fluid" style={{color: "#E4E6EB"}}>
         <div className="container-fluid">
-        <div style={{height:50, width:"auto"}}></div>
             <div className="row d-flex align-items-end">
                 <div className="col-md-3">
                     <div>
@@ -15,12 +14,12 @@ const Profile = (props)=> {
                     </div>
                 </div>
                 <div className="col-md-6 d-flex align-items-end pl-0">
-                    <a href="performer/profile" className="text-white pl-4" style={{fontFamily:"Lalezar"}}>
-                        <h2>A. Garcia</h2>
+                    <a href="performer/profile" className="pl-4" style={{color: "#E4E6EB"}}>
+                        <h1>Joe_hipster</h1>
                     </a>
                 </div>
                 <div className="col-md-3 d-flex align-items-end pl-4">
-                    <h3 className="text-white mb-0 pb-1" style={{fontFamily:"Lalezar"}}>Austin</h3>
+                    <h3 className="mb-0 pb-1">Austin</h3>
                 </div>
             </div>
         </div>
