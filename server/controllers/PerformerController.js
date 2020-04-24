@@ -1,4 +1,5 @@
-const Gig = require('../database/models/Gig')
+const Gig = require('../database/models/Gig');
+const mongoose = require('mongoose')
 
 function getAllGigs(req, res){
     console.log('Recieved get gigs request')
@@ -16,20 +17,22 @@ function getAllGigs(req, res){
 
   // get gigs for which performer has applied but not been accepted
 function getPerformerPendingGigs(req, res){
-    const user = req.session.userPerformer;
+  const user = mongoose.Types.ObjectId(req.session.userPerformer._id);
     Gig.aggregate([
 
-        {$match : {"applicants": user, "accepted": { "$ne": user}}},
+        {$match : {"applicants": user, "selectedApplicants": { "$ne": user}}},
       
         {$lookup:{from: "userclients", localField: "owner", foreignField: "_id", as: "ownerName"}},
         
         {$project:{name:1, location:1, date:1, price:1, description:1, image:1, ownerName:1, numberOfApplicants:{$size:"$applicants"}}},
-    
+        
+        {$sort : {date : -1 }}
       
       ], (err, results)=>{
         results.forEach(result=>{
-            result.ownerName = result.ownerName[0].username;
+            result.ownerName = result.ownerName[0] ? result.ownerName[0].username : '';
         });
+        console.log(results);
         // results[1].ownerName = results[1].ownerName[0].username;
         err ? res.status(500).json({error: err}) : res.send(results);
       });
@@ -38,22 +41,34 @@ function getPerformerPendingGigs(req, res){
 
     // get gigs for which performer has been accepted
 function getPerformerAcceptedGigs(req, res){
-    const user = req.session.userPerformer;
-    Gig.find({"accepted": user})
-    .then(docs =>{
+  const user = mongoose.Types.ObjectId(req.session.userPerformer._id);
+    Gig.aggregate([
+
+        // Gig.find({"accepted": user})
+        {$match : {"selectedApplicants": user}},
+      
+        {$lookup:{from: "userclients", localField: "owner", foreignField: "_id", as: "ownerName"}},
         
-        res.send(docs)
-    })
-    .catch(err => {
-        res.status(500).json({error: err})
-    })
+        {$project:{name:1, location:1, date:1, price:1, description:1, image:1, ownerName:1, numberOfApplicants:{$size:"$applicants"}}},
+
+        {$sort : {date : -1 }}
+      
+      ], (err, results)=>{
+        results.forEach(result=>{
+            result.ownerName = result.ownerName[0] ? result.ownerName[0].username : '';
+        });
+        // console.log(results);
+        err ? res.status(500).json({error: err}) : res.send(results);
+      });
     }  
     
   // get gigs for which performer has not applied
 
   function getPerformerAvailableGigs(req, res){
-    const user = req.session.userPerformer;
+    const user = mongoose.Types.ObjectId(req.session.userPerformer._id);
     // Gig.find({"applicants": { "$ne": user}})
+    
+    console.log(user);
     Gig.aggregate([
 
         {$match : {"applicants": { "$ne": user}}},
@@ -62,12 +77,14 @@ function getPerformerAcceptedGigs(req, res){
         
         {$project:{name:1, location:1, date:1, price:1, description:1, image:1, ownerName:1, numberOfApplicants:{$size:"$applicants"}}},
     
-      
+        {$sort : {date : -1 }}
+
       ], (err, results)=>{
         results.forEach(result=>{
             result.ownerName = result.ownerName[0] ? result.ownerName[0].username : '';
         });
         console.log(results);
+        if(err) console.log(err);
         err ? res.status(500).json({error: err}) : res.send(results);
       });
   }
@@ -77,7 +94,7 @@ function getPerformerAcceptedGigs(req, res){
     const gigId = req.body.gigId;
     Gig.findOneAndUpdate(
         {_id:gigId},
-        {$push : { applicants: user } }
+        {$addToSet : { applicants: user } }
         )
     .then((response)=>{
         res.send(response)
