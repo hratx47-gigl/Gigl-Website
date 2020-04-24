@@ -5,7 +5,7 @@ const ApplyButton = ({ applied, ...props }) => {
   const buttonText = (!applied ? 'Apply' : 'Applied');
 
   return (
-    <button {...props} type="button" class={classList}>{buttonText}</button>
+    <button {...props} type="button" className={classList}>{buttonText}</button>
   )
 }
 

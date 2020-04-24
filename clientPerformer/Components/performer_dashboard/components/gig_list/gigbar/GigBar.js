@@ -1,7 +1,9 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react';
 import GiglImage from './gigl_image/GiglImage';
-import ApplyButton from './apply_button/ApplyButton'
+import ApplyButton from './apply_button/ApplyButton';
+import axios from 'axios';
+// import { response } from 'express';
 
 class GigBar extends Component {
 
@@ -23,12 +25,19 @@ class GigBar extends Component {
     this.applyForGig = this.applyForGig.bind(this);
   }
 
-  applyForGig(){
+  applyForGig(gigId){
     this.setState(
       {
         applied: !this.state.applied,
       }
-    )
+    );
+    axios.post('/api/performer/gigs/apply', {gigId})
+    .then(response=>{
+      console.log(response);
+    })
+    .catch(err=>{
+      console.error(err);
+    });
   }
 
   toggleCollapse() {
@@ -57,7 +66,7 @@ class GigBar extends Component {
               </div>
               <div className="col-6 d-flex align-items-center justify-content-end">
                 <div className="float-right">{gig.date}</div>
-                <button onclick={this.applyForGig} className={"btn btn-link float-right" + (this.state.isExpanded ? ' change' : '')} type="button" aria-expanded="true" onClick={this.toggleCollapse}>
+                <button onClick={()=>{this.applyForGig(gig._id)}} className={"btn btn-link float-right" + (this.state.isExpanded ? ' change' : '')} type="button" aria-expanded="true" onClick={this.toggleCollapse}>
                   <div className="hamburger">
                     <div className="bar1"></div>
                     <div className="bar2"></div>
@@ -72,10 +81,10 @@ class GigBar extends Component {
             <div className="card-body gig_body">
               <div className="row">
                 <div className="col-4">
-                  <div class="card">
+                  <div className="card">
                     <img src="https://i.imgur.com/KCeSIDy.png" alt="Gigl Event Icon" className="card-img-top"/>
-                    <div class="card-body gig_body">
-                      <ApplyButton onClick={this.applyForGig} applied={this.state.applied} />
+                    <div className="card-body gig_body">
+                      <ApplyButton onClick={()=>{this.applyForGig(gig._id)}} applied={this.state.applied} />
                     </div>
                   </div>
                   
