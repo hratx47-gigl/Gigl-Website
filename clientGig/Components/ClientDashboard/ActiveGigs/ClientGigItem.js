@@ -10,9 +10,11 @@ class GigItem extends React.Component {
     return (
       <li
         style={{
-          border: "2px solid black",
-          borderRadius: "15px",
+          color: "#E4E6EB",
+          border: "1px solid #34ACBC",
           marginBottom: "10px",
+          backgroundColor: "#373737",
+          borderRadius: "5px",
         }}
         className="list-group-item"
       >
@@ -21,21 +23,15 @@ class GigItem extends React.Component {
             <div className={"d-flex justify-content-right"}>
               {/* <div className={"p-2"}>{this.props.name}</div> */}
 
-              <div className={"p-2"}>{this.props.date}</div>
+              <div className={"p-2"}>{dateFormat(this.props.date)}</div>
             </div>
 
             <h3 className={"d-flex justify-content-center"}>
               {this.props.event}
             </h3>
-            <div className={"d-flex justify-content-center"}>
-              <div className={"p-2 justify-content-center"}></div>
-            </div>
-            <div className={"d-flex justify-content-center"}>
-              <div className={"p-2"}>{this.props.description}</div>
-            </div>
-
             <div>
               <a
+                style={{ color: "#34ACBC" }}
                 className={"btn btn-link"}
                 data-toggle={"collapse"}
                 href={`#gig${this.props.index}`}
@@ -45,9 +41,13 @@ class GigItem extends React.Component {
                 See More Details
               </a>
               <div className="collapse" id={`gig${this.props.index}`}>
-                <div className="card card-body">
-                  {this.props.location} <br />
-                  Price:{" " + this.props.price}
+                <div
+                  className="card card-body"
+                  style={{ backgroundColor: "#212121" }}
+                >
+                  Location: {this.props.location} <br />
+                  Price:{" $" + this.props.price} <br />
+                  Details: {this.props.description}
                 </div>
               </div>
             </div>
@@ -65,3 +65,11 @@ class GigItem extends React.Component {
 }
 
 export default GigItem;
+
+const dateFormat = (mongoDate) => {
+  var year, month, day;
+  year = mongoDate.slice(0, 4);
+  month = mongoDate.slice(5, 7);
+  day = mongoDate.slice(8, 10);
+  return month + "/" + day + "/" + year;
+};

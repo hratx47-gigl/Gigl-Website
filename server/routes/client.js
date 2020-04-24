@@ -24,6 +24,10 @@ router.post("/addgig", ClientDashboardController.postGig);
 
 router.get("/gigs", ClientDashboardController.getActiveGigs);
 
+router.get("/profile/username", ClientDashboardController.getUsername); //does this work, Marc?
+
 router.post("/signout", AuthController.postClientSignout);
+
+router.get("/performerinfo/:id", ClientDashboardController.getPerformerDetails);
 
 module.exports = router;

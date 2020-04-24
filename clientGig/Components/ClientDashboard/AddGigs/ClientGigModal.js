@@ -40,10 +40,35 @@ class ClientGigModal extends React.Component {
   }
 
   dateInput(event) {
-    this.setState({
-      date: event.target.value,
-    });
-    // console.log(event.target.value);
+    var dateformat = /((0[13578]|1[02])[\/.]31[\/.](18|19|20)[0-9]{2})|((01|0[3-9]|1[1-2])[\/.](29|30)[\/.](18|19|20)[0-9]{2})|((0[1-9]|1[0-2])[\/.](0[1-9]|1[0-9]|2[0-8])[\/.](18|19|20)[0-9]{2})|((02)[\/.]29[\/.](((18|19|20)(04|08|[2468][048]|[13579][26]))|2000))/;
+    var input = event.target.value;
+
+    if (
+      input[input.length - 1] !== "/" &&
+      typeof parseInt(input[input.length - 1]) !== "number"
+    ) {
+      alert("1Date only accepts numbers and '/' characters");
+    } else {
+      if (
+        isNaN(parseInt(input[input.length - 1])) &&
+        input[input.length - 1] !== "/" &&
+        input[input.length - 1] !== undefined
+      ) {
+        alert("2Date only accepts numbers and '/' characters");
+      } else {
+        if (event.target.value.length >= 10) {
+          if (dateformat.test(event.target.value)) {
+            this.setState({
+              date: event.target.value,
+            });
+          } else {
+            alert("Date must be in proper format (MM/DD/YYYY)");
+          }
+        } else {
+          this.setState({ date: event.target.value });
+        }
+      }
+    }
   }
 
   descriptionInput(event) {
@@ -63,6 +88,11 @@ class ClientGigModal extends React.Component {
             className="btn btn-primary"
             data-toggle="modal"
             data-target="#clientModal"
+            style={{
+              marginBottom: "10px",
+              backgroundColor: "#34ACBC",
+              color: "#212121",
+            }}
           >
             Create New Gig
           </button>
@@ -115,6 +145,7 @@ class ClientGigModal extends React.Component {
                 <div className="form-group">
                   <label htmlFor="gig-date-input">Date</label>
                   <input
+                    value={this.state.date}
                     id="gig-date-input"
                     className="form-control"
                     onChange={this.dateInput}
