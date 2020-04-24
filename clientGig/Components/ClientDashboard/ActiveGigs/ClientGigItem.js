@@ -1,6 +1,5 @@
 import React from "react";
 import PerformerView from "../Performers/PerformerView";
-import { isWhiteSpaceLike } from "typescript";
 
 class GigItem extends React.Component {
   constructor(props) {

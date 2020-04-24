@@ -1,6 +1,6 @@
 import React from "react";
 import PerformerSelect from "./PerformerSelect";
-import CurPerformers from "./AttachedPerformers";
+import AttachedPerformers from "./AttachedPerformers";
 
 class PerformerView extends React.Component {
   constructor(props) {
@@ -10,7 +10,9 @@ class PerformerView extends React.Component {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    //get user info from userperformers with a get request, and then setState
+  }
 
   onCheckboxChange(item, gigIndex) {
     if (item + gigIndex === document.getElementById(item + gigIndex).id) {
@@ -38,6 +40,7 @@ class PerformerView extends React.Component {
   }
 
   render() {
+    console.log(this.props.applicants);
     if (this.state.applicants.length === 0) {
       return <div>No Applicants yet</div>;
     } else {
@@ -47,7 +50,7 @@ class PerformerView extends React.Component {
           <ul className={"list-group"}>
             {this.state.applicants.map((item, index) => {
               return (
-                <CurPerformers
+                <AttachedPerformers
                   key={index}
                   item={item}
                   gigIndex={this.props.index}

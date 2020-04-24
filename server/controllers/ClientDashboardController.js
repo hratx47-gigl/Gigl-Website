@@ -27,4 +27,15 @@ async function getUsername(req, res) {
   res.json({ username: clientUsername });
 }
 
-module.exports = { getActiveGigs, postGig, getUsername };
+async function getPerformerDetails(req, res) {
+  const user = req.session.userPerformer;
+  const performerInfo = await UserPerformer.find({
+    username: user.username,
+    email: user.email,
+    location: user.location,
+    about: user.about,
+  });
+  res.json({ performerInfo });
+}
+
+module.exports = { getActiveGigs, postGig, getUsername, getPerformerDetails };

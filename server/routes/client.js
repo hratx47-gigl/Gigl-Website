@@ -2,7 +2,12 @@ const router = require("express").Router();
 const AuthController = require("../controllers/AuthController");
 const { check, validationResult, body } = require("express-validator");
 const ClientDashboardController = require("../controllers/ClientDashboardController");
-const { Gig, UserClient, UserPerformer } = require("../database");
+const {
+  Gig,
+  UserClient,
+  UserPerformer,
+  getPerformerDetails,
+} = require("../database");
 
 router.post(
   "/login",
@@ -28,5 +33,6 @@ router.get("/client", ClientDashboardController.getUsername); //does this work, 
 
 router.post("/signout", AuthController.postClientSignout);
 
+router.get("/performerinfo", ClientDashboardController.getPerformerDetails);
 
 module.exports = router;

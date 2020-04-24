@@ -30,14 +30,12 @@ export default class App extends React.Component {
   rerender() {
     axios
       .get("http://localhost:8000/api/client/gigs")
-      .then((data) => {
-        let activeGigs = data.data.gigs;
-        // console.log(activeGigs);
+      .then((results) => {
+        let activeGigs = results.data.gigs;
+        results.data.gigs[0].applicants = ["5ea2414f797d3c492c4a6b85"];
         this.setState({ currentGigs: activeGigs });
       })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .catch((err) => {});
   }
 
   newGigSubmit(newGig) {
