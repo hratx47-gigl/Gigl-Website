@@ -23,8 +23,10 @@ async function postGig(req, res) {
 
 async function getUsername(req, res) {
   const user = req.session.userClient;
+
   console.log(user.username);
   const clientUsername = await UserClient.findById(user._id);
+  console.log(clientUsername);
   res.json({ username: clientUsername.username });
 }
 

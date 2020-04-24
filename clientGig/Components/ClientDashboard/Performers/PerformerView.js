@@ -14,7 +14,7 @@ class PerformerView extends React.Component {
   componentDidMount() {
     console.log(this.props.applicants[0]);
     Axios.get(
-      `http://localhost:8000/api/client/performerinfo${this.props.applicants[0]}`
+      `http://localhost:8000/api/client/performerinfo/${this.props.applicants[0]}`
     ).then((results) => {
       console.log("results", results);
     });

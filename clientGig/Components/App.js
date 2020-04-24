@@ -16,9 +16,9 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:8000/api/client/client")
+      .get("http://localhost:8000/api/client/profile/username")
       .then((results) => {
-        var user = results.data.username[0].username;
+        var user = results.data.username;
         this.setState({ username: user });
       })
       .catch(() => {

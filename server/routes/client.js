@@ -24,7 +24,7 @@ router.post("/addgig", ClientDashboardController.postGig);
 
 router.get("/gigs", ClientDashboardController.getActiveGigs);
 
-router.get("/client", ClientDashboardController.getUsername); //does this work, Marc?
+router.get("/profile/username", ClientDashboardController.getUsername); //does this work, Marc?
 
 router.post("/signout", AuthController.postClientSignout);
 
