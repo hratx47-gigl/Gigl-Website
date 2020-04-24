@@ -2,12 +2,7 @@ const router = require("express").Router();
 const AuthController = require("../controllers/AuthController");
 const { check, validationResult, body } = require("express-validator");
 const ClientDashboardController = require("../controllers/ClientDashboardController");
-const {
-  Gig,
-  UserClient,
-  UserPerformer,
-  getPerformerDetails,
-} = require("../database");
+const { Gig, UserClient, UserPerformer } = require("../database");
 
 router.post(
   "/login",

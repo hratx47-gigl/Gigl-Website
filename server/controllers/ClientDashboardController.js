@@ -24,14 +24,13 @@ async function postGig(req, res) {
 async function getUsername(req, res) {
   const user = req.session.userClient;
   console.log(user.username);
-  const clientUsername = await UserClient.find({ username: user.username });
-  res.json({ username: clientUsername });
+  const clientUsername = await UserClient.findById(user._id);
+  res.json({ username: clientUsername.username });
 }
 
 async function getPerformerDetails(req, res) {
   console.log("search id = ", req.params);
-  var id = "_.id";
-  const test = await UserPerformer.find({ _id: req.params.id });
+  const test = await UserPerformer.findById(req.params.id);
   console.log(test);
   res.json({ info: "cool" });
 }
