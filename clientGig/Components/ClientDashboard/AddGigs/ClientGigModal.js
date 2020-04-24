@@ -88,6 +88,11 @@ class ClientGigModal extends React.Component {
             className="btn btn-primary"
             data-toggle="modal"
             data-target="#clientModal"
+            style={{
+              marginBottom: "10px",
+              backgroundColor: "#34ACBC",
+              color: "#212121",
+            }}
           >
             Create New Gig
           </button>

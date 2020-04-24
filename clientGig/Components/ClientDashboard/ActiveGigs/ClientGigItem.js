@@ -1,5 +1,6 @@
 import React from "react";
 import PerformerView from "../Performers/PerformerView";
+import { isWhiteSpaceLike } from "typescript";
 
 class GigItem extends React.Component {
   constructor(props) {
@@ -10,9 +11,11 @@ class GigItem extends React.Component {
     return (
       <li
         style={{
-          border: "2px solid black",
-          borderRadius: "15px",
+          color: "#E4E6EB",
+          border: "1px solid #34ACBC",
           marginBottom: "10px",
+          backgroundColor: "#373737",
+          borderRadius: "5px",
         }}
         className="list-group-item"
       >
@@ -27,9 +30,9 @@ class GigItem extends React.Component {
             <h3 className={"d-flex justify-content-center"}>
               {this.props.event}
             </h3>
-
             <div>
               <a
+                style={{ color: "#34ACBC" }}
                 className={"btn btn-link"}
                 data-toggle={"collapse"}
                 href={`#gig${this.props.index}`}
@@ -39,7 +42,10 @@ class GigItem extends React.Component {
                 See More Details
               </a>
               <div className="collapse" id={`gig${this.props.index}`}>
-                <div className="card card-body">
+                <div
+                  className="card card-body"
+                  style={{ backgroundColor: "#212121" }}
+                >
                   Location: {this.props.location} <br />
                   Price:{" $" + this.props.price} <br />
                   Details: {this.props.description}

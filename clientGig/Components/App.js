@@ -10,13 +10,20 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirect: false,
-      username: "Jaeson",
+      username: "",
       currentGigs: [],
     };
-    this.api = `http://localhost:8000/api/example`;
   }
   componentDidMount() {
+    axios
+      .get("http://localhost:8000/api/client/client")
+      .then((results) => {
+        var user = results.data.username[0].username;
+        this.setState({ username: user });
+      })
+      .catch(() => {
+        console.log("error");
+      });
     this.rerender();
   }
 
@@ -34,7 +41,6 @@ export default class App extends React.Component {
   }
 
   newGigSubmit(newGig) {
-    console.log(newGig);
     var newObject = {
       name: newGig[0],
       location: newGig[1],
@@ -57,32 +63,27 @@ export default class App extends React.Component {
     }
   }
 
-  logOut() {
-    console.log("logout");
-    this.setState({ redirect: true }, () => {
-      window.location.replace("http://localhost:8000/");
-    });
-  }
-
   render() {
-    if (this.state.redirect) return <Redirect to="/" />;
-    else {
-      return (
-        <>
-          <Navbar logOut={this.logOut.bind(this)} />
+    return (
+      <>
+        <div
+          className="container-fluid"
+          style={{ padding: "0px", backgroundColor: "#212121" }}
+        >
+          <Navbar />
           <div
             className="container"
-            style={{ backgroundColor: " rgba(100, 100, 100)" }}
+            style={{ backgroundColor: "#212121", height: "100vh" }}
           >
-            <h1 style={{ paddingTop: "60px" }}>
+            <h1 style={{ paddingTop: "60px", color: "#E4E6EB" }}>
               {this.state.username + "'s Gigs"}
             </h1>
+            <ClientGigModal button={this.newGigSubmit.bind(this)} />
 
             <ActiveGigs gigs={this.state.currentGigs} />
-            <ClientGigModal button={this.newGigSubmit.bind(this)} />
           </div>
-        </>
-      );
-    }
+        </div>
+      </>
+    );
   }
 }

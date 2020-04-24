@@ -7,6 +7,11 @@ const Navbar = (props) => {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container">
           <div className="navbar-header">
+            <div className="logo"></div>
+            <img
+              src="https://i.imgur.com/JWCVUEL.png"
+              style={{ maxHeight: "40px", paddingBottom: "10px" }}
+            ></img>
             <a
               style={{ fontSize: "30px" }}
               className="navbar-brand"
@@ -25,11 +30,11 @@ const Navbar = (props) => {
                     .post("/api/client/signout")
                     .then((results) => {
                       // console.log(results);
-                      props.logOut();
+                      window.location.replace("http://localhost:8000/");
                     })
                     .catch((error) => {
                       console.log(error);
-                    }); //may need to redirect
+                    });
                 }}
               >
                 Sign Out

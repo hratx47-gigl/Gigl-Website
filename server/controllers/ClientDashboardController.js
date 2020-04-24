@@ -1,4 +1,4 @@
-const { Gig } = require("../database");
+const { Gig, UserClient } = require("../database");
 
 async function getActiveGigs(req, res) {
   const user = req.session.userClient;
@@ -21,4 +21,10 @@ async function postGig(req, res) {
   res.json({ success: true });
 }
 
-module.exports = { getActiveGigs, postGig };
+async function getUsername(req, res) {
+  const user = req.session.userClient;
+  const clientUsername = await UserClient.find({ username: user.username });
+  res.json({ username: clientUsername });
+}
+
+module.exports = { getActiveGigs, postGig, getUsername };
