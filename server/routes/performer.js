@@ -18,6 +18,7 @@ router.post('/signup', [
 
 // router.get('/gigs', PerformerController.getPerformerGigs);
 router.get('/gigs', PerformerController.getAllGigs);
+router.get('/gigs/accepted', PerformerController.getPerformerAcceptedGigs);
 router.get('/gigs/pending', PerformerController.getPerformerPendingGigs);
 router.get('/gigs/available', PerformerController.getPerformerAvailableGigs);
 router.post('/gigs/apply', PerformerController.postApplyToGig);
