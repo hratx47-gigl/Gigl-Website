@@ -1,15 +1,31 @@
 import React from "react";
+import Axios from "axios";
 
 class PerformerSelect extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      applicants: [],
+      applicants: [this.props.applicants],
+      appInfo: [],
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    for (var i = 0; i < this.props.applicants.length; i++) {
+      Axios.get(
+        `http://localhost:8000/api/client/performerinfo/${this.props.applicants[i]}`
+      )
+        .then((results) => {
+          this.setState({
+            appInfo: [...this.state.appInfo, results.data.info],
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
 
   render() {
     return (
@@ -35,8 +51,14 @@ class PerformerSelect extends React.Component {
           data-keyboard="false"
         >
           <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
+            <div
+              className="modal-content"
+              style={{ backgroundColor: "#212121" }}
+            >
+              <div
+                className="modal-header"
+                style={{ border: "1px solid #212121" }}
+              >
                 <h5 className="modal-title" id="performerModalLabel">
                   Performers
                 </h5>
@@ -50,12 +72,29 @@ class PerformerSelect extends React.Component {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div className="modal-body">
-                <ul className="list-group performer-list">
-                  {this.props.applicants.map((item, index) => {
-                    var name = item.name.split(" ").join("");
+              <div
+                className="modal-body"
+                style={{ backgroundColor: "#212121" }}
+              >
+                <ul
+                  className="list-group performer-list"
+                  style={{
+                    backgroundColor: "#212121",
+                    border: "1px solid #212121",
+                  }}
+                >
+                  {this.state.appInfo.map((item, index) => {
+                    console.log(item);
+                    var name = item.username.split(" ").join("");
                     return (
-                      <li className="list-group-item" key={index}>
+                      <li
+                        className="list-group-item"
+                        style={{
+                          backgroundColor: "#212121",
+                          border: "1px solid #212121",
+                        }}
+                        key={index}
+                      >
                         <input
                           checked={item.checked}
                           type="checkbox"
@@ -71,7 +110,10 @@ class PerformerSelect extends React.Component {
                   })}
                 </ul>
               </div>
-              <div className="modal-footer">
+              <div
+                className="modal-footer"
+                style={{ border: "1px solid #212121" }}
+              >
                 <button
                   type="button"
                   className="btn btn-primary"

@@ -6,23 +6,11 @@ import Axios from "axios";
 class PerformerView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      applicants: [],
-    };
+    this.state = { applicants: [] };
   }
 
   componentDidMount() {
     console.log(this.props.applicants[0]);
-    Axios.get(
-      `http://localhost:8000/api/client/performerinfo/${this.props.applicants[0]}`
-    )
-      .then((results) => {
-        console.log("here");
-        console.log("results", results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }
 
   onCheckboxChange(item, gigIndex) {
@@ -51,8 +39,7 @@ class PerformerView extends React.Component {
   }
 
   render() {
-    console.log(this.props.applicants);
-    if (this.state.applicants.length === 0) {
+    if (this.props.applicants.length === 0) {
       return <div>No Applicants yet</div>;
     } else {
       return (
@@ -70,7 +57,7 @@ class PerformerView extends React.Component {
             })}
           </ul>
           <PerformerSelect
-            applicants={this.state.applicants}
+            applicants={this.props.applicants}
             checked={this.onCheckboxChange.bind(this)}
             gigIndex={this.props.index}
           />

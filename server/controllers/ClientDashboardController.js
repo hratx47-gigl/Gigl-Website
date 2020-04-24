@@ -2,7 +2,9 @@ const { Gig, UserClient, UserPerformer } = require("../database");
 
 async function getActiveGigs(req, res) {
   const user = req.session.userClient;
-  const clientGig = await Gig.find({ owner: user._id });
+  const clientGig = await Gig.find({ owner: user._id }).catch((err) => {
+    console.log(err);
+  });
   res.json({ gigs: clientGig });
 }
 
@@ -17,20 +19,26 @@ async function postGig(req, res) {
     applicants: [],
     owner: user._id,
   });
-  await newClientGig.save();
+  await newClientGig.save().catch((err) => {
+    console.log(err);
+  });
   res.json({ success: true });
 }
 
 async function getUsername(req, res) {
   const user = req.session.userClient;
   console.log(user.username);
-  const clientUsername = await UserClient.findById(user._id);
+  const clientUsername = await UserClient.findById(user._id).catch((err) => {
+    console.log(err);
+  });
   res.json({ username: clientUsername.username });
 }
 
 async function getPerformerDetails(req, res) {
   console.log("search id = ", req.params);
-  const info = await UserPerformer.findById(req.params.id);
+  const info = await UserPerformer.findById(req.params.id).catch((err) => {
+    console.log(err);
+  });
   console.log(info);
 
   res.json({ info: info });
