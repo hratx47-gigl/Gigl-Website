@@ -3,33 +3,38 @@ import GigItem from "./ClientGigItem";
 class ActiveGigs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      gigArray: [],
-    };
+    this.state = {};
   }
 
   render() {
-    return (
-      <div>
-        <ul className="list-group">
-          {this.props.gigs.map((item, index) => {
-            return (
-              <GigItem
-                key={index}
-                index={index}
-                name={item.name}
-                price={item.price}
-                event={item.eventName}
-                date={item.date}
-                location={item.location}
-                description={item.description}
-                applicants={item.applicants}
-              />
-            );
-          })}
-        </ul>
-      </div>
-    );
+    if (this.props.gigs.length > 0) {
+      return (
+        <div>
+          <ul className="list-group">
+            {this.props.gigs.map((item, index) => {
+              return (
+                <GigItem
+                  key={index}
+                  index={index}
+                  price={item.price}
+                  event={item.name}
+                  date={item.date}
+                  location={item.location}
+                  description={item.description}
+                  applicants={item.applicants}
+                />
+              );
+            })}
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <>
+          <h1 style={{ color: "#373737" }}> You have no Active Gigs</h1>
+        </>
+      );
+    }
   }
 }
 
