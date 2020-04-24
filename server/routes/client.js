@@ -28,6 +28,6 @@ router.get("/client", ClientDashboardController.getUsername); //does this work, 
 
 router.post("/signout", AuthController.postClientSignout);
 
-router.get("/performerinfo:id", ClientDashboardController.getPerformerDetails);
+router.get("/performerinfo/:id", ClientDashboardController.getPerformerDetails);
 
 module.exports = router;
