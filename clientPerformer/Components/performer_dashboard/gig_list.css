@@ -15,48 +15,8 @@ body {
   background-color: #6C6C6C;
 }
 
-.accordion { 
-  box-shadow: 6px 6px 10px grey !important;
-  background-color: #373737;
-}
-
-.ribbon {
-  margin-left: 30px;
-  position: fixed;
-  padding: 0 20px 0 35px;
-  height: 100%;
-  background-color: rgb(30, 72, 88);
-  z-index: -1;
-}
-
-.allgigs {
-  padding: 0px 35px 10px 70px;
-}
-
-/* .active, .accordion:hover {
-  background-color: #ccc;
-}
-
-.accordion:after {
-  color: rgb(231, 231, 231);
-  font-weight: bold;
-  float: right !important;
-  margin-left: 5px;
-  box-shadow: 6px 6px 10px grey !important;
-} */
-
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
-  box-shadow: 6px 6px 10px grey !important;
-}
-
 .hamburger {
   position: relative;
-  /* bottom: 10px; */
   cursor: pointer;
   float: right !important;
 }
