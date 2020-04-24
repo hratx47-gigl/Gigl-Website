@@ -11,6 +11,7 @@ const Navbar = (props) => {
             <img
               src="https://i.imgur.com/JWCVUEL.png"
               style={{ maxHeight: "40px", paddingBottom: "10px" }}
+              alt="logo"
             ></img>
             <a
               style={{ fontSize: "30px" }}

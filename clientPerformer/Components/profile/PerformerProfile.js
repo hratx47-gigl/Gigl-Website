@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import EditField from "./components/EditField"
 import axios from 'axios'
 import {withRouter} from "react-router-dom"
-import { urlencoded } from 'body-parser';
 
 
 class PerformerProfile extends Component{

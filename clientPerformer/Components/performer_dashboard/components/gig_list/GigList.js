@@ -2,7 +2,7 @@ import React from 'react';
 import GigBar from './gigbar/GigBar'
 
 const GigList = ({ gigs }) => (
-  <div>
+  <div className="pb-5">
     {gigs.map((gig, index) => (<GigBar key={ index } gig={ gig } />))}
   </div>
 )
