@@ -1,6 +1,6 @@
 import React from "react";
 
-const CurPerformers = (person) => {
+const AttachedPerformers = (person) => {
   if (person.item.checked) {
     return (
       <li style={{ padding: "1px" }} className={"list-group-item"}>
@@ -16,4 +16,4 @@ const CurPerformers = (person) => {
   }
 };
 
-export default CurPerformers;
+export default AttachedPerformers;
