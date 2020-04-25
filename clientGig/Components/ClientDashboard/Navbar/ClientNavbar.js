@@ -18,7 +18,12 @@ const Navbar = (props) => {
               className="navbar-brand"
               href="#logo"
             >
-              Gigl
+              <img
+                src="https://i.imgur.com/o1Ky7cy.png"
+                height="30"
+                width="60"
+                alt=""
+              ></img>
             </a>
           </div>
           <ul className="navbar-nav">

@@ -6,56 +6,98 @@ import Axios from "axios";
 class PerformerView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      applicants: [],
-    };
+    this.state = { selectedApplicants: [], appInfo: [] };
   }
 
   componentDidMount() {
-    console.log(this.props.applicants[0]);
-    Axios.get(
-      `http://localhost:8000/api/client/performerinfo/${this.props.applicants[0]}`
-    ).then((results) => {
-      console.log("results", results);
+    for (var i = 0; i < this.props.applicants.length; i++) {
+      Axios.get(
+        `http://localhost:8000/api/client/performerinfo/${this.props.applicants[i]}`
+      )
+        .then((results) => {
+          var user = results.data.info.username.split(" ").join("");
+          var gigIndex = this.props.index;
+          if (document.getElementById(user + gigIndex)) {
+            document
+              .getElementById(user + gigIndex)
+              .setAttribute("checked", true);
+          }
+          for (var j = 0; j < this.props.selectedApplicants.length; j++) {
+            if (results.data.info._id === this.props.selectedApplicants[j]) {
+              results.data.info.checked = true;
+            }
+          }
+          this.setState({
+            appInfo: [...this.state.appInfo, results.data.info],
+          });
+          this.setState((state) => {
+            return {
+              selectedApplicants: [...state.selectedApplicants, user],
+            };
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    this.setState({ sApp: this.state.selectedApplicants }, () => {
+      // console.log(this.state.sApp);
     });
-    //get user info from userperformers with a get request, and then setState
+    //need to get applied performers names from DB using
   }
 
-  onCheckboxChange(item, gigIndex) {
+  onCheckboxChange(id, item, gigIndex) {
     if (item + gigIndex === document.getElementById(item + gigIndex).id) {
       if (document.getElementById(item + gigIndex).checked === true) {
-        document.getElementById(item + gigIndex).setAttribute("checked", false);
-        for (var i = 0; i < this.state.applicants.length; i++) {
-          if (this.state.applicants[i].name.split(" ").join("") === item) {
-            let apps = [...this.state.applicants];
-            apps[i].checked = true;
-            this.setState({ applicants: apps });
+        Axios.put(`http://localhost:8000/api/client/selectedperformer/`, {
+          perfId: id,
+          gigId: this.props.id,
+        }).then((result) => {
+          var newState = this.state.appInfo;
+          for (var i = 0; i < this.state.appInfo.length; i++) {
+            if (item === this.state.appInfo[i].username.split(" ").join()) {
+              if (this.state.appInfo[i].checked === false) {
+                newState[i].checked = true;
+              }
+              this.setState({ appInfo: newState });
+            }
           }
-        }
-      } else {
-        document.getElementById(item + gigIndex).setAttribute("checked", true);
-        for (var j = 0; j < this.state.applicants.length; j++) {
-          if (this.state.applicants[j].name.split(" ").join("") === item) {
-            let apps = [...this.state.applicants];
-            apps[j].checked = false;
-
-            this.setState({ applicants: apps });
+        });
+      }
+      if (document.getElementById(item + gigIndex).checked === false) {
+        Axios.put(`http://localhost:8000/api/client/deleteperformer/`, {
+          perfId: id,
+          gigId: this.props.id,
+        }).then((result) => {
+          var newState = this.state.appInfo;
+          for (var i = 0; i < this.state.appInfo.length; i++) {
+            if (item === this.state.appInfo[i].username.split(" ").join()) {
+              if (this.state.appInfo[i].checked === true) {
+                newState[i].checked = false;
+              }
+              this.setState({ appInfo: newState });
+            }
           }
-        }
+        });
       }
     }
   }
 
   render() {
-    console.log(this.props.applicants);
-    if (this.state.applicants.length === 0) {
+    if (this.props.applicants.length === 0) {
       return <div>No Applicants yet</div>;
     } else {
       return (
         <div>
-          <p>Selected Applicants</p>
-          <ul className={"list-group"}>
-            {this.state.applicants.map((item, index) => {
+          <p
+            className="justify-content-center d-flex"
+            style={{ margin: "0px" }}
+            
+          >
+            Selected Applicants
+          </p>
+          <ul className={"list-group "} style={{ marginBottom: "3px" }}>
+            {this.state.appInfo.map((item, index) => {
               return (
                 <AttachedPerformers
                   key={index}
@@ -66,8 +108,10 @@ class PerformerView extends React.Component {
             })}
           </ul>
           <PerformerSelect
-            applicants={this.state.applicants}
-            checked={this.onCheckboxChange.bind(this)}
+            appInfo={this.state.appInfo}
+            applicants={this.props.applicants}
+            selectedApplicants={this.state.sApp}
+            check={this.onCheckboxChange.bind(this)}
             gigIndex={this.props.index}
           />
         </div>
