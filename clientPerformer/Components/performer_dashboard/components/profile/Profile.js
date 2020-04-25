@@ -1,7 +1,7 @@
 import React from 'react';
 import './profile.css'
 
-const Profile = (props)=> {
+const Profile = ({username, location})=> {
     return(
         <div className="backgroundImage image-fluid" style={{color: "#E4E6EB"}}>
         <div className="container-fluid">
@@ -15,11 +15,11 @@ const Profile = (props)=> {
                 </div>
                 <div className="col-md-6 d-flex align-items-end pl-0">
                     <a href="performer/profile" className="pl-4" style={{color: "#E4E6EB"}}>
-                        <h1>Joe_hipster</h1>
+                        <h1>{username}</h1>
                     </a>
                 </div>
                 <div className="col-md-3 d-flex align-items-end pl-4">
-                    <h3 className="mb-0 pb-1">Austin</h3>
+                    <h3 className="mb-0 pb-1">{location}</h3>
                 </div>
             </div>
         </div>

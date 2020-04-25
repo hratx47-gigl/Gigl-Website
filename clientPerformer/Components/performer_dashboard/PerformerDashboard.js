@@ -9,6 +9,8 @@ class PerformerDashboard extends Component {
     constructor(props) {
         super(props)
         this.state ={
+            username: '',
+            location: '',
             gigView: 'pending',
             upcomingGigs: [],
             availableGigs: [],
@@ -38,6 +40,18 @@ class PerformerDashboard extends Component {
     }
 
     componentDidMount(){
+        axios.get('http://localhost:8000/api/performer/profile') //get info specifc to the user
+        .then((response) => {
+            console.log(response.data);
+            this.setState({
+                username: response.data.username,
+                location: response.data.location
+            })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
         axios.get('/api/performer/gigs/available')
         .then(response=>{
             console.log('response ', response);
@@ -65,11 +79,11 @@ class PerformerDashboard extends Component {
     }
 
     render() {
-        let { gigView, availableGigs, pendingGigs, upcomingGigs } = this.state;
+        let { gigView, availableGigs, pendingGigs, upcomingGigs, username, location } = this.state;
         return(
             <div>
                 <Navbar/>
-                <Profile/>
+                <Profile username={username} location={location}/>
                 <div className="gig_info container pt-3 my-5">
                     <h3>Your Upcoming Gigs</h3>
                     <div className="container gig_header mb-5" style={{border: '1px solid #34acbc'}}>

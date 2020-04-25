@@ -54,8 +54,6 @@ class PerformerProfile extends Component{
       })
     }
 
-
-
     editField(event){
         event.preventDefault();
         console.log(event.target.value)
