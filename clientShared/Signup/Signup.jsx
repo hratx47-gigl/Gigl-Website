@@ -99,7 +99,7 @@ class Signup extends React.Component {
                   <div className="offset-md-2"></div>
                 </div>
               </div>
-              <h5 className="card-title text-center">Sign Up</h5>
+                <h5 className="card-title text-center">Sign up for a {this.props.userType} account</h5>
               <div className="dropdown-divider w-100"></div>
               {this.renderRedirect()}
                   <form onSubmit={this.handleSubmit}>
