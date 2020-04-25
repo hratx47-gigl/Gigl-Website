@@ -30,4 +30,16 @@ router.post("/signout", AuthController.postClientSignout);
 
 router.get("/performerinfo/:id", ClientDashboardController.getPerformerDetails);
 
+router.put("/selectedperformer", ClientDashboardController.addPerformerToGig);
+
+// router.get(
+//   "/appliedperformers/:id",
+//   ClientDashboardController.getAppliedPerformers
+// );
+
+router.put(
+  "/deleteperformer",
+  ClientDashboardController.deletePerformerFromGig
+);
+
 module.exports = router;

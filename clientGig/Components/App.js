@@ -31,7 +31,10 @@ export default class App extends React.Component {
       .get("http://localhost:8000/api/client/gigs")
       .then((results) => {
         let activeGigs = results.data.gigs;
-        results.data.gigs[0].applicants = ["5ea25cbca533691b60e42460"];
+        // results.data.gigs[0].applicants = [
+        //   "5ea26524bbe82c239433a1f7",
+        //   "5ea30c9a35dbb51e444c2141",
+        // ]; //change when performer dash sends appropriate data
         this.setState({ currentGigs: activeGigs });
       })
       .catch((err) => {});
@@ -72,7 +75,12 @@ export default class App extends React.Component {
             className="container"
             style={{ backgroundColor: "#212121", height: "100vh" }}
           >
-            <h1 style={{ paddingTop: "60px", color: "#E4E6EB" }}>
+            <h1
+              style={{
+                paddingTop: "60px",
+                color: "#E4E6EB",
+              }}
+            >
               {this.state.username + "'s Gigs"}
             </h1>
             <ClientGigModal button={this.newGigSubmit.bind(this)} />

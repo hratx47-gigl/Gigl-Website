@@ -9,12 +9,15 @@
 # Welcome to Gigl!
 Have an event coming up and need talent? Gigl is a platform that connects clients to local freelancers such as photographers, bartenders, artists, and entertainers. Our website allows clients to post upcoming gigs and select a performer that meets their needs. It also allows talented peformers to create a profile, view gigs in their area, and apply for them! 
 
+A team of us software engineers were asked by a client to built the Gigl website. We received feedback throughout the iterative build process to launch quickly and efficiently. 
+
+We chose a monolithic architecture. Herein we have summarized the user stories built, technology stack utilized, how to launch the site, our work flow and ticketing approach, and team. 
+
 # Table of Contents
   - [Demo](#demo)
   - [User Stories](#user-stories)
   - [Stack](#stack)
   - [Work Flow and Ticketing](#work-flow-and-ticketing)
-  - [Coming Soon](#coming-soon)
   - [Getting Started](#getting-started)
   - [Challenges and Successes](#challenges-and-successes)
   - [Contributors](#contributors)
@@ -24,6 +27,7 @@ Have an event coming up and need talent? Gigl is a platform that connects client
 
 # User Stories
 ## Implemented
+Based on the request of our client, we built the following user stores:
 - As a user, I want to get an overview of Gigl's website when I visit the site
 - As a user, I want to be able to create an account as a client
 - As a user, I want to be able to create an account as a performer
@@ -74,10 +78,16 @@ Have an event coming up and need talent? Gigl is a platform that connects client
 
 # Work Flow and Ticketing
 ## Work Flow
+We followed a Git workflow to ensure work is accomplished in a consistent and productive manner. 
 ![](https://thumbs.gfycat.com/SpotlessVagueArgusfish-size_restricted.gif)
 
 ## Ticketing
-<img src="https://i.imgur.com/1GpR7pK.png" width=600>
+For ticketing and allocation of work, we followed an agile methodology. We created tickets in Trello with four basic states: 
+- Open Items - work that has not been started
+- In Progress - work that is actively being looked at by the team
+- Code Review - work that is completed
+- Done - work that is completely finished and meets the team's definition of done
+<img src="https://i.imgur.com/znZBFvo.png" width=500>
 
 # Getting Started
 Take the following steps to run the app in your localhost, you will need to have the following:
