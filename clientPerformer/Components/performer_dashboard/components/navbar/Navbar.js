@@ -19,7 +19,7 @@ const Navbar = () => {
                 <li className="nav-item">
                     <div>
                     <a className="navbar-brand" href="/performer/profile">
-                        <img className="rounded-circle" height="50" width="50" src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
+                        <img className="rounded-circle" height="50" width="50" style={{objectFit: "cover"}} src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
                     </a>
                     </div>
                 </li>
