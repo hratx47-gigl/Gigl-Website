@@ -31,7 +31,10 @@ export default class App extends React.Component {
       .get("http://localhost:8000/api/client/gigs")
       .then((results) => {
         let activeGigs = results.data.gigs;
-        results.data.gigs[0].applicants = ["5ea26524bbe82c239433a1f7"];
+        // results.data.gigs[0].applicants = [
+        //   "5ea26524bbe82c239433a1f7",
+        //   "5ea30c9a35dbb51e444c2141",
+        // ]; //change when performer dash sends appropriate data
         this.setState({ currentGigs: activeGigs });
       })
       .catch((err) => {});

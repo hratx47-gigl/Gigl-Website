@@ -1,4 +1,5 @@
 const { Gig, UserClient, UserPerformer } = require("../database");
+const mongoose = require("mongoose");
 
 async function getActiveGigs(req, res) {
   const user = req.session.userClient;
@@ -35,13 +36,56 @@ async function getUsername(req, res) {
 }
 
 async function getPerformerDetails(req, res) {
-  console.log("search id = ", req.params);
   const info = await UserPerformer.findById(req.params.id).catch((err) => {
     console.log(err);
   });
-  console.log(info);
 
   res.json({ info: info });
 }
 
-module.exports = { getActiveGigs, postGig, getUsername, getPerformerDetails };
+async function addPerformerToGig(req, res) {
+  console.log("this is params", req.body);
+  const newPerformerGig = await Gig.findOneAndUpdate(
+    { _id: req.body.gigId },
+    {
+      $push: { selectedApplicants: mongoose.Types.ObjectId(req.body.perfId) },
+    }
+  );
+  res.json("Added");
+  // const performer = await UserPerformer;
+}
+
+async function deletePerformerFromGig(req, res) {
+  console.log("this is params", req.body);
+  const newPerformerGig = await Gig.findOneAndUpdate(
+    { _id: req.body.gigId },
+    {
+      $pull: { selectedApplicants: mongoose.Types.ObjectId(req.body.perfId) },
+    }
+  );
+  res.json("Removed");
+}
+
+// async function getAppliedPerformers(req, res) {
+//   const appliedPerfomers = await Gig.findById({ _id: req.params.id })
+//     .populate("applicants")
+//     .populate("selectedApplicants")
+//     .exec();
+//   const applicants = appliedPerformers.applicants;
+//   const selectedApplicants = appliedPerformers.selectedApplicants;
+//   const result = [];
+//   for(let applicant of applicants){
+
+//   }
+//   res.json({ appliedPerfomers: appliedPerfomers.selectedApplicants });
+//   console.log("get applied performers route works");
+// }
+
+module.exports = {
+  getActiveGigs,
+  postGig,
+  getUsername,
+  getPerformerDetails,
+  addPerformerToGig,
+  deletePerformerFromGig,
+};

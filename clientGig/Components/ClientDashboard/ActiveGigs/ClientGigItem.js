@@ -54,8 +54,10 @@ class GigItem extends React.Component {
           </div>
           <div className="col-md-2">
             <PerformerView
+              id={this.props.id}
               index={this.props.index}
               applicants={this.props.applicants}
+              selectedApplicants={this.props.selectedApplicants}
             />
           </div>
         </div>
