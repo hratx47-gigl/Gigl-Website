@@ -54,8 +54,6 @@ class PerformerProfile extends Component{
       })
     }
 
-
-
     editField(event){
         event.preventDefault();
         console.log(event.target.value)
@@ -152,8 +150,8 @@ class PerformerProfile extends Component{
                     <nav className=" container navbar navbar-expand-lg navbar-dark bg-dark">
 
                         <div className="">
-                        <img style={{maxHeight:40}} src="https://i.imgur.com/JWCVUEL.png" alt="Logo" href="/"/>
-                        <a style={{fontSize: 24}} className="navbar-brand" href="#home">Gigl</a>
+                        <img src="https://i.imgur.com/JWCVUEL.png" className="pr-2" width="50" height="50" alt=""></img>
+                        <img src="https://i.imgur.com/o1Ky7cy.png" height="30" width="60" alt=""></img>
                         </div>
 
                         <button className="navbar-toggler"
@@ -221,13 +219,12 @@ class PerformerProfile extends Component{
                 <div >
                     <div className="">
                         <div className="mt-4 border border-secondary p-4 rounded" style={{color:"#e4e6eb", backgroundColor:"#373737"}}>
-                            <h2>About
-                                <span>
-                                </span>
-                                <button style={{color: "#34ACBC"}}
+                            <h2>
+                                <div style={{width: "200px",  display: "inline"}}>About</div>
+                                <button style={{color: "#34ACBC", float: "right"}}
                                         value='0'
                                         onClick={this.editField}
-                                        className="btn btn-outline-secondary btn-sm">
+                                        className="ml-4 btn btn-outline-secondary btn-sm">
                                             Edit
                                 </button>
                             </h2>
@@ -237,13 +234,12 @@ class PerformerProfile extends Component{
                             }
                         </div>
                         <div className="mt-4 border border-secondary p-4 rounded"style={{color:"#e4e6eb", backgroundColor : "#373737"}}>
-                            <h2>Experience
-                                <span>
-                                </span>
-                                <button style={{color: "#34ACBC"}}
+                            <h2>
+                                <div style={{width: "200px",  display: "inline"}}>Experience</div>
+                                <button style={{color: "#34ACBC", float: "right"}}
                                         value='1'
                                         onClick={this.editField}
-                                        className="btn btn-outline-secondary btn-sm">
+                                        className="ml-4 btn btn-outline-secondary btn-sm">
                                             Edit
                                 </button>
                             </h2>
@@ -253,13 +249,12 @@ class PerformerProfile extends Component{
                             }
                         </div>
                         <div className="mt-4 border border-secondary p-4 rounded" style={{color:"#e4e6eb", backgroundColor:"#373737"}}>
-                            <h2>Education
-                                <span>
-                                </span>
-                                <button style={{color: "#34ACBC"}}
+                            <h2> 
+                                <div style={{width: "200px",  display: "inline"}}>Education</div>
+                                <button style={{color: "#34ACBC", float: "right"}}
                                         value='2'
                                         onClick={this.editField}
-                                        className="btn btn-outline-secondary btn-sm">
+                                        className="ml-4 btn btn-outline-secondary btn-sm">
                                             Edit
                                 </button>
                             </h2>
