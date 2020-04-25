@@ -9,60 +9,35 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "Jaeson",
-      currentGigs: [
-        // {
-        //   name: "Matt",
-        //   eventName: "Last Wish Raid",
-        //   date: "04/25/2020",
-        //   location: "Your Moms Basement",
-        //   description:
-        //     "A super cool really long raid that's like totally hard and not even worth it sometimes but yeah it's fun let's do it",
-        //   applicants: [
-        //     { name: "Spies Seanman", checked: false },
-        //     { name: "Matt", checked: false },
-        //     { name: "Jaeson", checked: false },
-        //     { name: "Nick", checked: true },
-        //     { name: "Roy", checked: true },
-        //     { name: "Tyler", checked: false },
-        //     { name: "David", checked: false },
-        //   ],
-        // },
-        // {
-        //   name: "Stuff",
-        //   eventName: "cool",
-        //   date: "04/20/2020",
-        //   location: "Hell",
-        //   description: "A poopity poppity",
-        //   applicants: [
-        //     { name: "Spies Seanman", checked: false },
-        //     { name: "Matt", checked: false },
-        //     { name: "Jaeson", checked: false },
-        //     { name: "Nick", checked: false },
-        //     { name: "Roy", checked: false },
-        //     { name: "Tyler", checked: false },
-        //     { name: "David", checked: false },
-        //   ],
-        // },
-      ],
+      username: "",
+      currentGigs: [],
     };
-    this.api = `http://localhost:8000/api/example`;
   }
   componentDidMount() {
     axios
+      .get("http://localhost:8000/api/client/profile/username")
+      .then((results) => {
+        var user = results.data.username;
+        this.setState({ username: user });
+      })
+      .catch(() => {
+        console.log("error");
+      });
+    this.rerender();
+  }
+
+  rerender() {
+    axios
       .get("http://localhost:8000/api/client/gigs")
-      .then((data) => {
-        let activeGigs = data.data.gigs;
-        console.log(activeGigs);
+      .then((results) => {
+        let activeGigs = results.data.gigs;
+        results.data.gigs[0].applicants = ["5ea25cbca533691b60e42460"];
         this.setState({ currentGigs: activeGigs });
       })
-      .catch((err) => {
-        // console.log(err);
-      });
+      .catch((err) => {});
   }
 
   newGigSubmit(newGig) {
-    console.log(newGig);
     var newObject = {
       name: newGig[0],
       location: newGig[1],
@@ -77,10 +52,7 @@ export default class App extends React.Component {
       axios
         .post("http://localhost:8000/api/client/addgig", newObject)
         .then((response) => {
-          console.log(response);
-          this.setState({
-            currentGigs: [...this.state.currentGigs, newObject],
-          });
+          this.rerender();
         })
         .catch((error) => {
           console.log("there was an error" + error);
@@ -91,17 +63,22 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        <Navbar />
         <div
-          className="container"
-          style={{ backgroundColor: " rgba(100, 100, 100)" }}
+          className="container-fluid"
+          style={{ padding: "0px", backgroundColor: "#212121" }}
         >
-          <h1 style={{ paddingTop: "60px" }}>
-            {this.state.username + "'s Gigs"}
-          </h1>
+          <Navbar />
+          <div
+            className="container"
+            style={{ backgroundColor: "#212121", height: "100vh" }}
+          >
+            <h1 style={{ paddingTop: "60px", color: "#E4E6EB" }}>
+              {this.state.username + "'s Gigs"}
+            </h1>
+            <ClientGigModal button={this.newGigSubmit.bind(this)} />
 
-          <ActiveGigs gigs={this.state.currentGigs} />
-          <ClientGigModal button={this.newGigSubmit.bind(this)} />
+            <ActiveGigs gigs={this.state.currentGigs} />
+          </div>
         </div>
       </>
     );

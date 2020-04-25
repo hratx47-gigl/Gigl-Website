@@ -7,7 +7,17 @@ const Navbar = (props) => {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container">
           <div className="navbar-header">
-            <a style={{ fontSize: "30px" }} className="navbar-brand" href="#logo">
+            <div className="logo"></div>
+            <img
+              src="https://i.imgur.com/JWCVUEL.png"
+              style={{ maxHeight: "40px", paddingBottom: "10px" }}
+              alt="logo"
+            ></img>
+            <a
+              style={{ fontSize: "30px" }}
+              className="navbar-brand"
+              href="#logo"
+            >
               Gigl
             </a>
           </div>
@@ -20,11 +30,12 @@ const Navbar = (props) => {
                   axios
                     .post("/api/client/signout")
                     .then((results) => {
-                      console.log(results);
+                      // console.log(results);
+                      window.location.replace("http://localhost:8000/");
                     })
                     .catch((error) => {
                       console.log(error);
-                    }); //may need to redirect
+                    });
                 }}
               >
                 Sign Out

@@ -26,9 +26,15 @@ router.post('/gigs/apply', PerformerController.postApplyToGig);
 
 // router.post("/signout", AuthController.postPerformerSignout);
 
+router.get('/profile', PerformerController.getPerformerProfileInfo );
+
+router.put('/profile', PerformerController.putPerformerProfileInfo );
+
 router.get('/', (req, res) => {
     res.json({data:['dolphins', 'manatees', 'sea turles']})
 });
+
+
 
 router.post("/signout", AuthController.postPerformerSignout);
 
