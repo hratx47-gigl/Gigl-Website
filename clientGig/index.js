@@ -11,7 +11,7 @@ ReactDOM.render((<BrowserRouter basename="/client">
             <Login apiUrl="/api/client/login" userType ="client"/>
         </Route>
         <Route path="/signup">
-            <Signup apiUrl="/api/client/signup"/>
+            <Signup apiUrl="/api/client/signup" userType ="client"/>
         </Route>
         <Route path="/">
             <App />
