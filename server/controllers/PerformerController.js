@@ -33,7 +33,7 @@ function getPerformerPendingGigs(req, res){
         results.forEach(result=>{
             result.ownerName = result.ownerName[0] ? result.ownerName[0].username : '';
         });
-        console.log(results);
+        // console.log(results);
         // results[1].ownerName = results[1].ownerName[0].username;
         err ? res.status(500).json({error: err}) : res.send(results);
       });
@@ -66,6 +66,7 @@ function getPerformerAcceptedGigs(req, res){
   // get gigs for which performer has not applied
 
   function getPerformerAvailableGigs(req, res){
+    console.log(req.session.userPerformer);
     const user = mongoose.Types.ObjectId(req.session.userPerformer._id);
     // Gig.find({"applicants": { "$ne": user}})
     
@@ -84,7 +85,7 @@ function getPerformerAcceptedGigs(req, res){
         results.forEach(result=>{
             result.ownerName = result.ownerName[0] ? result.ownerName[0].username : '';
         });
-        console.log(results);
+        // console.log(results);
         if(err) console.log(err);
         err ? res.status(500).json({error: err}) : res.send(results);
       });
