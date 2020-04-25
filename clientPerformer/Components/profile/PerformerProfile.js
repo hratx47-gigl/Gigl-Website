@@ -150,8 +150,8 @@ class PerformerProfile extends Component{
                     <nav className=" container navbar navbar-expand-lg navbar-dark bg-dark">
 
                         <div className="">
-                        <img style={{maxHeight:40}} src="https://i.imgur.com/JWCVUEL.png" alt="Logo" href="/"/>
-                        <a style={{fontSize: 24}} className="navbar-brand" href="#home">Gigl</a>
+                        <img src="https://i.imgur.com/JWCVUEL.png" className="pr-2" width="50" height="50" alt=""></img>
+                        <img src="https://i.imgur.com/o1Ky7cy.png" height="30" width="60" alt=""></img>
                         </div>
 
                         <button className="navbar-toggler"
