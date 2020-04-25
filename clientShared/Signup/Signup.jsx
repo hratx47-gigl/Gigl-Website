@@ -39,35 +39,16 @@ class Signup extends React.Component {
       })
       .then((resp) => {
         console.log("resp: ", resp);
-
-        this.setState({error: "", redirect: true, isLoading: false});
+        if(resp.data.succesful){
+          this.setState({error: "", redirect: true, isLoading: false});
+        } else {
+          this.setState({error:resp.data.error, isLoading:false})
+        }
       })
       .catch((e) => {
-        //display message in pop up(modal? alert?)
         console.log("error: ", e);
         this.setState({ isLoading: false });
       });
-    // axios get request
-    // check username (get request to performers users table in db)
-    // if exists
-    // display message to the user
-    // check password and confirmpassword to ensure they match
-    // if not
-    // display message to user
-    // if both above functions return true
-    // POST request using axios
-    // params
-    // email
-    // username
-    // hashed password
-    // then -
-    // when confirmed by user - redirect to landing page
-    // handle error if error
-    console.log("submitted");
-    return setTimeout(() => {
-      console.log("redirect");
-      this.setState({ redirect: true });
-    }, 3000); //placeholder until backend running
   }
 
   renderRedirect() {
@@ -151,6 +132,7 @@ class Signup extends React.Component {
                         required
                       ></input>
                     </div>
+                    <div>{this.state.error}</div>
                     <button className="btn btn-outline-secondary btn-block shiny joinButton">
                       {this.state.isLoading ? (
                         <>
