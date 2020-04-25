@@ -74,6 +74,7 @@ Have an event coming up and need talent? Gigl is a platform that connects client
 
 # Work Flow and Ticketing
 ## Work Flow
+![](https://thumbs.gfycat.com/SpotlessVagueArgusfish-size_restricted.gif)
 
 ## Ticketing
 <img src="https://i.imgur.com/1GpR7pK.png" width=600>
