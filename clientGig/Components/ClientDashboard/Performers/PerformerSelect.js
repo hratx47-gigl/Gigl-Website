@@ -25,9 +25,16 @@ class PerformerSelect extends React.Component {
           <div>
             <button
               type="button"
-              className="btn btn-primary"
+              className="btn btn-primary list-group-item justify-content-center d-flex"
               data-toggle="modal"
               data-target={`#performerModal${this.props.gigIndex}`}
+              style={{
+                backgroundColor: "rgb(52, 172, 188)",
+                padding: "5px",
+                color: "black",
+                borderColor: "#34ACBC",
+                width: "100%",
+              }}
             >
               Show Applicants
             </button>
@@ -88,6 +95,7 @@ class PerformerSelect extends React.Component {
                           key={index}
                         >
                           <input
+                            style={{ backgroundColor: "#065464" }}
                             checked={item.checked}
                             type="checkbox"
                             className="form-check-input"
@@ -107,13 +115,18 @@ class PerformerSelect extends React.Component {
                               style={{ color: "#34ACBC" }}
                               className={"btn btn-link"}
                               data-toggle={"collapse"}
-                              href={`#gig${index}`}
+                              href={`#accord${name + this.props.gigIndex}`}
                               aria-expanded={"false"}
-                              aria-controls={`gig${index}`}
+                              aria-controls={`accord${
+                                name + this.props.gigIndex
+                              }`}
                             >
                               Show Performer Details
                             </a>
-                            <div className="collapse" id={`gig${index}`}>
+                            <div
+                              className="collapse"
+                              id={`accord${name + this.props.gigIndex}`}
+                            >
                               <div
                                 className="card card-body"
                                 style={{ backgroundColor: "#212121" }}
@@ -139,6 +152,11 @@ class PerformerSelect extends React.Component {
                     type="button"
                     className="btn btn-primary"
                     data-dismiss="modal"
+                    style={{
+                      backgroundColor: "#34acbc",
+                      color: "black",
+                      borderColor: "#34acbc",
+                    }}
                   >
                     Save changes
                   </button>

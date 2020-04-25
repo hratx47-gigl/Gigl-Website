@@ -48,9 +48,7 @@ class PerformerView extends React.Component {
 
   onCheckboxChange(id, item, gigIndex) {
     if (item + gigIndex === document.getElementById(item + gigIndex).id) {
-      console.log(document.getElementById(item + gigIndex).checked === true);
       if (document.getElementById(item + gigIndex).checked === true) {
-        console.log("add");
         Axios.put(`http://localhost:8000/api/client/selectedperformer/`, {
           perfId: id,
           gigId: this.props.id,
@@ -67,7 +65,6 @@ class PerformerView extends React.Component {
         });
       }
       if (document.getElementById(item + gigIndex).checked === false) {
-        console.log("remove");
         Axios.put(`http://localhost:8000/api/client/deleteperformer/`, {
           perfId: id,
           gigId: this.props.id,
@@ -92,9 +89,15 @@ class PerformerView extends React.Component {
     } else {
       return (
         <div>
-          <p>Selected Applicants</p>
-          <ul className={"list-group"}>
-            {this.state.selectedApplicants.map((item, index) => {
+          <p
+            className="justify-content-center d-flex"
+            style={{ margin: "0px" }}
+            
+          >
+            Selected Applicants
+          </p>
+          <ul className={"list-group "} style={{ marginBottom: "3px" }}>
+            {this.state.appInfo.map((item, index) => {
               return (
                 <AttachedPerformers
                   key={index}

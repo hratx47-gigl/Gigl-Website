@@ -75,7 +75,12 @@ export default class App extends React.Component {
             className="container"
             style={{ backgroundColor: "#212121", height: "100vh" }}
           >
-            <h1 style={{ paddingTop: "60px", color: "#E4E6EB" }}>
+            <h1
+              style={{
+                paddingTop: "60px",
+                color: "#E4E6EB",
+              }}
+            >
               {this.state.username + "'s Gigs"}
             </h1>
             <ClientGigModal button={this.newGigSubmit.bind(this)} />
