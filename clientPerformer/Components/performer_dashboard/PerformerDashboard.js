@@ -88,20 +88,20 @@ class PerformerDashboard extends Component {
                     <h3>Your Upcoming Gigs</h3>
                     <div className="container gig_header mb-5" style={{border: '1px solid #34acbc'}}>
                         <div className="mt-3"></div>
-                        <GigList gigs={upcomingGigs}/>
+                        <GigList removeApply={true} gigs={upcomingGigs}/>
                         <div className="pb-1"></div>
                     </div>
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-secondary btn-info btn-lg blueBackground" onClick={() => {this.changeGigView('pending')}}>
                             <h4>Pending Gigs</h4>
                         </button>
                         <button type="button" className="btn btn-secondary btn-info btn-lg ml-1 blueBackground" onClick={() => {this.changeGigView('available')}}>
-                            <h3>Available Gigs</h3>
+                            <h4>Available Gigs</h4>
                         </button>
                     </div>
                     <div className="container gig_header mb-4" style={{border: '1px solid #34acbc'}}>
                         <div className="mt-3"></div>
-                        <GigList gigs={ (gigView === 'pending' ? pendingGigs : availableGigs) } />
+                        <GigList removeApply={false} gigs={ (gigView === 'pending' ? pendingGigs : availableGigs) } />
                     </div>
                 </div>
             </div>

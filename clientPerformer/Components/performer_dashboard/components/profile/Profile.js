@@ -14,7 +14,7 @@ const Profile = ({username, location})=> {
                     </div>
                 </div>
                 <div className="col-md-6 d-flex align-items-end pl-0">
-                    <a href="performer/profile" className="pl-4" style={{color: "#E4E6EB"}}>
+                    <a href="/performer/profile" className="pl-4" style={{color: "#E4E6EB"}}>
                         <h1>{username}</h1>
                     </a>
                 </div>

@@ -51,14 +51,14 @@ class GigBar extends Component {
   }
 
   render(){
-    const { gig } = this.props;
+    const { gig, removeApply } = this.props;
     let date = gig.date.toString();
     let month = date.substring(5,7);
     let day = date.substring(8,10);
     let year = date.substring(0,4);
     const owner = this.props.gig.ownerName;
     let bidCount = this.props.gig.applicants ? this.props.gig.applicants.length : this.props.gig.numberOfApplicants || 0; 
-    
+
     return (
       <div className="container accordion p-0" id={`accordion_${gig._id}`}>
         <div className="card mb-3" style={{border: '1px solid #34acbc'}}>
@@ -86,17 +86,15 @@ class GigBar extends Component {
               <div className="row">
                 <div className="col-4">
                   <div className="card">
-                    <img src="https://i.imgur.com/KCeSIDy.png" alt="Gigl Event Icon" className="card-img-top"/>
-                    <div className="card-body gig_body">
-                      <ApplyButton onClick={()=>{this.applyForGig(gig._id)}} applied={this.state.applied} />
-                    </div>
+                    <img  src="https://i.imgur.com/KCeSIDy.png" alt="Gigl Event Icon" className="card-img-top"/>
                   </div>
                   
                 </div>
-                <div className="col-8">
-                  <h3>{owner}</h3>
-                  <div>Number of Applicants: {bidCount} </div>
-                  <div>Description: {gig.description}</div>
+                <div className="col-8 d-flex flex-column">
+                    <div style={{fontSize: 24}}>Client Name: {owner}</div>
+                    <div style={{fontSize: 24}}>Number of Applicants: {bidCount}</div>
+                    <div style={{fontSize: 24}}>Description: {gig.description}</div>
+                    {(!removeApply ? <ApplyButton onClick={()=>{this.applyForGig(gig._id)}} applied={this.state.applied} /> : <></>)}
                 </div>
               </div>
             </div>

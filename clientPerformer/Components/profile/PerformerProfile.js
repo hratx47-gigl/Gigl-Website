@@ -219,13 +219,12 @@ class PerformerProfile extends Component{
                 <div >
                     <div className="">
                         <div className="mt-4 border border-secondary p-4 rounded" style={{color:"#e4e6eb", backgroundColor:"#373737"}}>
-                            <h2>About
-                                <span>
-                                </span>
-                                <button style={{color: "#34ACBC"}}
+                            <h2>
+                                <div style={{width: "200px",  display: "inline"}}>About</div>
+                                <button style={{color: "#34ACBC", float: "right"}}
                                         value='0'
                                         onClick={this.editField}
-                                        className="btn btn-outline-secondary btn-sm">
+                                        className="ml-4 btn btn-outline-secondary btn-sm">
                                             Edit
                                 </button>
                             </h2>
@@ -235,13 +234,12 @@ class PerformerProfile extends Component{
                             }
                         </div>
                         <div className="mt-4 border border-secondary p-4 rounded"style={{color:"#e4e6eb", backgroundColor : "#373737"}}>
-                            <h2>Experience
-                                <span>
-                                </span>
-                                <button style={{color: "#34ACBC"}}
+                            <h2>
+                                <div style={{width: "200px",  display: "inline"}}>Experience</div>
+                                <button style={{color: "#34ACBC", float: "right"}}
                                         value='1'
                                         onClick={this.editField}
-                                        className="btn btn-outline-secondary btn-sm">
+                                        className="ml-4 btn btn-outline-secondary btn-sm">
                                             Edit
                                 </button>
                             </h2>
@@ -251,13 +249,12 @@ class PerformerProfile extends Component{
                             }
                         </div>
                         <div className="mt-4 border border-secondary p-4 rounded" style={{color:"#e4e6eb", backgroundColor:"#373737"}}>
-                            <h2>Education
-                                <span>
-                                </span>
-                                <button style={{color: "#34ACBC"}}
+                            <h2> 
+                                <div style={{width: "200px",  display: "inline"}}>Education</div>
+                                <button style={{color: "#34ACBC", float: "right"}}
                                         value='2'
                                         onClick={this.editField}
-                                        className="btn btn-outline-secondary btn-sm">
+                                        className="ml-4 btn btn-outline-secondary btn-sm">
                                             Edit
                                 </button>
                             </h2>
