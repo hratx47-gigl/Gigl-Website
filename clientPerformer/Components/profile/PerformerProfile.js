@@ -23,7 +23,7 @@ class PerformerProfile extends Component{
             editExperience: false,
             editLocation: false,
             currentText : ''
-            
+
         }
 
         this.editField = this.editField.bind(this);
@@ -37,7 +37,7 @@ class PerformerProfile extends Component{
     }
 
     componentDidMount(){
-      
+
       axios.get('http://localhost:8000/api/performer/profile') //get info specifc to the user
       .then((response) => {
           console.log(response.data);
@@ -54,7 +54,7 @@ class PerformerProfile extends Component{
       })
     }
 
-    
+
 
     editField(event){
         event.preventDefault();
@@ -66,10 +66,10 @@ class PerformerProfile extends Component{
         if(choice === 2) this.setState({editEducation : true, editExperience : false, editAbout : false, editLocation: false, currentText : text})
         if(choice === 3) this.setState({editLocation: true, editExperience : false, editAbout : false, editEducation: false, currentText : text})
     }
-    
+
     handleOnChange(event){
         this.setState({currentText : event.target.value})
-        
+
     }
 
     cancel(event){
@@ -88,16 +88,14 @@ class PerformerProfile extends Component{
         .catch(err =>{
             this.setState({editSave:false})
         })
-        
+
     }
     saveExperience(event){
         event.preventDefault();
         let text = this.state.currentText
         axios.put("http://localhost:8000/api/performer/profile", {params: { edit : 'experience', experience : text}})
         .then(data =>{
-            
             this.setState({experience: text, editExperience : false})
-
         })
         .catch(err =>{
             this.setState({editExperience:false})
@@ -130,7 +128,7 @@ class PerformerProfile extends Component{
     }
 
     logout(event){
-      
+
       axios.post("http://localhost:8000/api/performer/signout")
       .then(data => {
          console.log('Bye')
@@ -140,26 +138,33 @@ class PerformerProfile extends Component{
       })
     }
 
-   
 
-    
+
+
 
     render(){
         return (
-            
+
             <div style={{fontFamily:"lalezar", backgroundColor:"#212121", paddingBottom:400}}>
-            
+
             <div>
                 <div className="bg-dark">
                     <nav className=" container navbar navbar-expand-lg navbar-dark bg-dark">
-                        
+
                         <div className="">
                         <img style={{maxHeight:40}} src="https://i.imgur.com/JWCVUEL.png" alt="Logo" href="/"/>
                         <a style={{fontSize: 24}} className="navbar-brand" href="#home">Gigl</a>
                         </div>
 
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
+                        <button className="navbar-toggler"
+                                type="button"
+                                data-toggle="collapse"
+                                data-target="#navbarNav"
+                                aria-controls="navbarNav"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span className="navbar-toggler-icon">
+                            </span>
                         </button>
                             <div className="collapse navbar-collapse" id="navbarNav">
                                 <ul className="navbar-nav ml-auto">
@@ -173,51 +178,104 @@ class PerformerProfile extends Component{
                             </div>
                     </nav>
                 </div>
-            
-               
+
+
             </div>
-            <div className="" style={{backgroundColor:"#212121", backgroundRepeat: "no-repeat" , backgroundImage:"url('https://i.imgur.com/zPgoYhe.png')"}}>
-            
-            <div className="container py-2">
+            <div className="" style={{backgroundColor:"#212121", backgroundSize:"contain", backgroundRepeat: "no-repeat" , backgroundImage:"url('https://i.imgur.com/zPgoYhe.png')"}}>
+
+            <div className="container-fluid">
                 <div style={{height:50, width:"auto"}}></div>
-                <div className="row d-flex align-items-end">
-                    <div className="col-md-3 p-0">
-                    <img className="img-fluid img-thumbnail" src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
-                    </div>    
-                    <div className="col-md-4 text-md-center" style={{fontSize:30, color:"#e4e6eb"}}> {this.state.username} </div>
-                    <div className="col-md-5 text-md-center">
-                        <div className="ml-auto" style={{marginRight:10, color:"#e4e6eb"}}> {this.state.editLocation === true ? <EditField cancel={this.cancel} save={this.saveLocation} onChange={this.handleOnChange} currentText={this.state.currentText}/>  : <button onClick={this.editField} style={{fontSize:20, color:"#e4e6eb"}} value="3" className="btn btn-outline-drk">{this.state.location}</button>} </div>
-                    </div>      
+                <div className="row d-flex align-items-end mb-0">
+                    <div className="col-md-3 mb-2">
+                        <img className="img-fluid img-thumbnail"
+                             src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
+                             alt="">
+                        </img>
+                    </div>
+                    <div className="d-flex flex nowrap txt-sm-h5">
+                    <h1 className="col-md-4 text-md-center" style={{color:"#e4e6eb"}}> {this.state.username} </h1>
+                    </div>
+                    <div className="col-md-3 ml-auto text-md-center text-lg-center">
+                        <div className="" style={{color:"#e4e6eb"}}>
+                           { this.state.editLocation === true ?
+                             <EditField cancel={this.cancel} save={this.saveLocation} onChange={this.handleOnChange} currentText={this.state.currentText}/>
+                             : <button onClick={this.editField}
+                                       style={{fontSize:25, color:"#e4e6eb"}}
+                                       value="3" className="btn btn-outline-drk">
+                                          <span style={{color: "#34ACBC"}}>&#9998;  </span>
+                                            { this.state.location === ""?
+                                              "Add Your Location" : this.state.location
+                                            }
+                               </button>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
 
             </div>
 
             <div style={{height:50}}></div>
-                
-            <div style={{color:"#e4e6eb"}} className="container">  
+
+            <div style={{color:"#e4e6eb"}} className="container">
                 <div >
                     <div className="">
                         <div className="mt-4 border border-secondary p-4 rounded" style={{color:"#e4e6eb", backgroundColor:"#373737"}}>
-                            <h2>About <span></span><button style={{color: "#34ACBC"}} value='0' onClick={this.editField} className="btn btn-outline-secondary btn-sm">Edit</button></h2>
-                            {this.state.editAbout === true? <EditField cancel={this.cancel} save={this.saveAbout} onChange={this.handleOnChange} currentText={this.state.currentText}/> : <p> {this.state.about} </p> } 
+                            <h2>About
+                                <span>
+                                </span>
+                                <button style={{color: "#34ACBC"}}
+                                        value='0'
+                                        onClick={this.editField}
+                                        className="btn btn-outline-secondary btn-sm">
+                                            Edit
+                                </button>
+                            </h2>
+                            { this.state.editAbout === true?
+                                <EditField cancel={this.cancel} save={this.saveAbout} onChange={this.handleOnChange} currentText={this.state.currentText}/>
+                                : <p> {this.state.about} </p>
+                            }
                         </div>
                         <div className="mt-4 border border-secondary p-4 rounded"style={{color:"#e4e6eb", backgroundColor : "#373737"}}>
-                            <h2>Experience <span></span><button style={{color: "#34ACBC"}} value='1' onClick={this.editField} className="btn btn-outline-secondary btn-sm">Edit</button></h2>
-                            {this.state.editExperience === true? <EditField cancel={this.cancel} save={this.saveExperience} onChange={this.handleOnChange} currentText={this.state.currentText}/> : <p> {this.state.experience} </p> } 
+                            <h2>Experience
+                                <span>
+                                </span>
+                                <button style={{color: "#34ACBC"}}
+                                        value='1'
+                                        onClick={this.editField}
+                                        className="btn btn-outline-secondary btn-sm">
+                                            Edit
+                                </button>
+                            </h2>
+                            { this.state.editExperience === true?
+                                <EditField cancel={this.cancel} save={this.saveExperience} onChange={this.handleOnChange} currentText={this.state.currentText}/>
+                                 : <p> {this.state.experience} </p>
+                            }
                         </div>
                         <div className="mt-4 border border-secondary p-4 rounded" style={{color:"#e4e6eb", backgroundColor:"#373737"}}>
-                            <h2>Education <span></span><button style={{color: "#34ACBC"}} value='2' onClick={this.editField} className="btn btn-outline-secondary btn-sm">Edit</button></h2>
-                            {this.state.editEducation === true? <EditField cancel={this.cancel} save={this.saveEducation}  onChange={this.handleOnChange} currentText={this.state.currentText}/> : <p> {this.state.education} </p> } 
+                            <h2>Education
+                                <span>
+                                </span>
+                                <button style={{color: "#34ACBC"}}
+                                        value='2'
+                                        onClick={this.editField}
+                                        className="btn btn-outline-secondary btn-sm">
+                                            Edit
+                                </button>
+                            </h2>
+                            { this.state.editEducation === true?
+                                <EditField cancel={this.cancel} save={this.saveEducation}  onChange={this.handleOnChange} currentText={this.state.currentText}/>
+                                : <p> {this.state.education} </p>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-           
+
 
 
             </div>
-            
+
         )
     }
 }

@@ -52,20 +52,24 @@ class GigBar extends Component {
 
   render(){
     const { gig } = this.props;
+    let date = gig.date.toString();
+    let month = date.substring(5,7);
+    let day = date.substring(8,10);
+    let year = date.substring(0,4);
     const owner = this.props.gig.ownerName;
     let bidCount = this.props.gig.applicants ? this.props.gig.applicants.length : this.props.gig.numberOfApplicants || 0; 
     
     return (
-      <div className="accordion container p-0 mt-3" id={`accordion_${gig._id}`}>
-        <div className="card">
-          <div className="card-header gig_header" id="headingOne">
-            <div className="row ">
+      <div className="container accordion p-0" id={`accordion_${gig._id}`}>
+        <div className="card mb-3" style={{border: '1px solid #34acbc'}}>
+          <div className="card-header gig_info" id="headingOne">
+            <div className="row">
               <div className="col-6">
-                <b>{gig.name}</b>
-                <div>{gig.location} | {this.formatter.format(gig.price)}</div>
+                <h4>{gig.name}</h4>
+                <h5>{gig.location} | {this.formatter.format(gig.price)}</h5>
               </div>
               <div className="col-6 d-flex align-items-center justify-content-end">
-                <div className="float-right">{gig.date}</div>
+                <h5 className="float-right">{`${month}/${day}/${year}`}</h5>
                 <button className={"btn btn-link float-right" + (this.state.isExpanded ? ' change' : '')} type="button" aria-expanded="true" onClick={this.toggleCollapse}>
                   <div className="hamburger">
                     <div className="bar1"></div>
