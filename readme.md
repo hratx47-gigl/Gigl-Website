@@ -78,7 +78,7 @@ Based on the request of our client, we built the following user stores:
 
 # Work Flow and Ticketing
 ## Work Flow
-We followed a Git workflow to ensure work is accomplished in a consistent and productive manner. The following is a Git Graph of our repository:
+We followed a Git workflow to ensure work is accomplished in a consistent and productive manner. 
 ![](https://thumbs.gfycat.com/SpotlessVagueArgusfish-size_restricted.gif)
 
 ## Ticketing
