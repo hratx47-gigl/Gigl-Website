@@ -17,12 +17,14 @@ const Navbar = () => {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto d-flex align-items-center">
                 <li className="nav-item">
-                    <a className="navbar-brand embed-responsive embed-responsive-1by1" href="/performer/profile">
-                        <img className="rounded-circle embed-responsive-item" src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
+                    <div>
+                    <a className="navbar-brand" href="/performer/profile">
+                        <img className="rounded-circle" height="50" width="50" src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
                     </a>
+                    </div>
                 </li>
                 <li className="nav-item d-flex align-items-center">
-                    <a className="nav-link pr-3" style={{fontSize:"24px", color:"#E4E6EB"}} href="/">Home</a>
+                    <a className="nav-link pr-2" style={{fontSize:"24px", color:"#E4E6EB"}} href="/">Home</a>
                 </li>
                 <li className="nav-item d-flex align-items-center">
                 <a className="nav-link" 
@@ -39,7 +41,7 @@ const Navbar = () => {
                         }); //may need to redirect
                     }}
                     style={{fontSize:"24px", color:"#E4E6EB"}}>
-                Log Out</a>
+                Log&nbsp;Out</a>
                 </li>
             </ul>
             </div>
