@@ -9,82 +9,49 @@ class PerformerDashboard extends Component {
     constructor(props) {
         super(props)
         this.state ={
+            username: '',
+            location: '',
             gigView: 'pending',
-            upcomingGigs: [
-                // {
-                // _id: 3,
-                // name: 'Rat Party!!!!',
-                // location: 'Austin, Tx',
-                // price: 1000.59,
-                // date: '4/20/2020',
-                // owner: {
-                //     _id: 1,
-                //     username: 'Danielle Kuhn'
-                // },
-                // applicants: [1,2,3,4],
-                // description: 'Master Splinter needs you to bake pizzas',
-                // image: '',
-            // }
-            ],
-            availableGigs: [
-            //     {
-            //     _id: 1,
-            //     name: 'Cat Party!!!!',
-            //     location: 'Austin, Tx',
-            //     price: 1000.59,
-            //     date: '4/20/2020',
-            //     owner: {
-            //         _id: 1,
-            //         username: 'Danielle Kuhn'
-            //     },
-            //     applicants: [1,2,3,4],
-            //     description: 'Looking for a cat rangler. Needs to have 5 yrs of experience dealing with domesticated cats.',
-            //     image: '',
-            // }
-            ],
-            pendingGigs: [
-            //     {
-            //     _id: 1,
-            //     name: 'Bat Party!',
-            //     location: 'Austin, Tx',
-            //     price: 1,
-            //     date: '4/20/2020',
-            //     owner: {
-            //         _id: 1,
-            //         username: 'Jaeson'
-            //     },
-            //     applicants: [1,2,3,4],
-            //     description: 'Come see the bats fly!',
-            //     image: '',
-            // },
-            // {
-            //     _id: 1,
-            //     name: 'Bat Party!',
-            //     location: 'Austin, Tx',
-            //     price: 1,
-            //     date: '4/20/2020',
-            //     owner: {
-            //         _id: 1,
-            //         username: 'Jaeson'
-            //     },
-            //     applicants: [1,2,3,4],
-            //     description: 'Come see the bats fly!',
-            //     image: '',
-            // }
-            ],
+            upcomingGigs: [],
+            availableGigs: [],
+            pendingGigs: [],
             serverResponse: ''
         }
     }
 
     changeGigView(pageView){
-        this.setState((oldState) => {
-            if (oldState.gigView !== pageView){
-                return {gigView: pageView};
-            } 
+        axios.get(`/api/performer/gigs/${pageView}`)
+        .then(response=>{
+            if (pageView === 'available'){
+                this.setState({
+                    gigView: pageView,
+                    availableGigs: response.data,
+                });
+            } else {
+                this.setState({
+                    gigView: pageView,
+                    pendingGigs: response.data,
+                });
+            }
         })
+        .catch(error=>{
+            console.error(error);
+        });
     }
 
     componentDidMount(){
+        axios.get('http://localhost:8000/api/performer/profile') //get info specifc to the user
+        .then((response) => {
+            console.log(response.data);
+            this.setState({
+                username: response.data.username,
+                location: response.data.location
+            })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+
         axios.get('/api/performer/gigs/available')
         .then(response=>{
             console.log('response ', response);
@@ -112,18 +79,30 @@ class PerformerDashboard extends Component {
     }
 
     render() {
-        let { gigView, availableGigs, pendingGigs, upcomingGigs } = this.state;
+        let { gigView, availableGigs, pendingGigs, upcomingGigs, username, location } = this.state;
         return(
             <div>
                 <Navbar/>
-                <Profile/>
+                <Profile username={username} location={location}/>
                 <div className="gig_info container pt-3 my-5">
-                    <h4 >Your Upcoming Gigs</h4>
-                    <GigList gigs={upcomingGigs}/>
-                        <button className="btn btn-link btn-lg" onClick={() => {this.changeGigView('pending')}}>Pending Gigs</button>
-                        <span>/</span>
-                        <button className="btn btn-link btn-lg" onClick={() => {this.changeGigView('available')}}>Available Gigs</button>
-                    <GigList gigs={ (gigView === 'pending' ? pendingGigs : availableGigs) } />
+                    <h3>Your Upcoming Gigs</h3>
+                    <div className="container gig_header mb-5" style={{border: '1px solid #34acbc'}}>
+                        <div className="mt-3"></div>
+                        <GigList removeApply={true} gigs={upcomingGigs}/>
+                        <div className="pb-1"></div>
+                    </div>
+                    <div className="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" className="btn btn-secondary btn-info btn-lg blueBackground" onClick={() => {this.changeGigView('pending')}}>
+                            <h4>Pending Gigs</h4>
+                        </button>
+                        <button type="button" className="btn btn-secondary btn-info btn-lg ml-1 blueBackground" onClick={() => {this.changeGigView('available')}}>
+                            <h4>Available Gigs</h4>
+                        </button>
+                    </div>
+                    <div className="container gig_header mb-4" style={{border: '1px solid #34acbc'}}>
+                        <div className="mt-3"></div>
+                        <GigList removeApply={false} gigs={ (gigView === 'pending' ? pendingGigs : availableGigs) } />
+                    </div>
                 </div>
             </div>
         )

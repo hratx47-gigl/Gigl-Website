@@ -4,28 +4,30 @@ import axios from 'axios';
 const Navbar = () => {
     return(
         <div>
-        <div className="bg-dark">
+        <div className="bg-dark" style={{color: "#E4E6EB"}}>
         <nav className="container navbar navbar-expand-lg navbar-dark bg-dark">
-        <a className="navbar-brand" style={{fontFamily: "Candara", fontSize:"40px"}} href="/">
+        <a className="navbar-brand" style={{fontSize:"40px"}} href="/">
             <img src="https://i.imgur.com/JWCVUEL.png" className="pr-2" width="50" height="50" alt=""></img>
-            Gigl
+            <img src="https://i.imgur.com/o1Ky7cy.png" height="30" width="60" alt=""></img>
         </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
             </button>
         
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav ml-auto d-flex align-items-center">
                 <li className="nav-item">
+                    <div>
                     <a className="navbar-brand" href="/performer/profile">
-                        <img className="pr-1" height="60" src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
+                        <img className="rounded-circle" height="50" width="50" style={{objectFit: "cover"}} src="https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt=""></img>
                     </a>
+                    </div>
                 </li>
                 <li className="nav-item d-flex align-items-center">
-                    <a className="nav-link text-white pr-3" style={{fontSize:"24px", fontFamily:"Lalezar"}} href="/">Home</a>
+                    <a className="nav-link pr-2" style={{fontSize:"24px", color:"#E4E6EB"}} href="/">Home</a>
                 </li>
                 <li className="nav-item d-flex align-items-center">
-                <a className="nav-link text-white" 
+                <a className="nav-link" 
                     href="#signout"
                     onClick={() => {
                     axios
@@ -38,8 +40,8 @@ const Navbar = () => {
                         console.log(error);
                         }); //may need to redirect
                     }}
-                    style={{fontSize:"24px", fontFamily:"Lalezar"}}>
-                Log Out</a>
+                    style={{fontSize:"24px", color:"#E4E6EB"}}>
+                Log&nbsp;Out</a>
                 </li>
             </ul>
             </div>

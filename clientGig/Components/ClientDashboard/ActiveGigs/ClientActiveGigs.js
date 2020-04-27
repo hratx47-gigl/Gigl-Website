@@ -16,12 +16,14 @@ class ActiveGigs extends React.Component {
                 <GigItem
                   key={index}
                   index={index}
+                  id={item._id}
                   price={item.price}
                   event={item.name}
                   date={item.date}
                   location={item.location}
                   description={item.description}
                   applicants={item.applicants}
+                  selectedApplicants={item.selectedApplicants}
                 />
               );
             })}

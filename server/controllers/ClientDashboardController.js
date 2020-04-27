@@ -1,8 +1,11 @@
 const { Gig, UserClient, UserPerformer } = require("../database");
+const mongoose = require("mongoose");
 
 async function getActiveGigs(req, res) {
   const user = req.session.userClient;
-  const clientGig = await Gig.find({ owner: user._id });
+  const clientGig = await Gig.find({ owner: user._id }).catch((err) => {
+    console.log(err);
+  });
   res.json({ gigs: clientGig });
 }
 
@@ -17,35 +20,72 @@ async function postGig(req, res) {
     applicants: [],
     owner: user._id,
   });
-  await newClientGig.save();
+  await newClientGig.save().catch((err) => {
+    console.log(err);
+  });
   res.json({ success: true });
 }
 
 async function getUsername(req, res) {
   const user = req.session.userClient;
-
   console.log(user.username);
-  const clientUsername = await UserClient.findById(user._id);
-  console.log(clientUsername);
+  const clientUsername = await UserClient.findById(user._id).catch((err) => {
+    console.log(err);
+  });
   res.json({ username: clientUsername.username });
 }
 
 async function getPerformerDetails(req, res) {
-  console.log("search id = ", req.params);
-  const test = await UserPerformer.findById(req.params.id);
-  console.log(test);
-  res.json({ info: "cool" });
+  const info = await UserPerformer.findById(req.params.id).catch((err) => {
+    console.log(err);
+  });
+
+  res.json({ info: info });
 }
-// async function getPerformerDetails(req, res) {
-//   console.log("this is req", req.session);
-//   const user = req.session.userPerformer;
-//   const performerInfo = await userPerformer.find({
-//     username: user.username,
-//     email: user.email,
-//     location: user.location,
-//     about: user.about,
-//   });
-//   res.json({ performerInfo });
+
+async function addPerformerToGig(req, res) {
+  console.log("this is params", req.body);
+  const newPerformerGig = await Gig.findOneAndUpdate(
+    { _id: req.body.gigId },
+    {
+      $push: { selectedApplicants: mongoose.Types.ObjectId(req.body.perfId) },
+    }
+  );
+  res.json("Added");
+  // const performer = await UserPerformer;
+}
+
+async function deletePerformerFromGig(req, res) {
+  console.log("this is params", req.body);
+  const newPerformerGig = await Gig.findOneAndUpdate(
+    { _id: req.body.gigId },
+    {
+      $pull: { selectedApplicants: mongoose.Types.ObjectId(req.body.perfId) },
+    }
+  );
+  res.json("Removed");
+}
+
+// async function getAppliedPerformers(req, res) {
+//   const appliedPerfomers = await Gig.findById({ _id: req.params.id })
+//     .populate("applicants")
+//     .populate("selectedApplicants")
+//     .exec();
+//   const applicants = appliedPerformers.applicants;
+//   const selectedApplicants = appliedPerformers.selectedApplicants;
+//   const result = [];
+//   for(let applicant of applicants){
+
+//   }
+//   res.json({ appliedPerfomers: appliedPerfomers.selectedApplicants });
+//   console.log("get applied performers route works");
 // }
 
-module.exports = { getActiveGigs, postGig, getUsername, getPerformerDetails };
+module.exports = {
+  getActiveGigs,
+  postGig,
+  getUsername,
+  getPerformerDetails,
+  addPerformerToGig,
+  deletePerformerFromGig,
+};

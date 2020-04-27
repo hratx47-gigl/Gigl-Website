@@ -90,6 +90,7 @@ class ClientGigModal extends React.Component {
             data-toggle="modal"
             data-target="#clientModal"
             style={{
+              borderColor: "#34ACBC",
               marginBottom: "10px",
               backgroundColor: "#34ACBC",
               color: "#212121",
@@ -174,9 +175,9 @@ class ClientGigModal extends React.Component {
                     placeholder="Describe Your Event..."
                   />
                 </div>
-                <div className="form-group">
+                {/* <div className="form-group">
                   <ImageUpload />
-                </div>
+                </div> */}
               </div>
               <div className="modal-footer">
                 <button
