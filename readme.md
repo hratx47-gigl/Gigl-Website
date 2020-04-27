@@ -23,7 +23,11 @@ We chose a monolithic architecture. Herein we have summarized the user stories b
   - [Contributors](#contributors)
   
 # Demo
+Demo of user sign up and event creation:</br>
+![](https://thumbs.gfycat.com/GlamorousAggravatingFirefly-size_restricted.gif)</br>
 
+Demo of performer dashboard and applying to events:</br>
+![](https://thumbs.gfycat.com/TangibleFavorableAphid-size_restricted.gif)</br>
 
 # User Stories
 ## Implemented
