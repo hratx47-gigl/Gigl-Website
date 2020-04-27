@@ -19,7 +19,6 @@ We chose a monolithic architecture. Herein we have summarized the user stories b
   - [Stack](#stack)
   - [Work Flow and Ticketing](#work-flow-and-ticketing)
   - [Getting Started](#getting-started)
-  - [Challenges and Successes](#challenges-and-successes)
   - [Contributors](#contributors)
   
 # Demo
@@ -110,8 +109,6 @@ npm run start
    <img src="https://i.imgur.com/Lm1qsHT.png" height=200>
   <img src="https://i.imgur.com/NzaHPPg.png" height=200>
 <span>
-
-# Challenges and Successes 
 
 # Contributors
 [Danielle Kuhn](https://github.com/daniellekuhn), [Julian McCrary](https://github.com/jmccra), [Tim Hedge](https://github.com/timhedge), [David Hastings](https://www.github.com/davehastings), [Matt Co](https://github.com/comatthewb), [Sean Spiesman](https://github.com/seanspiesman), [Brian Gardner](https://github.com/bpg031000), [Nick Lingrel](https://github.com/nlingrel), [Marc Little](https://github.com/BigMarco254), [Jaeson Jones](https://github.com/JaeJones0612), [Alex Garcia](https://github.com/jandrog)
