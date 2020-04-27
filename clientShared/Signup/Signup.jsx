@@ -39,7 +39,7 @@ class Signup extends React.Component {
       })
       .then((resp) => {
         console.log("resp: ", resp);
-        if(resp.data.succesful){
+        if(resp.data.successful){
           this.setState({error: "", redirect: true, isLoading: false});
         } else {
           this.setState({error:resp.data.error, isLoading:false})
