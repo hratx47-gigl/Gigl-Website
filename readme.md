@@ -9,7 +9,7 @@
 # Welcome to Gigl!
 Have an event coming up and need talent? Gigl is a platform that connects clients to local freelancers such as photographers, bartenders, artists, and entertainers. Our website allows clients to post upcoming gigs and select a performer that meets their needs. It also allows talented peformers to create a profile, view gigs in their area, and apply for them! 
 
-A team of us software engineers were asked by a client to built the Gigl website. We received feedback throughout the iterative build process to launch quickly and efficiently. 
+A team of us software engineers were asked by a client to build the Gigl website. We received feedback throughout the iterative build process to launch quickly and efficiently. 
 
 We chose a monolithic architecture. Herein we have summarized the user stories built, technology stack utilized, how to launch the site, our work flow and ticketing approach, and team. 
 
