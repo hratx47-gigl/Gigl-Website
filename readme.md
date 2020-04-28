@@ -11,7 +11,7 @@ Have an event coming up and need talent? Gigl is a platform that connects client
 
 A team of us software engineers were asked by a client to build the Gigl website. We received feedback throughout the iterative build process to launch quickly and efficiently. 
 
-We chose a monolithic architecture. Herein we have summarized the user stories built, technology stack utilized, how to launch the site, our work flow and ticketing approach, and team. 
+We chose a monolithic architecture. Herein we have discussed the user stories built, technology stack utilized, instructions for getting started, our work flow and ticketing approach, and team composition. 
 
 # Table of Contents
   - [Demo](#demo)
