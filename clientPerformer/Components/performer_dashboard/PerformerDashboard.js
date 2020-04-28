@@ -40,7 +40,7 @@ class PerformerDashboard extends Component {
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8000/api/performer/profile') //get info specifc to the user
+        axios.get('https://hratx47-gigl.herokuapp.com/api/performer/profile') //get info specifc to the user
         .then((response) => {
             console.log(response.data);
             this.setState({
@@ -52,7 +52,7 @@ class PerformerDashboard extends Component {
             console.log(error);
         });
 
-        axios.get('/api/performer/gigs/available')
+        axios.get('https://hratx47-gigl.herokuapp.com/api/performer/gigs/available')
         .then(response=>{
             console.log('response ', response);
             this.setState({availableGigs: this.state.availableGigs.concat(...response.data)});
@@ -60,7 +60,7 @@ class PerformerDashboard extends Component {
         .catch(error=>{
             console.error(error);
         });
-        axios.get('/api/performer/gigs/accepted')
+        axios.get('https://hratx47-gigl.herokuapp.com/api/performer/gigs/accepted')
         .then(response=>{
             console.log('response ', response);
             this.setState({upcomingGigs: this.state.upcomingGigs.concat(...response.data)});
@@ -68,7 +68,7 @@ class PerformerDashboard extends Component {
         .catch(error=>{
             console.error(error);
         });
-        axios.get('/api/performer/gigs/pending')
+        axios.get('https://hratx47-gigl.herokuapp.com/api/performer/gigs/pending')
         .then(response=>{
             console.log('response ', response);
             this.setState({pendingGigs: this.state.pendingGigs.concat(...response.data)});

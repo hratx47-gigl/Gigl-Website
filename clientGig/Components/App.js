@@ -15,7 +15,7 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:8000/api/client/profile/username")
+      .get("https://hratx47-gigl.herokuapp.com/api/client/profile/username")
       .then((results) => {
         var user = results.data.username;
         this.setState({ username: user });
@@ -28,7 +28,7 @@ export default class App extends React.Component {
 
   rerender() {
     axios
-      .get("http://localhost:8000/api/client/gigs")
+      .get("https://hratx47-gigl.herokuapp.com/api/client/gigs")
       .then((results) => {
         let activeGigs = results.data.gigs;
         // results.data.gigs[0].applicants = [
@@ -53,7 +53,7 @@ export default class App extends React.Component {
       alert("Price must be a number");
     } else {
       axios
-        .post("http://localhost:8000/api/client/addgig", newObject)
+        .post("https://hratx47-gigl.herokuapp.com/api/client/addgig", newObject)
         .then((response) => {
           this.rerender();
         })

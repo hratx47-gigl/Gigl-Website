@@ -8,7 +8,7 @@ export default class App extends Component {
     this.state = {
       seaCreatures: []
     };
-    this.api = `http://localhost:8000/api/example`;
+    this.api = `https://hratx47-gigl.herokuapp.com/api/example`;
   }
   componentDidMount() {
     axios.get(this.api).then((res) => res.data).then(seaCreatures => {

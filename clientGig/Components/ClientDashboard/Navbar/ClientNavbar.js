@@ -36,7 +36,7 @@ const Navbar = (props) => {
                     .post("/api/client/signout")
                     .then((results) => {
                       // console.log(results);
-                      window.location.replace("http://localhost:8000/");
+                      window.location.replace("https://hratx47-gigl.herokuapp.com");
                     })
                     .catch((error) => {
                       console.log(error);

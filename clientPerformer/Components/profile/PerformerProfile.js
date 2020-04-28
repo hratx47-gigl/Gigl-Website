@@ -38,7 +38,7 @@ class PerformerProfile extends Component{
 
     componentDidMount(){
 
-      axios.get('http://localhost:8000/api/performer/profile') //get info specifc to the user
+      axios.get('https://hratx47-gigl.herokuapp.com/api/performer/profile') //get info specifc to the user
       .then((response) => {
           console.log(response.data);
           this.setState({
@@ -78,7 +78,7 @@ class PerformerProfile extends Component{
     saveAbout(event){
         event.preventDefault();
         let text = this.state.currentText
-        axios.put("http://localhost:8000/api/performer/profile", {params: { edit : 'about', about : text}})
+        axios.put("https://hratx47-gigl.herokuapp.com/api/performer/profile", {params: { edit : 'about', about : text}})
         .then(data =>{
             this.setState({about: text, editAbout : false})
 
@@ -91,7 +91,7 @@ class PerformerProfile extends Component{
     saveExperience(event){
         event.preventDefault();
         let text = this.state.currentText
-        axios.put("http://localhost:8000/api/performer/profile", {params: { edit : 'experience', experience : text}})
+        axios.put("https://hratx47-gigl.herokuapp.com/api/performer/profile", {params: { edit : 'experience', experience : text}})
         .then(data =>{
             this.setState({experience: text, editExperience : false})
         })
@@ -104,7 +104,7 @@ class PerformerProfile extends Component{
     saveEducation(event){
         event.preventDefault();
         let text = this.state.currentText;
-        axios.put("http://localhost:8000/api/performer/profile", {params: { edit : 'education', education : text}})
+        axios.put("https://hratx47-gigl.herokuapp.com/api/performer/profile", {params: { edit : 'education', education : text}})
         .then(data =>{
             this.setState({education: text, editEducation : false})
         })
@@ -116,7 +116,7 @@ class PerformerProfile extends Component{
     saveLocation(event){
         event.preventDefault();
         let text = this.state.currentText;
-        axios.put("http://localhost:8000/api/performer/profile", {params: { edit : 'location', location : text}})
+        axios.put("https://hratx47-gigl.herokuapp.com/api/performer/profile", {params: { edit : 'location', location : text}})
         .then(data =>{
             this.setState({location: text, editLocation : false})
         })
@@ -127,7 +127,7 @@ class PerformerProfile extends Component{
 
     logout(event){
 
-      axios.post("http://localhost:8000/api/performer/signout")
+      axios.post("https://hratx47-gigl.herokuapp.com/api/performer/signout")
       .then(data => {
          console.log('Bye')
       })

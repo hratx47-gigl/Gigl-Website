@@ -12,7 +12,7 @@ class PerformerView extends React.Component {
   componentDidMount() {
     for (var i = 0; i < this.props.applicants.length; i++) {
       Axios.get(
-        `http://localhost:8000/api/client/performerinfo/${this.props.applicants[i]}`
+        `https://hratx47-gigl.herokuapp.com/api/client/performerinfo/${this.props.applicants[i]}`
       )
         .then((results) => {
           var user = results.data.info.username.split(" ").join("");
@@ -49,7 +49,7 @@ class PerformerView extends React.Component {
   onCheckboxChange(id, item, gigIndex) {
     if (item + gigIndex === document.getElementById(item + gigIndex).id) {
       if (document.getElementById(item + gigIndex).checked === true) {
-        Axios.put(`http://localhost:8000/api/client/selectedperformer/`, {
+        Axios.put(`https://hratx47-gigl.herokuapp.com/api/client/selectedperformer/`, {
           perfId: id,
           gigId: this.props.id,
         }).then((result) => {
@@ -65,7 +65,7 @@ class PerformerView extends React.Component {
         });
       }
       if (document.getElementById(item + gigIndex).checked === false) {
-        Axios.put(`http://localhost:8000/api/client/deleteperformer/`, {
+        Axios.put(`https://hratx47-gigl.herokuapp.com/api/client/deleteperformer/`, {
           perfId: id,
           gigId: this.props.id,
         }).then((result) => {

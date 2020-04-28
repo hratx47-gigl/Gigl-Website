@@ -31,7 +31,7 @@ class GigBar extends Component {
         applied: !this.state.applied,
       }
     );
-    axios.post('/api/performer/gigs/apply', {gigId})
+    axios.post('https://hratx47-gigl.herokuapp.com/api/performer/gigs/apply', {gigId})
     .then(response=>{
       console.log(response);
     })
