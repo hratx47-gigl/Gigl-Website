@@ -11,7 +11,7 @@ Have an event coming up and need talent? Gigl is a platform that connects client
 
 A team of us software engineers were asked by a client to build the Gigl website. We received feedback throughout the iterative build process to launch quickly and efficiently. 
 
-We chose a monolithic architecture. Herein we have summarized the user stories built, technology stack utilized, how to launch the site, our work flow and ticketing approach, and team. 
+We chose a monolithic architecture. Herein we have discussed the user stories built, technology stack utilized, instructions for getting started, our work flow and ticketing approach, and team composition. 
 
 # Table of Contents
   - [Demo](#demo)
@@ -19,11 +19,14 @@ We chose a monolithic architecture. Herein we have summarized the user stories b
   - [Stack](#stack)
   - [Work Flow and Ticketing](#work-flow-and-ticketing)
   - [Getting Started](#getting-started)
-  - [Challenges and Successes](#challenges-and-successes)
   - [Contributors](#contributors)
   
 # Demo
+Mobile demo</br>
+![](https://thumbs.gfycat.com/ScientificAppropriateAlbatross-size_restricted.gif)</br>
 
+Web browser demo</br>
+![](https://thumbs.gfycat.com/TangibleFavorableAphid-size_restricted.gif)</br>
 
 # User Stories
 ## Implemented
@@ -106,8 +109,6 @@ npm run start
    <img src="https://i.imgur.com/Lm1qsHT.png" height=200>
   <img src="https://i.imgur.com/NzaHPPg.png" height=200>
 <span>
-
-# Challenges and Successes 
 
 # Contributors
 [Danielle Kuhn](https://github.com/daniellekuhn), [Julian McCrary](https://github.com/jmccra), [Tim Hedge](https://github.com/timhedge), [David Hastings](https://www.github.com/davehastings), [Matt Co](https://github.com/comatthewb), [Sean Spiesman](https://github.com/seanspiesman), [Brian Gardner](https://github.com/bpg031000), [Nick Lingrel](https://github.com/nlingrel), [Marc Little](https://github.com/BigMarco254), [Jaeson Jones](https://github.com/JaeJones0612), [Alex Garcia](https://github.com/jandrog)

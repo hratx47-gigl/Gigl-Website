@@ -25,6 +25,8 @@ class PerformerView extends React.Component {
           for (var j = 0; j < this.props.selectedApplicants.length; j++) {
             if (results.data.info._id === this.props.selectedApplicants[j]) {
               results.data.info.checked = true;
+            } else {
+              results.data.info.checked = false;
             }
           }
           this.setState({
@@ -59,12 +61,13 @@ class PerformerView extends React.Component {
               if (this.state.appInfo[i].checked === false) {
                 newState[i].checked = true;
               }
-              this.setState({ appInfo: newState });
+              this.setState({ appInfo: newState, appInfo: newState });
             }
           }
         });
       }
-      if (document.getElementById(item + gigIndex).checked === false) {
+      // if (document.getElementById(item + gigIndex).checked === false)
+      else {
         Axios.put(`https://hratx47-gigl.herokuapp.com/api/client/deleteperformer/`, {
           perfId: id,
           gigId: this.props.id,
@@ -92,7 +95,6 @@ class PerformerView extends React.Component {
           <p
             className="justify-content-center d-flex"
             style={{ margin: "0px" }}
-            
           >
             Selected Applicants
           </p>
@@ -100,6 +102,7 @@ class PerformerView extends React.Component {
             {this.state.appInfo.map((item, index) => {
               return (
                 <AttachedPerformers
+                  applicant={this.state.selectedApplicants[index]}
                   key={index}
                   item={item}
                   gigIndex={this.props.index}

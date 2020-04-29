@@ -83,6 +83,9 @@ class PerformerSelect extends React.Component {
                     }}
                   >
                     {this.props.appInfo.map((item, index) => {
+                      if (item.checked === undefined) {
+                        item.checked = false;
+                      }
                       // console.log("this is item", item);
                       var name = item.username.split(" ").join("");
                       return (
