@@ -108,9 +108,19 @@ class ClientGigModal extends React.Component {
           aria-hidden="true"
         >
           <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="clientModalLabel">
+            <div
+              className="modal-content"
+              style={{ backgroundColor: "#212121" }}
+            >
+              <div
+                className="modal-header"
+                style={{ backgroundColor: "#212121" }}
+              >
+                <h5
+                  className="modal-title"
+                  id="clientModalLabel"
+                  style={{ color: "#E4E6EB" }}
+                >
                   New Gig
                 </h5>
                 {/* <button
@@ -122,11 +132,16 @@ class ClientGigModal extends React.Component {
                   <span aria-hidden="true">&times;</span>
                 </button> */}
               </div>
-              <div className="modal-body">
+              <div
+                className="modal-body"
+                style={{ backgroundColor: "#212121" }}
+              >
                 <div className="form-group">
                   {/* <div className="row"> */}
                   {/* <div className='col-sm-3'></div> */}
-                  <label htmlFor="gig-name-input">Name</label>
+                  <label htmlFor="gig-name-input" style={{ color: "#E4E6EB" }}>
+                    Name
+                  </label>
                   <input
                     id="gig-name-input"
                     className="form-control"
@@ -136,7 +151,12 @@ class ClientGigModal extends React.Component {
                   {/* </div> */}
                 </div>
                 <div className="form-group">
-                  <label htmlFor="gig-location-input">Location</label>
+                  <label
+                    htmlFor="gig-location-input"
+                    style={{ color: "#E4E6EB" }}
+                  >
+                    Location
+                  </label>
                   <input
                     id="gig-location-input"
                     className="form-control"
@@ -145,7 +165,9 @@ class ClientGigModal extends React.Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="gig-date-input">Date</label>
+                  <label htmlFor="gig-date-input" style={{ color: "#E4E6EB" }}>
+                    Date
+                  </label>
                   <input
                     value={this.state.date}
                     id="gig-date-input"
@@ -155,7 +177,9 @@ class ClientGigModal extends React.Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="gig-price-input">Price</label>
+                  <label htmlFor="gig-price-input" style={{ color: "#E4E6EB" }}>
+                    Price
+                  </label>
                   <input
                     id="gig-price-input"
                     value={this.state.price}
@@ -165,7 +189,10 @@ class ClientGigModal extends React.Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="gig-description-input">
+                  <label
+                    htmlFor="gig-description-input"
+                    style={{ color: "#E4E6EB" }}
+                  >
                     Event Description
                   </label>
                   <textarea
