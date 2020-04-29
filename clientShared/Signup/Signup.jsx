@@ -60,22 +60,22 @@ class Signup extends React.Component {
       <div>
         <div
           className="container-fluid d-flex align-items-center justify-content-center bg-dark"
-          style={{ minHeight: "100vh", fontFamily: "optima" }}
+          style={{ minHeight: "100vh"}}
         >
-          <div className="card w-50">
+          <div className="card" style={{backgroundColor:"#373737"}}>
             <div className="card-body">
               <div className="container">
                 <div className="row">
                   <div className="offset-md-2"></div>
-                  <div className="col-4 d-flex align-items-center">
+                  <div className="col d-flex align-items-center">
                     <img
                       src="https://i.imgur.com/JWCVUEL.png"
                       alt=""
                       className="img-fluid"
                     />
                   </div>
-                  <div className="col-4 d-flex align-items-center">
-                    <h3>Gigl</h3>
+                  <div className="col d-flex align-items-center">
+                  <img src="https://i.imgur.com/o1Ky7cy.png" alt="" className="img-fluid"></img>
                   </div>
                   <div className="offset-md-2"></div>
                 </div>
@@ -133,7 +133,7 @@ class Signup extends React.Component {
                       ></input>
                     </div>
                     <div>{this.state.error}</div>
-                    <button className="btn btn-outline-secondary btn-block shiny joinButton">
+                    <button className="btn btn-block shiny joinButton" style={{backgroundColor:"#34ACBC", color:"#E4E6EB", fontSize:"30px"}}>
                       {this.state.isLoading ? (
                         <>
                           <span
@@ -208,7 +208,8 @@ class Signup extends React.Component {
                 <div className="dropdown-divider w-100"></div>
                 <div>
                   Already have an account?{" "}
-                  <Link to={"/login"}>Log in</Link>
+                  <Link to={"/login"}>
+                  <span style={{color:"#34ACBC"}}>Log in</span></Link>
                 </div>
               </div>
             </div>

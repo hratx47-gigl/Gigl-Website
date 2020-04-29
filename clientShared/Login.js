@@ -40,17 +40,17 @@ class Login extends Component {
   render() {
     if(this.state.redirect){return <Redirect to='/'/>}
     return (
-      <div className="container-fluid d-flex align-items-center justify-content-center bg-dark" style={{minHeight:"100vh", fontFamily: "optima"}}>
-        <div className="card w-50">
+      <div className="container-fluid d-flex align-items-center justify-content-center bg-dark" style={{minHeight:"100vh"}}>
+        <div className="card" style={{backgroundColor:"#373737"}}>
           <div className="card-body">
             <div className="container">
               <div className="row">
               <div className="offset-md-2"></div>
-                <div className="col-4 d-flex align-items-center">
+                <div className="col d-flex align-items-center">
                   <img src="https://i.imgur.com/JWCVUEL.png" alt="" className="img-fluid"/>
                 </div>
-                <div className="col-4 d-flex align-items-center">
-                  <h3>Gigl</h3>
+                <div className="col d-flex align-items-center">
+                  <img src="https://i.imgur.com/o1Ky7cy.png" alt="" className="img-fluid"></img>
                 </div>
                 <div className="offset-md-2"></div>
               </div>
@@ -85,7 +85,7 @@ class Login extends Component {
               </div>
     <div className="login-error">{this.state.error}</div>
               <div className="text-center">
-                <button className="btn btn-block btn-outline-secondary">
+                <button className="btn btn-block" style={{backgroundColor:"#34ACBC", color:"#E4E6EB", fontSize:"30px"}}>
                 {this.state.isLoading ? (<>
                   <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                   Logging in...
@@ -94,8 +94,9 @@ class Login extends Component {
               </div>
               <div className="mt-2 text-center">
               <div className="dropdown-divider w-100"></div>
-                <p>Don't have an Account? 
-                  <Link to="/signup"> Sign Up</Link>
+                <p className="text-muted">Don't have an Account? 
+                  <Link to="/signup" > 
+                    <span style={{color:"#34ACBC"}}> Sign Up</span></Link>
                   </p>
               </div>
             </form>
