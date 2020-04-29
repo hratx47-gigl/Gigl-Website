@@ -1,7 +1,6 @@
 import React from "react";
 
 const AttachedPerformers = (person) => {
-  console.log(person.item);
   if (person.item.checked) {
     return (
       <li
