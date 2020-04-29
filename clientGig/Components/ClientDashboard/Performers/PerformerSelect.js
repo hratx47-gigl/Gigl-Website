@@ -49,7 +49,11 @@ class PerformerSelect extends React.Component {
             data-backdrop="static"
             data-keyboard="false"
           >
-            <div className="modal-dialog" role="document">
+            <div
+              className="modal-dialog"
+              role="document"
+              style={{ backgroundColor: "#212121" }}
+            >
               <div
                 className="modal-content"
                 style={{ backgroundColor: "#212121" }}
@@ -98,7 +102,6 @@ class PerformerSelect extends React.Component {
                           key={index}
                         >
                           <input
-                            style={{ backgroundColor: "#065464" }}
                             checked={item.checked}
                             type="checkbox"
                             className="form-check-input"
@@ -149,6 +152,7 @@ class PerformerSelect extends React.Component {
                 </div>
                 <div
                   className="modal-footer"
+                  style={{ backgroundColor: "rgb(33,33,33)" }}
                   style={{ border: "1px solid #212121" }}
                 >
                   <button
