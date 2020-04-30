@@ -94,7 +94,10 @@ For ticketing and allocation of work, we followed an agile methodology. We creat
 
 # Getting Started
 Take the following steps to run the app in your localhost, you will need to have the following:
+- Node should be installed on your machine
 - MongoDB should be running on your machine
+
+***Note: Rename .copy.env to .env and adjust the contents to match your MongoDB connection***
 
 From terminal in the repository:
 ```
