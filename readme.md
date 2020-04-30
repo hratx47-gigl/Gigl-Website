@@ -9,6 +9,8 @@
 # Welcome to Gigl!
 Have an event coming up and need talent? Gigl is a platform that connects clients to local freelancers such as photographers, bartenders, artists, and entertainers. Our website allows clients to post upcoming gigs and select a performer that meets their needs. It also allows talented peformers to create a profile, view gigs in their area, and apply for them! 
 
+Visit our website here:  https://hratx47-gigl.herokuapp.com 
+
 A team of us software engineers were asked by a client to build the Gigl website. We received feedback throughout the iterative build process to launch quickly and efficiently. 
 
 We chose a monolithic architecture. Herein we have discussed the user stories built, technology stack utilized, instructions for getting started, our work flow and ticketing approach, and team composition. 
@@ -22,11 +24,9 @@ We chose a monolithic architecture. Herein we have discussed the user stories bu
   - [Contributors](#contributors)
   
 # Demo
-Mobile demo</br>
-![](https://thumbs.gfycat.com/ScientificAppropriateAlbatross-size_restricted.gif)</br>
-
-Web browser demo</br>
-![](https://thumbs.gfycat.com/TangibleFavorableAphid-size_restricted.gif)</br>
+![](https://thumbs.gfycat.com/AnxiousFlimsyElver-size_restricted.gif)
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+![](https://thumbs.gfycat.com/AmazingJovialAoudad-size_restricted.gif)
 
 # User Stories
 ## Implemented
