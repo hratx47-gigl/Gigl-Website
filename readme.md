@@ -24,9 +24,9 @@ We chose a monolithic architecture. Herein we have discussed the user stories bu
   - [Contributors](#contributors)
   
 # Demo
-![](https://thumbs.gfycat.com/AnxiousFlimsyElver-size_restricted.gif)
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+![](https://thumbs.gfycat.com/AnxiousFlimsyElver-mobile.gif)
 ![](https://thumbs.gfycat.com/AmazingJovialAoudad-size_restricted.gif)
+![](https://thumbs.gfycat.com/FlowerySleepyBellfrog-size_restricted.gif)
 
 # User Stories
 ## Implemented
