@@ -31,7 +31,7 @@
   "dependencies": {
     "aws-sdk": "^2.659.0",
     "axios": "^0.19.2",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "connect-mongo": "^3.2.0",
     "css-loader": "^3.5.2",
